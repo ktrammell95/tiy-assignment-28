@@ -10,6 +10,7 @@
 
   <!-- OURS -->
   <link rel="stylesheet" href="css/main.css">
+  <link href='http://fonts.googleapis.com/css?family=Bitter|Lobster+Two' rel='stylesheet' type='text/css'>
 
 
   <!-- ==== JAVASCRIPT ==== -->
@@ -25,36 +26,79 @@
   <script src="js/main.js"></script>
 </head>
 <body>
-  <header class="header-wrapper">
-    <div class="header-upper">
-      <div class= "logo">LOGO</div>
-      <div class="login-field">
+  <header>
+    <div class="header-wrapper">
+      <div class="header-upper">
+
+        <div class= "logo">LOGO</div>
+
+        <div class="login-field">
+          <div>
+            <label>Email:</label>
+          </div>
+          <div>
+            <input type="text" name="email" label="Email" class="input-email"/>
+          </div>
+          <div>
+            <label>Password:</label>
+          </div>
+          <div>
+            <input type="text" name="password" label="Password" class="input-password"/>
+          </div>
+        </div><!--login-field-->
         <div>
-          <label>Email</label>
+          <button class="sign-in">Sign In</button>
+          <button class="sign-out">Log Out</button>
         </div>
-        <div>
-          <input type="text" name="email" label="Email"/>
-        </div>
-        <div>
-          <input type="text" name="password" label="Password"/>
-        </div>
-        <div>
-          <button>Sign In</button>
-        </div>
+
+      </div><!--header-upper-->
+
+      <div class="navigation-bar">
+        <ul>
+          <li class="nav1">Navigation 1</li>
+          <li class="nav2">Navigation 2</li>
+          <li class="nav2">Navigation 3</li>
+        </ul>
       </div>
-    </div>
-    <div class="navigation-bar">
-      <ul>
-        <li class="nav1">Navigation 1</li>
-        <li class="nav2">Navigation 2</li>
-        <li class="nav2">Navigation 3</li>
-      </ul>
-    </div>
+    </div><!--header-wrapper-->
   </header>
 
 
   <div class="main-wrapper">
+    <section class="top">
+      <div class="left">
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p> 
+        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p> 
+        <p>Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
+      </div>
+      <div class="right">
+        <img src="http://placehold.it/400x400" alt="img placeholder">
+      </div>
+    </section>
+    <section class="bottom">
+      <div class="left">
+        <img src="http://placehold.it/400x400" alt="img placeholder">
+      </div>
+      <div class="right">
+        <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p> 
+        <p>Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.</p> 
+        <p>Sed posuere consectetur est at lobortis. Donec id elit non mi porta gravida at eget metus.</p>
+      </div>
+    </section>
   </div>
+
+  <footer>
+    <div class="footer-wrapper">
+      <ul>
+      <li class="footnav1">Footer Nav 1</li>
+      <li class="footnav2">Footer Nav 2</li>
+      <li class="footnav3">Footer Nav 3</li>
+      <li class="footnav4">Footer Nav 4</li>
+      </ul>
+    </div>
+  </footer>
 </body>
 </html>
 
