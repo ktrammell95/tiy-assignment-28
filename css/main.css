@@ -30,7 +30,7 @@ header .header-wrapper .header-upper .logo {
 header .header-wrapper .header-upper .login-form {
   margin-top: 10px;
   float: left;
-  margin-left: 400px;
+  margin-left: 375px;
   width: 300px;
   height: 70%;
 }
@@ -40,18 +40,13 @@ header .header-wrapper .header-upper .login-form label {
   margin-top: 10px;
   color: #8fb98b;
 }
-header .header-wrapper .header-upper .login-form .input-email {
+header .header-wrapper .header-upper .login-form .textfield {
   float: left;
   width: 70%;
   margin-top: 10px;
 }
-header .header-wrapper .header-upper .login-form .input-password {
-  float: left;
-  width: 70%;
-  margin-top: 15px;
-}
-header .header-wrapper .header-upper .sign-in,
-header .header-wrapper .header-upper .sign-out {
+header .header-wrapper .header-upper .login-button,
+header .header-wrapper .header-upper .logout-button {
   background-color: #8fb98b;
   font-family: 'Bitter', serif;
   float: left;
@@ -66,7 +61,7 @@ header .header-wrapper .header-upper .logout-button {
   margin-top: 8px;
 }
 header .header-wrapper .navigation-bar ul {
-  margin-left: 150px;
+  margin-left: 200px;
 }
 header .header-wrapper .navigation-bar ul .nav1,
 header .header-wrapper .navigation-bar ul .nav2,

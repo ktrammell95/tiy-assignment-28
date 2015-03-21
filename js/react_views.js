@@ -21,17 +21,16 @@
 
   });
 
-  //================== Login ==================//
-
+//================== Login ==================//
   var Login = React.createClass({displayName: "Login",
-    
-    onSubmit: function(e) {
+
+    onSubmit: function(e){
       e.preventDefault();
       var loginData = $(e.target).serializeJSON();
-      tiy.login(loginData);
+      app.login(loginData);
     },
 
-    render: function() {
+    render: function(){
       return (
         React.createElement("form", {onSubmit: this.onSubmit}, 
           React.createElement(TextField, {name: "email", label: "Email"}), 
@@ -43,7 +42,7 @@
     }
   });
 
-  //================== LogoutButton ==================//
+//================== LogoutButton ==================//
 
   var LogoutButton = React.createClass({displayName: "LogoutButton",
     onClick: function(e){
@@ -51,13 +50,52 @@
       app.logout();
     },
 
-    render: function() {
+    render: function(){
       return React.createElement("button", {onClick: this.onClick}, "Logout");
     }
   });
 
-  views.Login        = Login;
-  views.LogoutButton = LogoutButton
+//=========
 
+  views.Login        = Login;
+  views.LogoutButton = LogoutButton;
 
 })(app.views);
+
+
+//var htmlID = "react-textfield-" + name + "-" + Math.random();
+  //creates a random variable
+//"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
+  // <TextField name="email" label="Email"/>
+  // <TextField name="password" label="Password" type="password"/>
+(function(views){
+
+  var Notes = React.createBackboneClass({
+
+    makeLI: function(model, index){
+      return React.createElement("li", {key: index}, model.get("note"));
+    },
+
+    render: function(){
+      if (this.props.collection){
+        return (
+          React.createElement("ul", null, 
+            this.props.collection.map(this.makeLI)
+          )
+        );
+      } else {
+        return (
+          React.createElement("ul", null, 
+            React.createElement("li", null, "Nothing to show")
+          )
+          );
+       }
+     }
+
+  });
+
+  views.Notes = Notes;
+  
+})(app.views);
+
+//this is going to be stored as backbone collection and firebase collection

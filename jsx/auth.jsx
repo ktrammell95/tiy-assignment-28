@@ -1,6 +1,6 @@
 (function(views){
 
-  var TextField = React.createClass({displayName: "TextField",
+  var TextField = React.createClass({
 
     render: function(){
       var name = this.props.name;
@@ -13,7 +13,7 @@
             <label htmlFor={htmlID}>{label}</label>
           </div>
           <div>
-            <input type ={type} name={name} id={htmlID}/>
+            <input type={type} name={name} id={htmlID}/>
           </div>
         </div>
       );
@@ -21,17 +21,16 @@
 
   });
 
-  //================== Login ==================//
+//================== Login ==================//
+  var Login = React.createClass({
 
-  var Login = React.createClass({displayName: "Login",
-    
-    onSubmit: function(e) {
+    onSubmit: function(e){
       e.preventDefault();
       var loginData = $(e.target).serializeJSON();
-      tiy.login(loginData);
+      app.login(loginData);
     },
 
-    render: function() {
+    render: function(){
       return (
         <form onSubmit={this.onSubmit}>
           <TextField name="email" label="Email"/>
@@ -43,21 +42,29 @@
     }
   });
 
-  //================== LogoutButton ==================//
+//================== LogoutButton ==================//
 
-  var LogoutButton = React.createClass({displayName: "LogoutButton",
+  var LogoutButton = React.createClass({
     onClick: function(e){
       e.preventDefault();
       app.logout();
     },
 
-    render: function() {
+    render: function(){
       return <button onClick={this.onClick}>Logout</button>;
     }
   });
 
-  views.Login        = Login;
-  views.LogoutButton = LogoutButton
+//=========
 
+  views.Login        = Login;
+  views.LogoutButton = LogoutButton;
 
 })(app.views);
+
+
+//var htmlID = "react-textfield-" + name + "-" + Math.random();
+  //creates a random variable
+//"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
+  // <TextField name="email" label="Email"/>
+  // <TextField name="password" label="Password" type="password"/>
