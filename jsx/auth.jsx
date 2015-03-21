@@ -8,14 +8,14 @@
       var label = this.props.label || name;
       var type = this.props.type || "text";
       return (
-        React.createElement("div", {className: "textfield"}, 
-          React.createElement("div", null, 
-            React.createElement("label", {htmlFor: htmlID}, label)
-          ), 
-          React.createElement("div", null, 
-            React.createElement("input", {type: type, name: name, id: htmlID})
-          )
-        )
+        <div className = "textfield">
+          <div>
+            <label htmlFor={htmlID}>{label}</label>
+          </div>
+          <div>
+            <input type ={type} name={name} id={htmlID}/>
+          </div>
+        </div>
       );
     }
 
@@ -33,12 +33,12 @@
 
     render: function() {
       return (
-        React.createElement("form", {onSubmit: this.onSubmit}, 
-          React.createElement(TextField, {name: "email", label: "Email"}), 
-          React.createElement(TextField, {name: "password", label: "Password", type: "password"}), 
+        <form onSubmit={this.onSubmit}>
+          <TextField name="email" label="Email"/>
+          <TextField name="password" label="Password" type="password"/>
 
-          React.createElement("button", null, "Sign In")
-        )
+          <button>Sign In</button>
+        </form>
       );
     }
   });
@@ -52,7 +52,7 @@
     },
 
     render: function() {
-      return React.createElement("button", {onClick: this.onClick}, "Logout");
+      return <button onClick={this.onClick}>Logout</button>;
     }
   });
 
