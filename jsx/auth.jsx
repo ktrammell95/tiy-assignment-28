@@ -63,8 +63,8 @@
 })(app.views);
 
 
-//var htmlID = "react-textfield-" + name + "-" + Math.random();
-  //creates a random variable
-//"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
-  // <TextField name="email" label="Email"/>
-  // <TextField name="password" label="Password" type="password"/>
+// //var htmlID = "react-textfield-" + name + "-" + Math.random();
+//   //creates a random variable
+// //"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
+//   // <TextField name="email" label="Email"/>
+//   // <TextField name="password" label="Password" type="password"/>

@@ -1,4 +1,4 @@
-@display-font:'Lobster Two', cursive;
+@display-font:'Oxygen', sans-serif;
 @text-font:'Bitter', serif;
 @base-color: #F5EEDB;
 @light-color: #EAE1C0;
@@ -6,10 +6,20 @@
 @highlight-color: #8FB98B;
 @action-color: #DE564B;
 
+html {
+  background: url("https://farm5.staticflickr.com/4110/5200218267_2215c03778_o.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: @base-color;
+  // background-image: url('/images/beer_taster1.jpg');
+  // background-color: @base-color;
   font-family: @text-font;
   color: @dark-color;
 }

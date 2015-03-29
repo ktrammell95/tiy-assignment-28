@@ -63,11 +63,59 @@
 })(app.views);
 
 
-//var htmlID = "react-textfield-" + name + "-" + Math.random();
-  //creates a random variable
-//"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
-  // <TextField name="email" label="Email"/>
-  // <TextField name="password" label="Password" type="password"/>
+// //var htmlID = "react-textfield-" + name + "-" + Math.random();
+//   //creates a random variable
+// //"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
+//   // <TextField name="email" label="Email"/>
+//   // <TextField name="password" label="Password" type="password"/>
+// app.views={};
+
+(function(views){
+
+  var Chapters = React.createClass({displayName: "Chapters",
+    render: function() {
+      return React.createElement("li", null, "Chapters")
+    }
+  });
+
+  var References = React.createClass({displayName: "References",
+    render: function() {
+      return React.createElement("li", null, "References")
+    }
+  });
+
+  var PgView = React.createClass({displayName: "PgView",
+
+    getView: function(show) {
+      if (show === "chapters") {
+        return React.createElement(Chapters, null)
+      }
+      else if (show === "references") {
+        return React.createElement(References, null)
+      }
+    },
+
+    onNav: function(show){
+      this.props.onShow(show);
+    },
+
+    render: function() {
+      var showing = this.getView(this.props.show);
+      return (
+        React.createElement("ul", null, 
+          React.createElement("li", {onClick: this.onNav.bind(this, "chapters")}, "Chapters"), 
+          React.createElement("li", {onClick: this.onNav.bind(this, "references")}, "References")
+        )
+      )
+    }
+  });
+// });
+    views.PgView = PgView;
+    views.Chapters = Chapters;
+    views.References = References;
+
+
+})(app.views);
 (function(views){
 
   var Notes = React.createBackboneClass({

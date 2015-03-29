@@ -1,7 +1,14 @@
+html {
+  background: url("https://farm5.staticflickr.com/4110/5200218267_2215c03778_o.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 100%;
+}
 body {
   margin: 0;
   padding: 0;
-  background-color: #f5eedb;
   font-family: 'Bitter', serif;
   color: #483a3a;
 }
@@ -23,7 +30,7 @@ header .header-wrapper .header-upper .logo {
   height: 100%;
   float: left;
   line-height: 75px;
-  font-family: 'Lobster Two', cursive;
+  font-family: 'Oxygen', sans-serif;
   font-size: 36px;
   color: #8fb98b;
 }
