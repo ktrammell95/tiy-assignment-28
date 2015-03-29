@@ -1,7 +1,7 @@
 {
-  "name": "tiy-assignment-28",
+  "name": "tiy-final-app",
   "version": "1.0.0",
-  "description": "react firebcase auth",
+  "description": "TIY final app",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,10 @@
   "keywords": [
     "react",
     "firebase",
-    "auth"
+    "auth",
+    "TIY",
+    "final_app",
+    "beer"
   ],
   "author": "Katherine Trammell",
   "license": "ISC",

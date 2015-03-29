@@ -1,14 +1,17 @@
 {
-  "name": "tiy-assignment-28",
+  "name": "tiy-final-app",
   "version": "0.0.0",
   "authors": [
     "Katherine Trammell <ktrammell@gmail.com>"
   ],
-  "description": "react firebase auth",
+  "description": "TIY final app",
   "keywords": [
     "react",
     "firebase",
-    "auth"
+    "auth",
+    "TIY",
+    "final_app",
+    "beer"
   ],
   "license": "ISC",
   "private": true,
