@@ -1,114 +1,96 @@
-html {
-  background: url("https://farm5.staticflickr.com/4110/5200218267_2215c03778_o.jpg") no-repeat center center fixed;
+body {
+  background-image: url("../images/beer_taster1.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   min-height: 100%;
-}
-body {
   margin: 0;
   padding: 0;
   font-family: 'Bitter', serif;
-  color: #483a3a;
 }
 header {
-  background-color: #483a3a;
+  background-color: #1d1d1d;
   margin: auto;
   width: 100%;
 }
 header .header-wrapper {
   width: 960px;
-  height: 120px;
+  height: 90px;
   margin: auto;
 }
 header .header-wrapper .header-upper {
-  height: 75px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 header .header-wrapper .header-upper .logo {
-  width: 150px;
-  height: 100%;
+  width: 250px;
   float: left;
-  line-height: 75px;
   font-family: 'Oxygen', sans-serif;
+  color: #f7f2f2;
+  text-align: center;
+}
+header .header-wrapper .header-upper .logo h1 {
   font-size: 36px;
-  color: #8fb98b;
+  line-height: 36px;
+  margin-bottom: 0;
 }
-header .header-wrapper .header-upper .login-form {
-  margin-top: 10px;
-  float: left;
-  margin-left: 375px;
-  width: 300px;
-  height: 70%;
-}
-header .header-wrapper .header-upper .login-form label {
-  float: left;
-  width: 27%;
-  margin-top: 10px;
-  color: #8fb98b;
-}
-header .header-wrapper .header-upper .login-form .textfield {
-  float: left;
-  width: 70%;
-  margin-top: 10px;
-}
-header .header-wrapper .header-upper .login-button,
-header .header-wrapper .header-upper .logout-button {
-  background-color: #8fb98b;
+header .header-wrapper .header-upper .twitter-login {
+  background-color: #f7f2f2;
+  margin: auto;
   font-family: 'Bitter', serif;
-  float: left;
-  height: 25px;
-  width: 75px;
-  border-radius: 2px;
+  float: right;
+  width: 200px;
+  padding: 10px 25px;
+  color: #d3d6d9;
+  display: inline-block;
+  cursor: pointer;
+  border-left: 1px solid #456;
+  font-size: 14px;
 }
-header .header-wrapper .header-upper .login-button {
-  margin-top: 18px;
+header .header-wrapper .header-upper .twitter-login .profile-image {
+  vertical-align: middle;
+  height: 30px;
+  border-radius: 15px;
+  margin-right: 10px;
 }
-header .header-wrapper .header-upper .logout-button {
-  margin-top: 8px;
+header .header-wrapper .header-upper .twitter-login .fa {
+  font-size: 2em;
+  color: #456;
+  vertical-align: -5px;
+  margin-left: 10px;
 }
-header .header-wrapper .navigation-bar ul {
-  margin-left: 200px;
+header .header-wrapper .header-lower {
+  height: 25%;
 }
-header .header-wrapper .navigation-bar ul .nav1,
-header .header-wrapper .navigation-bar ul .nav2,
-header .header-wrapper .navigation-bar ul .nav3 {
-  list-style: none;
-  display: inline;
-  color: #eae1c0;
-  margin-right: 150px;
+header .header-wrapper .header-lower .slogan {
+  /* background: blue; */
+  margin-top: -50px;
+  /* margin-left: 30px; */
+  clear: both;
+  width: 250px;
+  height: 25%;
+  text-align: center;
+}
+header .header-wrapper .header-lower .slogan h2 {
+  font-family: 'Oxygen', sans-serif;
+  font-size: 12px;
+  color: #d2b502;
 }
 .main-wrapper {
+  opacity: .40;
+  background-color: #fefee7;
   padding: 0;
   width: 960px;
   height: 900px;
   margin: auto;
 }
-.main-wrapper .top,
-.main-wrapper .bottom {
-  width: 100%;
-  height: 450px;
-  border: 1px solid black;
-}
-.main-wrapper .top .left,
-.main-wrapper .bottom .left {
-  padding-left: 15px;
-  float: left;
-  width: 50%;
-  height: 100%;
-}
-.main-wrapper .top .right,
-.main-wrapper .bottom .right {
-  float: left;
-  width: 45%;
-  height: 100%;
-}
-.main-wrapper .top .right img,
-.main-wrapper .bottom .right img {
-  margin: 15px;
-}
 footer {
-  background-color: #483a3a;
+  background-color: #1d1d1d;
   margin: auto;
   width: 100%;
   height: 50px;

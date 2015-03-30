@@ -2,26 +2,25 @@
 @text-font:'Bitter', serif;
 @base-color: #F5EEDB;
 @light-color: #EAE1C0;
-@dark-color: #483A3A;
-@highlight-color: #8FB98B;
-@action-color: #DE564B;
+@dark-color: #1D1D1D;
+@highlight-color: #f7f2f2;
+@action-color: #D2B502;
+@fb-cl:#3B579D;
+@twt-cl:#00ACED;
 
-html {
-  background: url("https://farm5.staticflickr.com/4110/5200218267_2215c03778_o.jpg") no-repeat center center fixed;
+body {
+  background-image: url("../images/beer_taster1.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   min-height: 100%;
-}
-
-body {
   margin: 0;
   padding: 0;
-  // background-image: url('/images/beer_taster1.jpg');
-  // background-color: @base-color;
   font-family: @text-font;
-  color: @dark-color;
 }
 
 header{
@@ -30,98 +29,96 @@ header{
   width: 100%;
   .header-wrapper{
     width: 960px;
-    height: 120px;
+    height: 90px;
     margin: auto;
-    .header-upper{
-      height: 75px;        
-      .logo{
-        width: 150px;
-        height: 100%;
+    .header-upper{  
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      .logo {
+        width: 250px;
         float: left;
-        line-height: 75px;
         font-family: @display-font;
-        font-size: 36px;
         color: @highlight-color; 
+        text-align: center;
+        h1{
+          font-size: 36px;
+          line-height: 36px;
+          margin-bottom: 0;
+        }
       }//logo
-      .login-form{
-        margin-top: 10px;
-        float:left;
-        margin-left: 375px;
-        width: 300px;
-        height: 70%;
-        label{
-          float: left;
-          width: 27%;
-          margin-top: 10px;
-          color: @highlight-color;
-        }
-        .textfield{
-          float: left;
-          width: 70%;
-          margin-top: 10px;
-        }
-        // .input-password{
-        //   float: left;
-        //   width: 70%;
-        //   margin-top: 15px;
-        // }
-      }//login-field
-      .login-button, .logout-button{
+      .twitter-login {
         background-color: @highlight-color;
+        margin: auto;
         font-family: @text-font;
-        float: left;
-        height: 25px;
-        width: 75px;
-        border-radius: 2px;
-      }
-      .login-button {
-        margin-top: 18px;
-      }
-      .logout-button {
-        margin-top: 8px;
-      }
-    }//header-upper
-    .navigation-bar{
-      ul{
-        margin-left: 200px;
-        .nav1, .nav2, .nav3 {
-          list-style: none;
-          display: inline;
-          color: @light-color;
-          margin-right: 150px;
+        float: right;
+        // height: 25px;
+        width: 200px;
+
+        padding: 10px 25px;
+        color: #d3d6d9;
+        display: inline-block;
+        cursor: pointer;
+        border-left: 1px solid #456;
+        font-size: 14px;
+
+        .profile-image{
+          vertical-align: middle;
+          height: 30px;
+          border-radius: 15px;
+          margin-right: 10px;
+        }
+
+        .fa {
+          font-size: 2em;
+          color: #456;
+          vertical-align: -5px;
+          margin-left: 10px;
         }
       }
-    }//navigation-bar
+      // .logout-button{
+      //   background-color: @highlight-color;
+      //   margin: auto;
+      //   margin-top: 30px;
+      //   font-family: @text-font;
+      //   float: right;
+      //   height: 25px;
+      //   width: 75px;
+      //   border-radius: 2px;
+      // }
+    }//header-upper
+    .header-lower{
+      height: 25%;
+      .slogan {
+        /* background: blue; */
+        margin-top: -50px;
+        /* margin-left: 30px; */
+        clear: both;
+        width: 250px;
+        height: 25%;
+        text-align: center;
+        h2 {
+          font-family: @display-font;
+          font-size: 12px;
+          color: @action-color;
+        }
+      }
+    }//header-lower
   }//header-wrapper
 }//header
 
 .main-wrapper {
-  // background-color: #fefee7;
+  opacity: .40;
+  background-color: #fefee7;
   padding: 0;
   width:960px;
   height: 900px;
   margin: auto;
   // margin-top: -16px;
-  .top, .bottom{
-    width: 100%;
-    height: 450px;
-    border: 1px solid black;
-    .left{
-      padding-left: 15px;
-      float: left;
-      width: 50%;
-      height: 100%;
-    }
-    .right{
-      float: left;
-      width: 45%;
-      height: 100%;
-      img{
-        margin: 15px;
-      }
-    }
-  }
+  
 }//main-wrapper
+
+
 
 footer {
   background-color: @dark-color;

@@ -1,70 +1,93 @@
 (function(views){
 
-  var TextField = React.createClass({
+  views.TwitterLoggedIn = React.createClass({
 
     render: function(){
-      var name = this.props.name;
-      var htmlID = "react-textfield-" + name + "-" + Math.random();
-      var label = this.props.label || name;
-      var type = this.props.type || "text";
       return (
-        <div className = "textfield">
-          <div>
-            <label htmlFor={htmlID}>{label}</label>
-          </div>
-          <div>
-            <input type={type} name={name} id={htmlID}/>
-          </div>
+        <div className="logged-in" onClick={tiy.logout.bind(tiy)}>
+          <img className="profile-image" src={this.props.img} alt=""/>
+          {" "}
+          <span>{this.props.name}</span>
+          {" "}
+          <views.Icon fa="sign-out"/>
         </div>
       );
     }
 
-  });
+  });//calling logout from tiy.js file
 
-//================== Login ==================//
-  var Login = React.createClass({
+  views.TwitterNotLoggedIn = React.createClass({
 
-    onSubmit: function(e){
-      e.preventDefault();
-      var loginData = $(e.target).serializeJSON();
-      app.login(loginData);
+    render: function(){
+      return (
+        <div className="not-logged-in" onClick={tiy.twitterLogin.bind(tiy)}>
+          <span>Sign In With Twitter</span>
+          {" "}
+          <views.Icon fa="twitter"/>
+        </div>
+      );
+    }
+
+  });//calling twitterLogin from tiy.js file
+
+  views.TwitterLogin = React.createBackboneClass({
+    getChild: function(){
+      if (this.props.model.id) {
+        var name = this.props.model.get("name");
+        var img = this.props.model.get("profile_image_url");
+        return <views.TwitterLoggedIn name={name} img={img}/>
+      } else {
+        return <views.TwitterNotLoggedIn/>
+      }
     },
 
     render: function(){
       return (
-        <form onSubmit={this.onSubmit}>
-          <TextField name="email" label="Email"/>
-          <TextField name="password" label="Password" type="password"/>
-
-          <button>Sign In</button>
-        </form>
+        <div className="twitter-login">
+        {this.getChild()}
+        </div>
       );
     }
   });
 
-//================== LogoutButton ==================//
-
-  var LogoutButton = React.createClass({
-    onClick: function(e){
-      e.preventDefault();
-      app.logout();
-    },
-
+  views.Header = React.createBackboneClass({
     render: function(){
-      return <button onClick={this.onClick}>Logout</button>;
+      return (
+        <div className="header-wrapper">
+          <div className="header-upper">
+            <div className= "logo">
+              <h1>Brewery Bee</h1>
+            </div>
+            <div>
+             <views.TwitterLogin model={this.props.model}/>
+            </div>
+          </div>
+
+          <div className="header-lower">
+            <div className="slogan">
+              <h2>Giving you the buzz on craft beer</h2>
+            </div>
+          </div>
+        </div>
+      );
     }
   });
 
-//=========
+})(tiy.views);
 
-  views.Login        = Login;
-  views.LogoutButton = LogoutButton;
+//------ console ------ //
 
-})(app.views);
+//tiy.views;
+// tiy.init();
+// var c = tiy.views.TwitterLoggedIn;
+// var elem = React.createElement(c, {name: "jd", img: "http://lorempixel.com/50/50"});
+// React.render(elem, document.body);
 
+// tiy.init();
+// tiy.currentUser;
+// var c = tiy.views.TwitterLogin;
+// var elem = React.createElement(c, {model: tiy.currentUser});
+// React.render(elem, document.body);
 
-// //var htmlID = "react-textfield-" + name + "-" + Math.random();
-//   //creates a random variable
-// //"Email" and "Password" are used as the label that you see on the screen, that is why they are capitalized
-//   // <TextField name="email" label="Email"/>
-//   // <TextField name="password" label="Password" type="password"/>
+// tiy.logout();
+
