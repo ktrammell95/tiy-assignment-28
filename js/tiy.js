@@ -62,17 +62,17 @@ window.tiy = {
     });
   },
 
-    //log in to facebook
-  // facebookLogin: function() {
-  //   console.log("attempting to login");
-  //   this.fireRef.authWithOAuthRedirect("facebook", function(error, authData){
-  //     if (error) {
-  //       console.log("Login Failed", error);
-  //     } else {
-  //       console.log("Authenicated successfully", authData);
-  //     }
-  //   });
-  // },
+    // log in to facebook
+  facebookLogin: function() {
+    console.log("attempting to login");
+    this.fireRef.authWithOAuthRedirect("facebook", function(error, authData){
+      if (error) {
+        console.log("Login Failed", error);
+      } else {
+        console.log("Authenicated successfully", authData);
+      }
+    });
+  },
 
   isLoggedIn: function() {
     return !!(this.authData && this.authData.uid);
