@@ -120,6 +120,137 @@
 
 
 (function(views){
+  
+  views.Section = React.createBackboneClass({
+    render: function(){
+      return (
+       React.createElement("div", {className: "alphabetical_list"}, 
+        React.createElement("div", {className: "search"}, 
+          React.createElement("form", {className: "search-form", action: "", method: ""}, 
+            React.createElement("span", null), 
+            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
+            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
+          )
+        ), 
+        React.createElement("div", {className: "beer_list brewery_list"}, 
+          React.createElement("div", {className: "alphabet"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
+              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
+              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
+              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
+              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
+              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
+              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
+              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
+              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
+              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
+              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
+              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
+              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
+              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
+              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
+              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
+              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
+              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
+              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
+              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
+              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
+              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
+              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
+              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
+              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
+              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+            )
+          ), 
+            React.createElement("div", {className: "beer"}, 
+              React.createElement("h3", null, "Beer: Saison Lafayette"), 
+              React.createElement("div", {className: "beer_details"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Description:"), 
+                  React.createElement("li", null, "ABV:"), 
+                  React.createElement("li", null, "Glassware:"), 
+                  React.createElement("li", null, "Style:")
+                )
+              ), 
+              React.createElement("div", {className: "beer_image"}, 
+                React.createElement("img", {src: "http://lorempixel.com/400/200/"})
+              )
+            )
+          )
+        )
+      );
+    }
+  });
+
+})(tiy.views);
+(function(views){
+  
+  views.Section = React.createBackboneClass({
+    render: function(){
+      return (
+       React.createElement("div", {className: "alphabetical_list"}, 
+        React.createElement("div", {className: "search"}, 
+          React.createElement("form", {className: "search-form", action: "", method: ""}, 
+            React.createElement("span", null), 
+            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
+            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
+          )
+        ), 
+        React.createElement("div", {className: "beer_list brewery_list"}, 
+          React.createElement("div", {className: "alphabet"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
+              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
+              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
+              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
+              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
+              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
+              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
+              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
+              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
+              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
+              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
+              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
+              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
+              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
+              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
+              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
+              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
+              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
+              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
+              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
+              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
+              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
+              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
+              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
+              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
+              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+            )
+          ), 
+            React.createElement("div", {className: "brewery"}, 
+              React.createElement("h3", null, "Brewery: 3 Daughters Brewing"), 
+              React.createElement("div", {className: "brewery_details"}, 
+                React.createElement("ul", null, 
+                  React.createElement("li", null, "Address"), 
+                  React.createElement("li", null, "Address"), 
+                  React.createElement("li", null, "Phone"), 
+                  React.createElement("li", null, "Website")
+                )
+              ), 
+              React.createElement("div", {className: "brewery_image"}, 
+                React.createElement("img", {src: "http://lorempixel.com/400/200/"})
+              )
+            )
+          )
+        )
+
+      );
+    }
+  });
+
+})(tiy.views);
+(function(views){
 
   views.Icon = React.createClass({displayName: "Icon",
 
@@ -247,88 +378,44 @@
   });
 
 })(tiy.views);
+// --------- INDEX PAGE VIEW --------- //
+
 (function(views){
 
-  views.AddForm = React.createClass({displayName: "AddForm",
-    getInitialState: function(){
-      return {name: ""};
-    },
-
-    updateName: function(e){
-      this.setState({name: e.target.value});
-    },
-
-    onSubmit: function(e){
-      e.preventDefault();
-      var form = this.getDOMNode();
-      var data = $(form).serializeJSON();
-      this.props.onAdd(data);
-      this.setState({name:""});
-    },
-
+  views.Section = React.createBackboneClass({
     render: function(){
-      var adding = this.props.adding;
-      var placeholder = "Add a " + adding;
-      return(
-        React.createElement("form", {onSubmit: this.onSubmit}, 
-          React.createElement("input", {
-            type: "text", 
-            name: "name", 
-            value: this.state.name, 
-            onChange: this.updateName, 
-            placeholder: placeholder})
-        )
-      );
-    }
-
-  });
-
-  views.Milestone = React.createBackboneClass({
-    toggleComplete: function(){
-      this.props.model.toggleComplete();
-    },
-
-    render: function(){
-      var name = this.props.model.get("name");
-      var done = this.props.model.get("completed_at");
       return (
-        React.createElement("div", {className: "milestone item"}, 
-          React.createElement("div", {className: "item-title"}, name), 
-          React.createElement(views.Toggle, {on: done, onToggle: this.toggleComplete})
-        )
-      );
-    }
-  });
-
-  views.Milestones = React.createBackboneClass({
-    
-    getItem: function(model, index){
-      return React.createElement(views.Milestone, {model: model, key: index})
-    },
-
-    add: function(data){
-      // console.log("add task", data);
-      this.props.collection.add(data);
-    },
-
-    render: function(){
-      return(
-        React.createElement("div", {className: "milestones list"}, 
-          React.createElement("div", {className: "heading"}, 
-            React.createElement("h2", null, this.props.title)
+         React.createElement("div", {className: "index"}, 
+          React.createElement("div", null, 
+            React.createElement("h2", null, "About Brewery Bee"), 
+            React.createElement("p", null, "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\""
+            )
           ), 
-          React.createElement("div", {className: "items"}, 
-            this.props.collection.map(this.getItem) 
-          ), 
-          React.createElement("div", {className: "add-item"}, 
-            React.createElement(views.AddForm, {adding: "milestone", onAdd: this.add})
+          React.createElement("div", {className: "images"}, 
+            React.createElement("div", {className: "image_left"}, 
+              React.createElement("img", {src: "images/beer2.jpg", alt: "brewery"}), 
+              React.createElement("a", {href: "#"}, "Beer Name")
+            ), 
+            React.createElement("div", {className: "image_right"}, 
+              React.createElement("img", {src: "images/beer4.jpg", alt: "brewery"}), 
+              React.createElement("a", {href: "#"}, "Beer Style")
+            ), 
+            React.createElement("div", {className: "image_left"}, 
+              React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery"}), 
+              React.createElement("a", {href: "#"}, "Brewery Name")
+            ), 
+            React.createElement("div", {className: "image_right"}, 
+              React.createElement("img", {src: "images/beer3.jpg", alt: "brewery"}), 
+              React.createElement("a", {href: "#"}, "Brewery Location")
+            )
           )
         )
       );
-
     }
-
   });
+
+})(tiy.views);
+(function(views){
 
   views.Task = React.createBackboneClass({
 
@@ -388,37 +475,6 @@
     }
 
   });
-
-  //view that is in charge of showing tasks or milestones
-  views.Main = React.createBackboneClass({
-
-    render: function(){
-      if(this.props.loading){
-        return(
-          React.createElement("div", {className: "main-loading"}, 
-            React.createElement(views.Icon, {fa: "spinner", spin: "true"})
-          )
-        );
-      }
-      else if (this.props.collection && this.props.taskId){
-        var taskId = this.props.taskId;
-        var tasks = this.props.collection;
-        var task = tasks.get(taskId);
-        return React.createElement(views.Milestones, {
-        collection: task.milestones, 
-        title: task.get("name")})
-      }
-      else if (this.props.collection){
-        return React.createElement(views.Tasks, {
-        onSelect: this.props.onTaskSelect, 
-        collection: this.props.collection})
-      }
-      else {
-        return React.createElement("div", {className: "please-signin"}, "Please sign in to view or create tasks")
-      }
-    }
-
-  }); 
 
 })(tiy.views);
 

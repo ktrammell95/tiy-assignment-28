@@ -83,16 +83,123 @@ header{
   }//header-wrapper
 }//header
 
-.main-wrapper {
-  opacity: .40;
-  background-color: #fefee7;
+section {
+  background-color: rgba(254, 254, 231, .6);
   padding: 0;
   width:960px;
   height: 900px;
   margin: auto;
-  // margin-top: -16px;
-  
-}//main-wrapper
+  .index{
+    padding: 20px;
+    h2 {
+      opacity: 1;
+      font-size: 24px;
+      border-bottom: 2px solid @dark-color;
+      color: @dark-color;
+    }
+    p {
+      font-size: 16px;
+    }
+    .images {
+      margin: 40px;
+      height: 525px;
+      .image_left, .image_right{
+        // background: red;
+        width: 45%;
+        height: 300px;
+        padding-bottom: 10px;
+        a{
+          text-decoration: none;
+          text-align: center;
+          color: @dark-color;
+          font-size: 20px;
+        }
+        img {
+          width: 100%;
+          height: 85%;
+        }
+      }
+      .image_left{
+        float: left;
+      }
+      .image_right{
+        float: right;
+      }
+    }
+  } //index
+  .alphabetical_list{
+    .search {
+      float: left;
+      width: 50%;
+      height: 30px;
+      margin-top: 8px;
+      margin-left: 10px;
+      .search-field {
+        border: 1px solid #d0d0d0;
+        border-radius: 3px;
+        width: 71%;
+        float: left;
+        height: 30px;
+          input {
+            color: #bcbcbc;
+          }
+      }
+      .search-button {
+        background-color: #54ACC7;
+        // border-radius: 5px;
+        position:relative;
+        left: -10px;
+        border: 1px solid #adc5cf;
+        width: 25%;
+        height: 34px;
+        line-height: 25px;
+        text-align: center;
+        color: white;
+        // font-size: 12px;
+        float: right;
+        border-radius: 3px;
+      }
+    }//search_bar
+    .beer_list, .brewery_list{
+      width: 100%;
+      clear: both;
+    }
+    .alphabet{
+      float: left;
+      width: 10%;
+      ul {
+        list-style: none;
+        a{
+          text-decoration: none;
+          color: @dark-color;
+        }
+      }
+    }//alphabet
+    .beer, .brewery{
+      float: left;
+      width: 85%;
+      height: auto;
+      margin-left: 10px;
+      h3{
+        background: @dark-color;
+        line-height: 35px;
+        color: rgb(234, 232, 227);
+        padding-left: 10px;
+      }
+      .beer_details, .brewery_details{
+        width: 50%;
+        float: left;
+        ul{
+          list-style: none;
+        }
+      }
+      .beer_image, .brewery_image{
+        width: 30%;
+        float: left;
+      }
+    }
+  } //alphabetical_list
+}//section
 
 
 
