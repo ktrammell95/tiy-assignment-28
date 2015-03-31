@@ -1,80 +1,47 @@
 (function(models){
 
-  models.Task = Backbone.Model.extend({
-    initialize: function() {
-      this.milestones = new models.Milestones(null, {task: this});
+  models.Brewery = Backbone.Model.extend({
 
-      this.listenTo(this.milestones, "change:completed_at", function(){
-        var percent = this.calcPercentComplete();
-        this.set("percent_complete", percent);
-      });
-    },
-
-    calcPercentComplete: function(){
-      // 3 total
-      // 2 of them are complete
-
-      //count how many milestones we have
-      var totalMilestoneCount = this.milestones.length; // should equal 3
-      //grab all the completed milestones
-      var completedMilestones = this.milestones.filter(function(ms){
-        return !!ms.get("completed_at");
-      });
-      //count how many completed milestones we have
-      var completedMilestoneCount = completedMilestones.length;
-      //divide completed by total
-      var percent = completedMilestoneCount / totalMilestoneCount;
-
-      return percent;
-    }
   });
 
-  models.Tasks = Backbone.Firebase.Collection.extend({
-    model: models.Task,
+  models.Breweries = Backbone.Firebase.Collection.extend({
+    model: models.Brewery,
 
     url: function() {
       if (!tiy.authData || !tiy.authData.uid){
         throw new Error("I need a user!");
       }
       var uid = encodeURIComponent(tiy.authData.uid);
-      return tiy.firebaseURL + "/" + uid + "/tasks";
+      return tiy.firebaseURL + "/" + uid + "/breweries";
     }
   });
 
-  models.Milestone = Backbone.Model.extend({
+  models.Beer = Backbone.Model.extend({
 
-    toggleComplete: function(){
-      if (!!this.get("completed_at")){
-        this.set("completed_at", null);
-      }
-      else {
-        this.set("completed_at", new Date().toString());
-      }
-    }
+
   });
 
-  models.Milestones = Backbone.Firebase.Collection.extend({
-    model: models.Milestone,
+  models.Beers = Backbone.Firebase.Collection.extend({
+    model: models.Beer,
 
     url: function() {
       if(!tiy.authData || !tiy.authData.uid){
         throw new Error("A user must be logged in");
       }
-      if(!this.task){
-        throw new Error("I need a task");
+      if(!this.beer){
+        throw new Error("No beers have been saved");
       }
       var uid = encodeURIComponent(tiy.authData.uid);
-      var tid = this.task.id;
-      return tiy.firebaseURL + "/" + uid + "/milestones/" + tid;
+      var beerid = this.beer.id;
+      return tiy.firebaseURL + "/" + uid + "/beers/" + beerid;
     },
 
     initialize: function(data, options){
       options || (options = {});
-      this.task = options.task;
+      this.beer = options.beer;
     }
 
   });
-
 
 })(tiy.models);
 

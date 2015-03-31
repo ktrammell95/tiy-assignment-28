@@ -50,57 +50,70 @@
     }
   });
 
-  views.FacebookLoggedIn = React.createClass({displayName: "FacebookLoggedIn",
-
+  views.Header = React.createBackboneClass({
     render: function(){
       return (
-        React.createElement("div", {className: "logged-in", onClick: tiy.logout.bind(tiy)}, 
-          React.createElement("img", {className: "profile-image", src: this.props.img, alt: ""}), 
-          " ", 
-          React.createElement("span", null, this.props.name), 
-          " ", 
-          React.createElement(views.Icon, {fa: "sign-out"})
-        )
-      );
-    }
-
-  });//calling logout from tiy.js file
-
-  views.FacebookNotLoggedIn = React.createClass({displayName: "FacebookNotLoggedIn",
-
-    render: function(){
-      return (
-        React.createElement("div", {className: "not-logged-in", onClick: tiy.facebookLogin.bind(tiy)}, 
-          React.createElement("span", null, "Sign In With FaceBook"), 
-          " ", 
-          React.createElement(views.Icon, {fa: "facebook"})
-        )
-      );
-    }
-
-  });//calling twitterLogin from tiy.js file
-
-  views.FacebookLogin = React.createBackboneClass({
-    getChild: function(){
-      if (this.props.model.id) {
-        var name = this.props.model.get("name");
-        var img = this.props.model.get("profile_image_url");
-        return React.createElement(views.FacebookLoggedIn, {name: name, img: img})
-      } else {
-        return React.createElement(views.FacebookNotLoggedIn, null)
-      }
-    },
-
-    render: function(){
-      return (
-        React.createElement("div", {className: "facebook-login"}, 
-        this.getChild()
+        React.createElement("div", null, 
+          React.createElement("div", {className: "logo"}, "Taskify"), 
+          React.createElement(views.TwitterLogin, {model: this.props.model})
         )
       );
     }
   });
 
 })(tiy.views);
+
+  // views.FacebookLoggedIn = React.createClass({
+
+  //   render: function(){
+  //     return (
+  //       <div className="logged-in" onClick={tiy.logout.bind(tiy)}>
+  //         <img className="profile-image" src={this.props.img} alt=""/>
+  //         {" "}
+  //         <span>{this.props.name}</span>
+  //         {" "}
+  //         <views.Icon fa="sign-out"/>
+  //       </div>
+  //     );
+  //   }
+
+  // });//calling logout from tiy.js file
+
+  // views.FacebookNotLoggedIn = React.createClass({
+
+  //   render: function(){
+  //     return (
+  //       <div className="not-logged-in" onClick={tiy.facebookLogin.bind(tiy)}>
+  //         <span>Sign In With FaceBook</span>
+  //         {" "}
+  //         <views.Icon fa="facebook"/>
+  //       </div>
+  //     );
+  //   }
+
+  // });//calling twitterLogin from tiy.js file
+
+  // views.FacebookLogin = React.createBackboneClass({
+  //   getChild: function(){
+  //     if (this.props.model.id) {
+  //       var name = this.props.model.get("name");
+  //       var img = this.props.model.get("profile_image_url");
+  //       return <views.FacebookLoggedIn name={name} img={img}/>
+  //     } else {
+  //       return <views.FacebookNotLoggedIn/>
+  //     }
+  //   },
+
+  //   render: function(){
+  //     return (
+  //       <div className="facebook-login">
+  //       {this.getChild()}
+  //       </div>
+  //     );
+  //   }
+  // });
+
+// })(tiy.views);
 
 //------ console ------ //
 
@@ -366,9 +379,6 @@
             React.createElement("div", {className: "login"}, 
               React.createElement("div", null, 
                React.createElement(views.TwitterLogin, {model: this.props.model})
-              ), 
-              React.createElement("div", null, 
-               React.createElement(views.FacebookLogin, {model: this.props.model})
               )
             )
           )

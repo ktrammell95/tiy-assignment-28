@@ -12,9 +12,6 @@
               <div>
                <views.TwitterLogin model={this.props.model}/>
               </div>
-              <div>
-               <views.FacebookLogin model={this.props.model}/>
-              </div>
             </div>
           </div>
         </div>
