@@ -6,6 +6,7 @@
     render: function(){
       return(
         <div className="beer_list brewery_list">
+          <h2>Beer List</h2>
             <table>
               <thead>
                 <th>Name</th>
@@ -30,6 +31,7 @@
     render: function(){
       return(
         <div className="beer_list brewery_list">
+          <h2>Brewery List</h2>
             <table>
               <thead>
                 <th>Name</th>
@@ -114,14 +116,22 @@
     }
   });
 
-  //   views.BreweryListView = React.createClass({
+    views.BreweryListView = React.createClass({
+    render: function(){
+      return(
+        <div className="list_views">
+          <views.Search/>
+          <views.AlphabetList/>
+          <views.BreweryList/>
+        </div>
+      )
+    }
+  });
+
+  // views.Section = React.createClass({
   //   render: function(){
   //     return(
-  //       <div className="list_views">
-  //         <views.Search/>
-  //         <views.AlphabetList/>
-  //         <views.BreweryList/>
-  //       </div>
+  //       <views.BeerListView/>
   //     )
   //   }
   // });
@@ -129,7 +139,7 @@
   views.Section = React.createClass({
     render: function(){
       return(
-        <views.BeerListView/>
+        <views.BreweryListView/>
       )
     }
   });

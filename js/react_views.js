@@ -336,6 +336,7 @@
     render: function(){
       return(
         React.createElement("div", {className: "beer_list brewery_list"}, 
+          React.createElement("h2", null, "Beer List"), 
             React.createElement("table", null, 
               React.createElement("thead", null, 
                 React.createElement("th", null, "Name"), 
@@ -360,6 +361,7 @@
     render: function(){
       return(
         React.createElement("div", {className: "beer_list brewery_list"}, 
+          React.createElement("h2", null, "Brewery List"), 
             React.createElement("table", null, 
               React.createElement("thead", null, 
                 React.createElement("th", null, "Name"), 
@@ -444,14 +446,22 @@
     }
   });
 
-  //   views.BreweryListView = React.createClass({
+    views.BreweryListView = React.createClass({displayName: "BreweryListView",
+    render: function(){
+      return(
+        React.createElement("div", {className: "list_views"}, 
+          React.createElement(views.Search, null), 
+          React.createElement(views.AlphabetList, null), 
+          React.createElement(views.BreweryList, null)
+        )
+      )
+    }
+  });
+
+  // views.Section = React.createClass({
   //   render: function(){
   //     return(
-  //       <div className="list_views">
-  //         <views.Search/>
-  //         <views.AlphabetList/>
-  //         <views.BreweryList/>
-  //       </div>
+  //       <views.BeerListView/>
   //     )
   //   }
   // });
@@ -459,7 +469,7 @@
   views.Section = React.createClass({displayName: "Section",
     render: function(){
       return(
-        React.createElement(views.BeerListView, null)
+        React.createElement(views.BreweryListView, null)
       )
     }
   });
