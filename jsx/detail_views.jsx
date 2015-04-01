@@ -4,7 +4,7 @@
     render: function(){
       return(
         <div className="beer">
-          <h3>Beer: Saison Lafayette</h3>
+          <h3>Saison Lafayette</h3>
           <div className="beer_details">
             <ul>
               <li>Description:</li>
@@ -26,7 +26,7 @@
     render: function(){
       return (
           <div className="brewery">
-          <h3>Brewery: 3 Daughters Brewing</h3>
+          <h3>3 Daughters Brewing</h3>
           <div className="brewery_details">
             <ul>
               <li>Address</li>
@@ -40,6 +40,14 @@
           </div>
         </div>
       );
+    }
+  });
+
+  views.Section = React.createClass({
+    render: function(){
+      return(
+        <views.BeerDetail/>
+      )
     }
   });
 

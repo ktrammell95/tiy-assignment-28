@@ -175,11 +175,11 @@ section {
           height: 30px;
         }
       }
-      tbody{
+      tbody {
         // background: grey;
         width: 28%;
         text-align: center;
-        tr:nth-child(even){
+        tr:nth-child(even) {
           background: tan;
         }
         td{ 
@@ -200,30 +200,31 @@ section {
         }
       }
     }//alphabet
-    .beer, .brewery{
+  } //list_views
+  .beer, .brewery{
+    float: left;
+    width: 100%;
+    height: auto;
+    h3{
+      background: @dark-color;
+      line-height: 50px;
+      padding-left: 20px;
+      font-size: 25px;
+      color: @action-color;
+    }
+    .beer_details, .brewery_details{
+      width: 55%;
       float: left;
-      width: 85%;
-      height: auto;
-      margin-left: 10px;
-      h3{
-        background: @dark-color;
-        line-height: 35px;
-        color: rgb(234, 232, 227);
-        padding-left: 10px;
-      }
-      .beer_details, .brewery_details{
-        width: 50%;
-        float: left;
-        ul{
-          list-style: none;
-        }
-      }
-      .beer_image, .brewery_image{
-        width: 30%;
-        float: left;
+      ul li{
+        list-style: none;
+        margin-bottom: 20px;
       }
     }
-  } //alphabetical_list
+    .beer_image, .brewery_image{
+      width: 30%;
+      float: left;
+    }
+  }
 }//section
 
 
