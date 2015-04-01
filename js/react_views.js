@@ -132,6 +132,108 @@
 // tiy.logout();
 
 
+// ------------ Beer and Brewery Lists ------------ //
+(function(views){
+
+  views.Beer = React.createClass({displayName: "Beer",
+    render: function(){
+      return(
+        React.createElement("div", {className: "beer"}, 
+          React.createElement("h3", null, "Beer: Saison Lafayette"), 
+          React.createElement("div", {className: "beer_details"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, "Description:"), 
+              React.createElement("li", null, "ABV:"), 
+              React.createElement("li", null, "Glassware:"), 
+              React.createElement("li", null, "Style:")
+            )
+          ), 
+          React.createElement("div", {className: "beer_image"}, 
+            React.createElement("img", {src: "http://lorempixel.com/400/200/"})
+          )
+        )
+      )
+    }
+  });
+
+  views.Search = React.createClass({displayName: "Search",
+    render: function(){
+      return (
+        React.createElement("div", {className: "search"}, 
+          React.createElement("form", {className: "search-form", action: "", method: ""}, 
+            React.createElement("span", null), 
+            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
+            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
+          )
+        )
+      )
+    }
+  });
+  
+  views.AlphabetList = React.createClass({displayName: "AlphabetList",
+    render: function(){
+      return (
+       React.createElement("div", {className: "alphabetical_list"}, 
+        React.createElement("div", {className: "beer_list brewery_list"}, 
+          React.createElement("div", {className: "alphabet"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
+              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
+              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
+              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
+              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
+              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
+              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
+              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
+              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
+              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
+              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
+              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
+              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
+              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
+              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
+              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
+              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
+              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
+              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
+              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
+              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
+              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
+              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
+              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
+              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
+              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+            )
+          )
+          )
+        )
+      );
+    }
+  });
+
+
+  views.BeerListView = React.createClass({displayName: "BeerListView",
+    render: function(){
+      return(
+        React.createElement("div", {className: "alphabetical_list"}, 
+          React.createElement(views.Search, null), 
+          React.createElement(views.AlphabetList, null), 
+          React.createElement(views.Beer, null)
+        )
+      )
+    }
+  });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.BeerListView, null)
+      )
+    }
+  });
+
+
+})(tiy.views);
 (function(views){
 
  views.Brewery = React.createBackboneClass({
@@ -324,51 +426,51 @@
   });
 
 })(tiy.views);
-// --------- HOME PAGE VIEW --------- //
+// // --------- HOME PAGE VIEW --------- //
 
-(function(views){
+// (function(views){
 
-  views.Home = React.createClass({displayName: "Home",
-    render: function(){
-      return (
-         React.createElement("div", {className: "index"}, 
-          React.createElement("div", null, 
-            React.createElement("h2", null, "About Brewery Bee"), 
-            React.createElement("p", null, "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\""
-            )
-          ), 
-          React.createElement("div", {className: "images"}, 
-            React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "images/beer2.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Beer Name")
-            ), 
-            React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "images/beer4.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Beer Style")
-            ), 
-            React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Brewery Name")
-            ), 
-            React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "images/beer3.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Brewery Location")
-            )
-          )
-        )
-      );
-    }
-  });
+//   views.Home = React.createClass({
+//     render: function(){
+//       return (
+//          <div className="index">
+//           <div>
+//             <h2>About Brewery Bee</h2>
+//             <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
+//             </p>
+//           </div>
+//           <div className="images">
+//             <div className="image_left">
+//               <img src="images/beer2.jpg" alt="brewery" />
+//               <a href="#">Beer Name</a>
+//             </div>
+//             <div className="image_right">
+//               <img src="images/beer4.jpg" alt="brewery" />
+//               <a href="#">Beer Style</a>
+//             </div>
+//             <div className="image_left">
+//               <img src="images/beer_bottles.jpg" alt="brewery" />
+//               <a href="#">Brewery Name</a>
+//             </div>
+//             <div className="image_right">
+//               <img src="images/beer3.jpg" alt="brewery" />
+//               <a href="#">Brewery Location</a>
+//             </div>
+//           </div>
+//         </div>
+//       );
+//     }
+//   });
 
-  views.Section = React.createClass({displayName: "Section",
-    render: function(){
-      return (
-          React.createElement(views.Home, null)
-      );
-    }
-  });
+//   views.Section = React.createClass({
+//     render: function(){
+//       return (
+//           <views.Home/>
+//       );
+//     }
+//   });
 
-})(tiy.views);
+// })(tiy.views);
 (function(views){
 
   views.Task = React.createBackboneClass({
