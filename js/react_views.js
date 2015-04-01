@@ -132,10 +132,9 @@
 // tiy.logout();
 
 
-// ------------ Beer and Brewery Lists ------------ //
 (function(views){
 
-  views.Beer = React.createClass({displayName: "Beer",
+  views.BeerDetail = React.createClass({displayName: "BeerDetail",
     render: function(){
       return(
         React.createElement("div", {className: "beer"}, 
@@ -156,87 +155,8 @@
     }
   });
 
-  views.Search = React.createClass({displayName: "Search",
-    render: function(){
-      return (
-        React.createElement("div", {className: "search"}, 
-          React.createElement("form", {className: "search-form", action: "", method: ""}, 
-            React.createElement("span", null), 
-            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
-            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
-          )
-        )
-      )
-    }
-  });
-  
-  views.AlphabetList = React.createClass({displayName: "AlphabetList",
-    render: function(){
-      return (
-       React.createElement("div", {className: "alphabetical_list"}, 
-        React.createElement("div", {className: "beer_list brewery_list"}, 
-          React.createElement("div", {className: "alphabet"}, 
-            React.createElement("ul", null, 
-              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
-              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
-              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
-              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
-              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
-              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
-              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
-              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
-              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
-              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
-              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
-              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
-              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
-              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
-              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
-              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
-              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
-              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
-              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
-              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
-              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
-              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
-              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
-              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
-              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
-              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
-            )
-          )
-          )
-        )
-      );
-    }
-  });
-
-
-  views.BeerListView = React.createClass({displayName: "BeerListView",
-    render: function(){
-      return(
-        React.createElement("div", {className: "alphabetical_list"}, 
-          React.createElement(views.Search, null), 
-          React.createElement(views.AlphabetList, null), 
-          React.createElement(views.Beer, null)
-        )
-      )
-    }
-  });
-
-  views.Section = React.createClass({displayName: "Section",
-    render: function(){
-      return(
-        React.createElement(views.BeerListView, null)
-      )
-    }
-  });
-
-
-})(tiy.views);
-(function(views){
-
- views.Brewery = React.createBackboneClass({
+//Brewery Detail Information
+  views.Brewery = React.createBackboneClass({
     render: function(){
       return (
           React.createElement("div", {className: "brewery"}, 
@@ -256,70 +176,7 @@
       );
     }
   });
-            
-  
-  views.BreweriesList = React.createBackboneClass({
-    render: function(){
-      return (
-       React.createElement("div", {className: "alphabetical_list"}, 
-        React.createElement("div", {className: "search"}, 
-          React.createElement("form", {className: "search-form", action: "", method: ""}, 
-            React.createElement("span", null), 
-            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
-            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
-          )
-        ), 
-        React.createElement("div", {className: "beer_list brewery_list"}, 
-          React.createElement("div", {className: "alphabet"}, 
-            React.createElement("ul", null, 
-              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
-              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
-              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
-              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
-              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
-              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
-              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
-              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
-              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
-              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
-              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
-              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
-              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
-              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
-              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
-              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
-              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
-              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
-              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
-              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
-              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
-              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
-              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
-              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
-              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
-              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
-            )
-          ), 
-            React.createElement("div", {className: "brewery"}, 
-              React.createElement("h3", null, "Brewery: 3 Daughters Brewing"), 
-              React.createElement("div", {className: "brewery_details"}, 
-                React.createElement("ul", null, 
-                  React.createElement("li", null, "Address"), 
-                  React.createElement("li", null, "Address"), 
-                  React.createElement("li", null, "Phone"), 
-                  React.createElement("li", null, "Website")
-                )
-              ), 
-              React.createElement("div", {className: "brewery_image"}, 
-                React.createElement("img", {src: "http://lorempixel.com/400/200/"})
-              )
-            )
-          )
-        )
 
-      );
-    }
-  });
 
 })(tiy.views);
 (function(views){
@@ -471,6 +328,144 @@
 //   });
 
 // })(tiy.views);
+// ------------ Beer and Brewery Lists ------------ //
+(function(views){
+
+//Beer List information
+  views.BeerList = React.createClass({displayName: "BeerList",
+    render: function(){
+      return(
+        React.createElement("div", {className: "beer_list brewery_list"}, 
+            React.createElement("table", null, 
+              React.createElement("thead", null, 
+                React.createElement("th", null, "Name"), 
+                React.createElement("th", null, "Brewery"), 
+                React.createElement("th", null, "Style")
+              ), 
+              React.createElement("tbody", null, 
+                React.createElement("tr", null, 
+                  React.createElement("td", null, "Saison Lafayette"), 
+                  React.createElement("td", null, "Two Sisters"), 
+                  React.createElement("td", null, "IPA")
+                )
+              )
+            )
+        )
+      )
+    }
+  });
+
+//Beer List information
+  views.BreweryList = React.createClass({displayName: "BreweryList",
+    render: function(){
+      return(
+        React.createElement("div", {className: "beer_list brewery_list"}, 
+            React.createElement("table", null, 
+              React.createElement("thead", null, 
+                React.createElement("th", null, "Name"), 
+                React.createElement("th", null, "City"), 
+                React.createElement("th", null, "State")
+              ), 
+              React.createElement("tbody", null, 
+                React.createElement("tr", null, 
+                  React.createElement("td", null, "Two Sisters"), 
+                  React.createElement("td", null, "St. Petersburg"), 
+                  React.createElement("td", null, "Florida")
+                )
+              )
+            )
+        )
+      )
+    }
+  });
+
+
+  views.Search = React.createClass({displayName: "Search",
+    render: function(){
+      return (
+        React.createElement("div", {className: "search"}, 
+          React.createElement("form", {className: "search-form", action: "", method: ""}, 
+            React.createElement("span", null), 
+            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
+            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
+          )
+        )
+      )
+    }
+  });
+  
+  views.AlphabetList = React.createClass({displayName: "AlphabetList",
+    render: function(){
+      return (
+        React.createElement("div", {className: "alphabet"}, 
+          React.createElement("ul", null, 
+            React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
+            React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
+            React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
+            React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
+            React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
+            React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
+            React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
+            React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
+            React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
+            React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
+            React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
+            React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
+            React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
+            React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
+            React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
+            React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
+            React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
+            React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
+            React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
+            React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
+            React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
+            React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
+            React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
+            React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
+            React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
+            React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+          )
+        )
+      );
+    }
+  });
+
+
+  views.BeerListView = React.createClass({displayName: "BeerListView",
+    render: function(){
+      return(
+        React.createElement("div", {className: "list_views"}, 
+          React.createElement(views.Search, null), 
+          React.createElement(views.AlphabetList, null), 
+          React.createElement(views.BeerList, null)
+        )
+      )
+    }
+  });
+
+  //   views.BreweryListView = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <div className="list_views">
+  //         <views.Search/>
+  //         <views.AlphabetList/>
+  //         <views.BreweryList/>
+  //       </div>
+  //     )
+  //   }
+  // });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.BeerListView, null)
+      )
+    }
+  });
+
+
+})(tiy.views);
 (function(views){
 
   views.Task = React.createBackboneClass({

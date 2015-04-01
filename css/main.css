@@ -117,24 +117,24 @@ section .index .images .image_left {
 section .index .images .image_right {
   float: right;
 }
-section .alphabetical_list .search {
+section .list_views .search {
   float: left;
-  width: 50%;
+  width: 100%;
   height: 30px;
   margin-top: 8px;
   margin-left: 10px;
 }
-section .alphabetical_list .search .search-field {
+section .list_views .search .search-field {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
-  width: 71%;
+  width: 50%;
   float: left;
   height: 30px;
 }
-section .alphabetical_list .search .search-field input {
+section .list_views .search .search-field input {
   color: #bcbcbc;
 }
-section .alphabetical_list .search .search-button {
+section .list_views .search .search-button {
   background-color: #54ACC7;
   position: relative;
   left: -10px;
@@ -144,56 +144,86 @@ section .alphabetical_list .search .search-button {
   line-height: 25px;
   text-align: center;
   color: white;
-  float: right;
+  float: left;
   border-radius: 3px;
 }
-section .alphabetical_list .beer_list,
-section .alphabetical_list .brewery_list {
-  width: 100%;
-  clear: both;
+section .list_views .beer_list,
+section .list_views .brewery_list {
+  width: 85%;
+  float: left;
+  margin: 10px;
 }
-section .alphabetical_list .alphabet {
+section .list_views .beer_list thead,
+section .list_views .brewery_list thead {
+  background: #f7f2f2;
+  padding-right: 10px;
+  text-align: center;
+}
+section .list_views .beer_list thead th,
+section .list_views .brewery_list thead th {
+  min-width: 265px;
+}
+section .list_views .beer_list thead tr,
+section .list_views .brewery_list thead tr {
+  height: 30px;
+}
+section .list_views .beer_list tbody,
+section .list_views .brewery_list tbody {
+  width: 28%;
+  text-align: center;
+}
+section .list_views .beer_list tbody tr:nth-child(even),
+section .list_views .brewery_list tbody tr:nth-child(even) {
+  background: tan;
+}
+section .list_views .beer_list tbody td,
+section .list_views .brewery_list tbody td {
+  min-width: 265px;
+  overflow: hidden;
+}
+section .list_views .alphabet {
   float: left;
   width: 10%;
+  margin: 10px;
 }
-section .alphabetical_list .alphabet ul {
+section .list_views .alphabet ul {
   list-style: none;
 }
-section .alphabetical_list .alphabet ul a {
+section .list_views .alphabet ul a {
   text-decoration: none;
   color: #1d1d1d;
 }
-section .alphabetical_list .beer,
-section .alphabetical_list .brewery {
+section .list_views .beer,
+section .list_views .brewery {
   float: left;
   width: 85%;
   height: auto;
   margin-left: 10px;
 }
-section .alphabetical_list .beer h3,
-section .alphabetical_list .brewery h3 {
+section .list_views .beer h3,
+section .list_views .brewery h3 {
   background: #1d1d1d;
   line-height: 35px;
   color: #eae8e3;
   padding-left: 10px;
 }
-section .alphabetical_list .beer .beer_details,
-section .alphabetical_list .brewery .beer_details,
-section .alphabetical_list .beer .brewery_details,
-section .alphabetical_list .brewery .brewery_details {
+section .list_views .beer .beer_details,
+section .list_views .brewery .beer_details,
+section .list_views .beer .brewery_details,
+section .list_views .brewery .brewery_details {
   width: 50%;
   float: left;
 }
-section .alphabetical_list .beer .beer_details ul,
-section .alphabetical_list .brewery .beer_details ul,
-section .alphabetical_list .beer .brewery_details ul,
-section .alphabetical_list .brewery .brewery_details ul {
+section .list_views .beer .beer_details ul,
+section .list_views .brewery .beer_details ul,
+section .list_views .beer .brewery_details ul,
+section .list_views .brewery .brewery_details ul {
   list-style: none;
 }
-section .alphabetical_list .beer .beer_image,
-section .alphabetical_list .brewery .beer_image,
-section .alphabetical_list .beer .brewery_image,
-section .alphabetical_list .brewery .brewery_image {
+section .list_views .beer .beer_image,
+section .list_views .brewery .beer_image,
+section .list_views .beer .brewery_image,
+section .list_views .brewery .brewery_image {
   width: 30%;
   float: left;
 }
