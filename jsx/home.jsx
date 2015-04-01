@@ -1,8 +1,8 @@
-// --------- INDEX PAGE VIEW --------- //
+// --------- HOME PAGE VIEW --------- //
 
 (function(views){
 
-  views.Section = React.createBackboneClass({
+  views.Home = React.createClass({
     render: function(){
       return (
          <div className="index">
@@ -30,6 +30,14 @@
             </div>
           </div>
         </div>
+      );
+    }
+  });
+
+  views.Section = React.createClass({
+    render: function(){
+      return (
+          <views.Home/>
       );
     }
   });

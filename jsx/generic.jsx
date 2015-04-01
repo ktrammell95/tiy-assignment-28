@@ -79,25 +79,4 @@
       }
   });
 
-  views.Progress = React.createClass({
-    render: function() {
-      //get percent or 0
-      var percent= this.props.percent || 0;
-      //make sure it is an actual float, makes sure it keeps the decimal (aka "float")
-      percent = parseFloat(percent);
-      //normalize value (make it a number between 1 - 100)
-      percent = percent * 100;
-      //no less than 10 either
-      percent = _.max([percent, 10]);
-      //make it a string
-      percent = percent.toString() + "%";
-
-      return ( 
-        <div className="progress">
-          <div className="complete" style={{width: percent}}></div>
-        </div>
-      )
-    }
-  });
-
 })(tiy.views);

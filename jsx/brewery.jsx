@@ -1,6 +1,28 @@
 (function(views){
+
+ views.Brewery = React.createBackboneClass({
+    render: function(){
+      return (
+          <div className="brewery">
+          <h3>Brewery: 3 Daughters Brewing</h3>
+          <div className="brewery_details">
+            <ul>
+              <li>Address</li>
+              <li>Address</li>
+              <li>Phone</li>
+              <li>Website</li>
+            </ul>
+          </div>
+          <div className="brewery_image">
+            <img src="http://lorempixel.com/400/200/" />
+          </div>
+        </div>
+      );
+    }
+  });
+            
   
-  views.Section = React.createBackboneClass({
+  views.BreweriesList = React.createBackboneClass({
     render: function(){
       return (
        <div className="alphabetical_list">

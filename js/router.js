@@ -2,8 +2,8 @@ tiy.Router = Backbone.Router.extend({
 
   routes: {
     ""            : "showIndex",  
-    // "tasks"       : "showTasks",
-    // "tasks/:task" : "showMilestones"
+    // "beers"       : "showBeers",
+    // "breweries"   : "showBreweries"
   },
 
   initialize: function(){
@@ -15,26 +15,63 @@ tiy.Router = Backbone.Router.extend({
       document.querySelector("header")
     );
 
-    // this.tasks = tiy.isLoggedIn() ? new tiy.models.Tasks() : null;
+    this.section = React.render(
+      React.createElement(tiy.views.Section, {
+      model: tiy.currentUser
+      }),
+      document.querySelector("section")
+    );
+
+     this.nav = React.render(
+      React.createElement(tiy.views.Breadcrumbs, {
+        onRoute: this.onNav.bind(this)
+      }),
+      document.querySelector("nav")
+    );
+
+    // this.breweries = tiy.isLoggedIn() ? new tiy.models.Breweries() : null;
 
     // this.main = React.render(
-    //   React.createElement(tiy.views.Main, {
-    //   collection: this.tasks,
-    //   onTaskSelect: this.onTaskSelect.bind(this)
+    //   React.createElement(tiy.views.Section, {
+    //   collection: this.breweries,
+    //   onBrewerySelect: this.onBrewerySelect.bind(this)
     //   }),
-    //   document.querySelector("main")
+    //   document.querySelector("section")
     // );
 
     this.listenTo(tiy, "sign:out", function(){
-      this.tasks = null;
-      this.main.setProps({collection: this.tasks});
+      this.breweries = null;
+      this.main.setProps({collection: this.breweries});
     });
 
     this.listenTo(tiy, "sign:in", function(){
-      this.tasks = new tiy.models.Tasks();
-      this.main.setProps({collection: this.tasks});
+      this.breweries = new tiy.models.Breweries();
+      this.main.setProps({collection: this.breweries});
     })
 
+  },
+
+  onNav: function(route){
+    // console.log("route", route);
+    this.navigate(route, {trigger: true});
+  },
+
+  showBeers: function(){
+    this.main.setProps({beerId: null});
+
+    //set the breadcrumbs
+    this.nav.setProps({data: [
+      {route: "beers", title: "Beers"}
+    ]});
+  },
+
+   showBreweries: function(){
+    this.main.setProps({breweryId: null});
+
+    //set the breadcrumbs
+    this.nav.setProps({data: [
+      {route: "breweries", title: "Breweries"}
+    ]});
   },
 
 });

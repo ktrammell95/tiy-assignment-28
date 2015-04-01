@@ -133,73 +133,30 @@
 
 
 (function(views){
-  
-  views.Section = React.createBackboneClass({
+
+ views.Brewery = React.createBackboneClass({
     render: function(){
       return (
-       React.createElement("div", {className: "alphabetical_list"}, 
-        React.createElement("div", {className: "search"}, 
-          React.createElement("form", {className: "search-form", action: "", method: ""}, 
-            React.createElement("span", null), 
-            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
-            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
-          )
-        ), 
-        React.createElement("div", {className: "beer_list brewery_list"}, 
-          React.createElement("div", {className: "alphabet"}, 
+          React.createElement("div", {className: "brewery"}, 
+          React.createElement("h3", null, "Brewery: 3 Daughters Brewing"), 
+          React.createElement("div", {className: "brewery_details"}, 
             React.createElement("ul", null, 
-              React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
-              React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
-              React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
-              React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
-              React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
-              React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
-              React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
-              React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
-              React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
-              React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
-              React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
-              React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
-              React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
-              React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
-              React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
-              React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
-              React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
-              React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
-              React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
-              React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
-              React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
-              React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
-              React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
-              React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
-              React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
-              React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+              React.createElement("li", null, "Address"), 
+              React.createElement("li", null, "Address"), 
+              React.createElement("li", null, "Phone"), 
+              React.createElement("li", null, "Website")
             )
           ), 
-            React.createElement("div", {className: "beer"}, 
-              React.createElement("h3", null, "Beer: Saison Lafayette"), 
-              React.createElement("div", {className: "beer_details"}, 
-                React.createElement("ul", null, 
-                  React.createElement("li", null, "Description:"), 
-                  React.createElement("li", null, "ABV:"), 
-                  React.createElement("li", null, "Glassware:"), 
-                  React.createElement("li", null, "Style:")
-                )
-              ), 
-              React.createElement("div", {className: "beer_image"}, 
-                React.createElement("img", {src: "http://lorempixel.com/400/200/"})
-              )
-            )
+          React.createElement("div", {className: "brewery_image"}, 
+            React.createElement("img", {src: "http://lorempixel.com/400/200/"})
           )
         )
       );
     }
   });
-
-})(tiy.views);
-(function(views){
+            
   
-  views.Section = React.createBackboneClass({
+  views.BreweriesList = React.createBackboneClass({
     render: function(){
       return (
        React.createElement("div", {className: "alphabetical_list"}, 
@@ -344,27 +301,6 @@
       }
   });
 
-  views.Progress = React.createClass({displayName: "Progress",
-    render: function() {
-      //get percent or 0
-      var percent= this.props.percent || 0;
-      //make sure it is an actual float, makes sure it keeps the decimal (aka "float")
-      percent = parseFloat(percent);
-      //normalize value (make it a number between 1 - 100)
-      percent = percent * 100;
-      //no less than 10 either
-      percent = _.max([percent, 10]);
-      //make it a string
-      percent = percent.toString() + "%";
-
-      return ( 
-        React.createElement("div", {className: "progress"}, 
-          React.createElement("div", {className: "complete", style: {width: percent}})
-        )
-      )
-    }
-  });
-
 })(tiy.views);
 (function(views){
 
@@ -388,11 +324,11 @@
   });
 
 })(tiy.views);
-// --------- INDEX PAGE VIEW --------- //
+// --------- HOME PAGE VIEW --------- //
 
 (function(views){
 
-  views.Section = React.createBackboneClass({
+  views.Home = React.createClass({displayName: "Home",
     render: function(){
       return (
          React.createElement("div", {className: "index"}, 
@@ -420,6 +356,14 @@
             )
           )
         )
+      );
+    }
+  });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return (
+          React.createElement(views.Home, null)
       );
     }
   });
