@@ -156,7 +156,7 @@
   });
 
 //Brewery Detail Information
-  views.Brewery = React.createBackboneClass({
+  views.BreweryDetail = React.createBackboneClass({
     render: function(){
       return (
           React.createElement("div", {className: "brewery"}, 
@@ -177,10 +177,18 @@
     }
   });
 
-  views.Section = React.createClass({displayName: "Section",
+  // views.Section = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <views.BeerDetail/>
+  //     )
+  //   }
+  // });
+
+    views.Section = React.createClass({displayName: "Section",
     render: function(){
       return(
-        React.createElement(views.BeerDetail, null)
+        React.createElement(views.BreweryDetail, null)
       )
     }
   });

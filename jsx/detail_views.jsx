@@ -22,7 +22,7 @@
   });
 
 //Brewery Detail Information
-  views.Brewery = React.createBackboneClass({
+  views.BreweryDetail = React.createBackboneClass({
     render: function(){
       return (
           <div className="brewery">
@@ -43,10 +43,18 @@
     }
   });
 
-  views.Section = React.createClass({
+  // views.Section = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <views.BeerDetail/>
+  //     )
+  //   }
+  // });
+
+    views.Section = React.createClass({
     render: function(){
       return(
-        <views.BeerDetail/>
+        <views.BreweryDetail/>
       )
     }
   });
