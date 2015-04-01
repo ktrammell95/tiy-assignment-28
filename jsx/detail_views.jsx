@@ -51,13 +51,13 @@
   //   }
   // });
 
-    views.Section = React.createClass({
-    render: function(){
-      return(
-        <views.BreweryDetail/>
-      )
-    }
-  });
+  //   views.Section = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <views.BreweryDetail/>
+  //     )
+  //   }
+  // });
 
 
 })(tiy.views);
