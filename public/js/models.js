@@ -2,16 +2,6 @@
 
   var ApiCollection = Backbone.Collection.extend({
 
-    apiKey: "dfca67ceb8ac12e932b3e7e1868404a1",
-
-    apiEndpoint: null, // Must be defined by sublcass
-
-    url: function() {
-      var base = "http://api.brewerydb.com/v2/"
-
-      return base + this.apiEndpoint + "?key=" + this.apiKey;
-    },
-
     parse: function(resp) {
       return resp.data;
     }
@@ -27,13 +17,25 @@
 
   models.Breweries = ApiCollection.extend({
     model: models.Brewery,
-    apiEndpoint: "breweries"
+    url: "/api/breweries"
 
   });
 
   models.VistedBreweries = Backbone.Firebase.Collection.extend({
     model: models.Brewery,
 
+
+    url: function() {
+      if(!tiy.authData || !tiy.authData.uid){
+        throw new Error("A user must be logged in");
+      }
+      if(!this.brewery){
+        throw new Error("No breweries have been selected");
+      }
+      var uid = encodeURIComponent(tiy.authData.uid);
+      var bid = this.brewery.id;
+      return tiy.firebaseURL + "/" + uid + "/breweries/" + bid;
+    },
   });
 
   // ---------- Beers ---------- //
@@ -45,13 +47,52 @@
   });
 
 
-  models.Beers = Backbone.Collection.extend({
+  models.Beers = ApiCollection.extend({
     model: models.Beer,
+    url: "/api/beers"
 
   });
 
   models.FavoritedBeers = Backbone.Firebase.Collection.extend({
     model: models.Beer,
+
+    url: function() {
+      if(!tiy.authData || !tiy.authData.uid){
+        throw new Error("A user must be logged in");
+      }
+      if(!this.beer){
+        throw new Error("No beers have been selected");
+      }
+      var uid = encodeURIComponent(tiy.authData.uid);
+      var bid = this.beer.id;
+      return tiy.firebaseURL + "/" + uid + "/beers/" + tid;
+    },
+
+  });
+
+  // ---------- Categories ---------- //
+
+  models.Category = Backbone.Model.extend({
+
+  });
+
+  models.Categories = ApiCollection.extend({
+    model: models.Category,
+    url: "/api/categories"
+
+
+  });
+
+    // ---------- Search ---------- //
+
+  models.Search = Backbone.Model.extend({
+
+  });
+
+  models.Searches = ApiCollection.extend({
+    model: models.Search,
+    url: "/api/search/q="
+
 
   });
 

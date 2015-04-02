@@ -277,7 +277,40 @@
 })(tiy.views);
 (function(views){
 
+
+
   views.Header = React.createBackboneClass({
+
+    homeClickHandler: function(e){
+      console.log('home');
+      e.preventDefault();
+      this.props.onRoute(home);
+    },
+
+    beerList: function(e) {
+      console.log('beer list');
+    },
+
+    styleList: function() {
+    console.log('style list');
+    },
+
+    breweryList: function() {
+    console.log('brewery list');
+    },
+
+    locationList: function() {
+    console.log('location list');
+    },
+
+    resources: function() {
+    console.log('resources');
+    },
+
+    userAccount: function() {
+    console.log('userAccount');
+    },
+
     render: function(){
       return (
         React.createElement("div", {className: "header-wrapper"}, 
@@ -293,21 +326,21 @@
           ), 
           React.createElement("div", {className: "header-nav"}, 
             React.createElement("ul", {className: "primary-nav"}, 
-            React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.homeClickHandler}, "Home")), 
             React.createElement("li", null, "Find a Beer", 
               React.createElement("ul", {className: "secondary-nav"}, 
-                  React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Name")), 
-                  React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Style"))
+                  React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.beerList}, "List by Name")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.styleList}, "List by Style"))
               )
             ), 
             React.createElement("li", null, "Find a Brewery", 
               React.createElement("ul", {className: "secondary-nav"}, 
-                React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Name")), 
-                React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Location"))
+                React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.breweryList}, "List by Name")), 
+                React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.locationList}, "List by Location"))
               )
             ), 
-            React.createElement("li", null, React.createElement("a", {href: "#"}, "Resources")), 
-            React.createElement("li", null, React.createElement("a", {href: "#"}, "User Account"))
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.resources}, "Resources")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.userAccount}, "User Account"))
           )
           )
         )
@@ -334,24 +367,61 @@
   });
 
   views.HomeImages = React.createClass({displayName: "HomeImages",
+
+    homeClickHandler: function() {
+    console.log('home');
+    },
+
+    beerList: function() {
+    console.log('beer list');
+    },
+
+    styleList: function() {
+    console.log('style list');
+    },
+
+    breweryList: function() {
+    console.log('brewery list');
+    },
+
+    locationList: function() {
+    console.log('location list');
+    },
+
+    resources: function() {
+    console.log('resources');
+    },
+
+    userAccount: function() {
+    console.log('userAccount');
+    },
+
     render: function(){
       return (
           React.createElement("div", {className: "images"}, 
             React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "images/beer2.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Beer Name")
+              React.createElement("a", {href: "#", onClick: this.beerList}, 
+                React.createElement("img", {src: "images/beer2.jpg", alt: "brewery"}), 
+                "Beer Name"
+              )
             ), 
             React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "images/beer4.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Beer Style")
+              React.createElement("a", {href: "#", onClick: this.styleList}, 
+                React.createElement("img", {src: "images/beer4.jpg", alt: "brewery"}), 
+                "Beer Style"
+              )
             ), 
             React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Brewery Name")
+              React.createElement("a", {href: "#", onClick: this.breweryList}, 
+                React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery"}), 
+                "Brewery Name"
+              )
             ), 
             React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "images/beer3.jpg", alt: "brewery"}), 
-              React.createElement("a", {href: "#"}, "Brewery Location")
+              React.createElement("a", {href: "#", onClick: this.locationList}, 
+                React.createElement("img", {src: "images/beer3.jpg", alt: "brewery"}), 
+                "Brewery Location"
+              )
             )
           )
       );

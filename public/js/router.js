@@ -2,7 +2,7 @@ tiy.Router = Backbone.Router.extend({
 
   routes: {
     ""            : "showHome",  
-    // "beers"       : "showBeers",
+    "beers"       : "showBeers",
     // "breweries"   : "showBreweries"
   },
 
@@ -16,8 +16,8 @@ tiy.Router = Backbone.Router.extend({
     );
 
     this.section = React.render(
-      React.createElement(tiy.views.Section, {
-      model: tiy.currentUser
+      React.createElement(tiy.views.Home, {
+      // model: tiy.currentUser
       }),
       document.querySelector("section")
     );
@@ -42,11 +42,15 @@ tiy.Router = Backbone.Router.extend({
     this.listenTo(tiy, "sign:out", function(){
       this.breweries = null;
       this.main.setProps({collection: this.breweries});
+      this.beers = null;
+      this.main.setProps({collection: this.beers});
     });
 
     this.listenTo(tiy, "sign:in", function(){
       this.breweries = new tiy.models.Breweries();
       this.main.setProps({collection: this.breweries});
+      this.beers = new tiy.models.Beers();
+      this.main.setProps({collection: this.beers});
     })
 
   },
