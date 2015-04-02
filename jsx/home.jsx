@@ -51,12 +51,12 @@
     }
   });
 
-  // views.Section = React.createClass({
-  //   render: function(){
-  //     return (
-  //         <views.Home/>
-  //     );
-  //   }
-  // });
+  views.Section = React.createClass({
+    render: function(){
+      return (
+          <views.Home/>
+      );
+    }
+  });
 
 })(tiy.views);

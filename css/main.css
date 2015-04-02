@@ -13,30 +13,30 @@ body {
   font-family: 'Bitter', serif;
 }
 header {
-  background-color: #1d1d1d;
+  background: rgba(44, 14, 12, 0.8);
   margin: auto;
   width: 100%;
 }
 header .header-wrapper {
   width: 960px;
-  height: 90px;
+  height: 125px;
   margin: auto;
 }
 header .header-wrapper .header-upper {
   margin: 0;
   padding: 0;
   width: 100%;
+  height: 70%;
 }
 header .header-wrapper .header-upper .logo {
   width: 250px;
   float: left;
   font-family: 'Oxygen', sans-serif;
-  color: #f7f2f2;
+  color: #d7a628;
   text-align: center;
 }
-header .header-wrapper .header-upper .logo h1 {
-  font-size: 36px;
-  line-height: 36px;
+header .header-wrapper .header-upper .logo img {
+  height: 90px;
   margin-bottom: 0;
 }
 header .header-wrapper .header-upper .login {
@@ -50,10 +50,10 @@ header .header-wrapper .header-upper .login .facebook-login {
   float: right;
   width: 200px;
   padding: 8px 25px;
-  color: #eac807;
+  color: #e9e2d6;
   display: inline-block;
   cursor: pointer;
-  border-left: 1px solid #eac807;
+  border-left: 1px solid #e9e2d6;
   font-size: 14px;
 }
 header .header-wrapper .header-upper .login .twitter-login .profile-image,
@@ -66,9 +66,54 @@ header .header-wrapper .header-upper .login .facebook-login .profile-image {
 header .header-wrapper .header-upper .login .twitter-login .fa,
 header .header-wrapper .header-upper .login .facebook-login .fa {
   font-size: 2em;
-  color: #eac807;
+  color: #e9e2d6;
   vertical-align: -5px;
   margin-left: 10px;
+}
+header .header-wrapper .header-nav {
+  background: #456;
+  clear: both;
+  height: 30px;
+  width: 100%;
+}
+header .header-wrapper .header-nav ul {
+  margin: 0;
+  padding: 0;
+  background: #678;
+  display: inline-block;
+}
+header .header-wrapper .header-nav .primary-nav li {
+  color: #d7a628;
+  list-style: none;
+  display: inline-block;
+  background: #678;
+  padding: 6px 53px;
+  position: relative;
+}
+header .header-wrapper .header-nav .primary-nav li:hover .secondary-nav {
+  display: block;
+}
+header .header-wrapper .header-nav .primary-nav li a {
+  text-decoration: none;
+  color: #d7a628;
+}
+header .header-wrapper .header-nav .secondary-nav {
+  position: absolute;
+  font-size: 12px;
+  top: 100%;
+  bottom: 0;
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+header .header-wrapper .header-nav .secondary-nav li {
+  list-style: none;
+  background: #678;
+  min-width: 75px;
+}
+header .header-wrapper .header-nav .secondary-nav li a {
+  text-decoration: none;
+  color: #d7a628;
 }
 section {
   background-color: rgba(254, 254, 231, 0.6);
@@ -83,8 +128,8 @@ section .index {
 section .index h2 {
   opacity: 1;
   font-size: 24px;
-  border-bottom: 2px solid #1d1d1d;
-  color: #1d1d1d;
+  border-bottom: 2px solid rgba(44, 14, 12, 0.85);
+  color: rgba(44, 14, 12, 0.85);
 }
 section .index p {
   font-size: 16px;
@@ -103,7 +148,7 @@ section .index .images .image_left a,
 section .index .images .image_right a {
   text-decoration: none;
   text-align: center;
-  color: #1d1d1d;
+  color: rgba(44, 14, 12, 0.85);
   font-size: 20px;
 }
 section .index .images .image_left img,
@@ -155,7 +200,7 @@ section .list_views .brewery_list {
 }
 section .list_views .beer_list thead,
 section .list_views .brewery_list thead {
-  background: #f7f2f2;
+  background: #d7a628;
   padding-right: 10px;
   text-align: center;
 }
@@ -191,7 +236,7 @@ section .list_views .alphabet ul {
 }
 section .list_views .alphabet ul a {
   text-decoration: none;
-  color: #1d1d1d;
+  color: rgba(44, 14, 12, 0.85);
 }
 section .beer,
 section .brewery {
@@ -201,11 +246,11 @@ section .brewery {
 }
 section .beer h3,
 section .brewery h3 {
-  background: #1d1d1d;
+  background: rgba(44, 14, 12, 0.85);
   line-height: 50px;
   padding-left: 20px;
   font-size: 25px;
-  color: #eac807;
+  color: #e9e2d6;
 }
 section .beer .beer_details,
 section .brewery .beer_details,
@@ -268,18 +313,18 @@ section .style_view .style_list ul {
 }
 section .style_view .style_list ul a {
   text-decoration: none;
-  color: #1d1d1d;
+  color: rgba(44, 14, 12, 0.85);
 }
 section .style_view .styles {
   float: left;
   width: 65%;
 }
 section .style_view .styles h2 {
-  background: #1d1d1d;
+  background: rgba(44, 14, 12, 0.85);
   line-height: 50px;
   padding-left: 20px;
   font-size: 25px;
-  color: #eac807;
+  color: #e9e2d6;
 }
 section .style_view .styles .images {
   margin: 40px;
@@ -295,7 +340,7 @@ section .style_view .styles .images .image_left a,
 section .style_view .styles .images .image_right a {
   text-decoration: none;
   text-align: center;
-  color: #1d1d1d;
+  color: rgba(44, 14, 12, 0.85);
   font-size: 20px;
 }
 section .style_view .styles .images .image_left img,
@@ -309,8 +354,42 @@ section .style_view .styles .images .image_left {
 section .style_view .styles .images .image_right {
   float: right;
 }
+section .location_view .search {
+  float: left;
+  width: 100%;
+  height: 30px;
+  margin-top: 8px;
+  margin-left: 10px;
+}
+section .location_view .search .search-field {
+  border: 1px solid #d0d0d0;
+  border-radius: 3px;
+  width: 50%;
+  float: left;
+  height: 30px;
+}
+section .location_view .search .search-field input {
+  color: #bcbcbc;
+}
+section .location_view .search .search-button {
+  background-color: #54ACC7;
+  position: relative;
+  left: -10px;
+  border: 1px solid #adc5cf;
+  width: 25%;
+  height: 34px;
+  line-height: 25px;
+  text-align: center;
+  color: white;
+  float: left;
+  border-radius: 3px;
+}
+section .location_view .location .map img {
+  width: 960px;
+  height: auto;
+}
 footer {
-  background-color: #1d1d1d;
+  background-color: rgba(44, 14, 12, 0.85);
   margin: auto;
   width: 100%;
   height: 50px;

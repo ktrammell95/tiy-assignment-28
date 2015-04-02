@@ -1,7 +1,7 @@
 tiy.Router = Backbone.Router.extend({
 
   routes: {
-    ""            : "showIndex",  
+    ""            : "showHome",  
     // "beers"       : "showBeers",
     // "breweries"   : "showBreweries"
   },
@@ -54,6 +54,10 @@ tiy.Router = Backbone.Router.extend({
   onNav: function(route){
     // console.log("route", route);
     this.navigate(route, {trigger: true});
+  },
+
+  showIndex: function(){
+    this.navigate("home", {trigger: true, replace: true});
   },
 
   showBeers: function(){

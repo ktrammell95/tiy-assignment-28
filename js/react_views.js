@@ -131,7 +131,6 @@
 
 // tiy.logout();
 
-
 (function(views){
 
   views.BeerDetail = React.createClass({displayName: "BeerDetail",
@@ -177,21 +176,21 @@
     }
   });
 
-  // views.Section = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BeerDetail/>
-  //     )
-  //   }
-  // });
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.BeerDetail, null)
+      )
+    }
+  });
 
-  //   views.Section = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BreweryDetail/>
-  //     )
-  //   }
-  // });
+    views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.BreweryDetail, null)
+      )
+    }
+  });
 
 
 })(tiy.views);
@@ -285,13 +284,32 @@
         React.createElement("div", {className: "header-wrapper"}, 
           React.createElement("div", {className: "header-upper"}, 
             React.createElement("div", {className: "logo"}, 
-              React.createElement("h1", null, "Brewery Bee")
+              React.createElement("img", {src: "images/BreweryBeeLogo4.svg", alt: "Brewery Bee"})
             ), 
             React.createElement("div", {className: "login"}, 
               React.createElement("div", null, 
                React.createElement(views.TwitterLogin, {model: this.props.model})
               )
             )
+          ), 
+          React.createElement("div", {className: "header-nav"}, 
+            React.createElement("ul", {className: "primary-nav"}, 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
+            React.createElement("li", null, "Find a Beer", 
+              React.createElement("ul", {className: "secondary-nav"}, 
+                  React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Name")), 
+                  React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Style"))
+              )
+            ), 
+            React.createElement("li", null, "Find a Brewery", 
+              React.createElement("ul", {className: "secondary-nav"}, 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Name")), 
+                React.createElement("li", null, React.createElement("a", {href: "#"}, "List by Location"))
+              )
+            ), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Resources")), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "User Account"))
+          )
           )
         )
       );
@@ -352,13 +370,13 @@
     }
   });
 
-  // views.Section = React.createClass({
-  //   render: function(){
-  //     return (
-  //         <views.Home/>
-  //     );
-  //   }
-  // });
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return (
+          React.createElement(views.Home, null)
+      );
+    }
+  });
 
 })(tiy.views);
 // ------------ Beer and Brewery Lists ------------ //
@@ -506,6 +524,56 @@
       )
     }
   });
+
+
+})(tiy.views);
+// --------- STYLES PAGE VIEW --------- //
+
+(function(views){
+
+
+  views.Map = React.createClass({displayName: "Map",
+    render: function(){
+      return (
+        React.createElement("div", {className: "location"}, 
+          React.createElement("h2", null, "Brewery by Location"), 
+          React.createElement("div", {className: "map"}, 
+            React.createElement("img", {src: "images/earth.jpg", alt: "Satellite View of Earth"})
+          )
+        )
+      );
+    }
+  });
+
+  views.LocationList = React.createClass({displayName: "LocationList",
+    render: function(){
+      return (
+        React.createElement("div", {className: "location_list"}, 
+          React.createElement("ul", null, 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Location 1")), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Location 2")), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Location 3")), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Location 4"))
+          )
+        )
+      );
+    }
+  });
+
+
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement("div", {className: "location_view"}, 
+          React.createElement(views.Search, null), 
+          React.createElement(views.LocationList, null), 
+          React.createElement(views.Map, null)
+        )
+      )
+    }
+  });
+
 
 
 })(tiy.views);
