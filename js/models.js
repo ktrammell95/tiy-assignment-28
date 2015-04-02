@@ -1,45 +1,57 @@
 (function(models){
 
+  var ApiCollection = Backbone.Collection.extend({
+
+    apiKey: "dfca67ceb8ac12e932b3e7e1868404a1",
+
+    apiEndpoint: null, // Must be defined by sublcass
+
+    url: function() {
+      var base = "http://api.brewerydb.com/v2/"
+
+      return base + this.apiEndpoint + "?key=" + this.apiKey;
+    },
+
+    parse: function(resp) {
+      return resp.data;
+    }
+
+  });
+
+
+// ---------- Breweries ---------- //
+
   models.Brewery = Backbone.Model.extend({
 
   });
 
-  models.Breweries = Backbone.Firebase.Collection.extend({
+  models.Breweries = ApiCollection.extend({
+    model: models.Brewery,
+    apiEndpoint: "breweries"
+
+  });
+
+  models.VistedBreweries = Backbone.Firebase.Collection.extend({
     model: models.Brewery,
 
-    url: function() {
-      if (!tiy.authData || !tiy.authData.uid){
-        throw new Error("I need a user!");
-      }
-      var uid = encodeURIComponent(tiy.authData.uid);
-      return tiy.firebaseURL + "/" + uid + "/breweries";
-    }
   });
+
+  // ---------- Beers ---------- //
+
 
   models.Beer = Backbone.Model.extend({
 
 
   });
 
-  models.Beers = Backbone.Firebase.Collection.extend({
+
+  models.Beers = Backbone.Collection.extend({
     model: models.Beer,
 
-    url: function() {
-      if(!tiy.authData || !tiy.authData.uid){
-        throw new Error("A user must be logged in");
-      }
-      if(!this.beer){
-        throw new Error("No beers have been saved");
-      }
-      var uid = encodeURIComponent(tiy.authData.uid);
-      var beerid = this.beer.id;
-      return tiy.firebaseURL + "/" + uid + "/beers/" + beerid;
-    },
+  });
 
-    initialize: function(data, options){
-      options || (options = {});
-      this.beer = options.beer;
-    }
+  models.FavoritedBeers = Backbone.Firebase.Collection.extend({
+    model: models.Beer,
 
   });
 
@@ -48,6 +60,18 @@
 //models is the namespace we are using
 
 // ----- console ----- //
+
+
+//var brews = new tiy.models.Breweries();
+//brews.url();
+//brews.fetch();
+
+
+
+
+
+
+
 
 // var c = new tiy.models.Tasks();
 // c.url();

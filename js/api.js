@@ -2,8 +2,8 @@ var BreweryDB = (function(){
 
   //http://api.brewerydb.com/v2/?key=dfca67ceb8ac12e932b3e7e1868404a1
 
-  //http://api.brewerydb.com/v2/brewery
-  //http://api.brewerydb.com/v2/beer
+  //http://api.brewerydb.com/v2/breweries
+  //http://api.brewerydb.com/v2/beers
   //http://api.brewerydb.com/v2/search
 
   function BreweryDB(brewery) {

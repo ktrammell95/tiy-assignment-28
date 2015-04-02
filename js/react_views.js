@@ -130,7 +130,6 @@
 // React.render(elem, document.body);
 
 // tiy.logout();
-
 (function(views){
 
   views.BeerDetail = React.createClass({displayName: "BeerDetail",

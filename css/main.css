@@ -71,7 +71,6 @@ header .header-wrapper .header-upper .login .facebook-login .fa {
   margin-left: 10px;
 }
 header .header-wrapper .header-nav {
-  background: #456;
   clear: both;
   height: 30px;
   width: 100%;
@@ -79,14 +78,12 @@ header .header-wrapper .header-nav {
 header .header-wrapper .header-nav ul {
   margin: 0;
   padding: 0;
-  background: #678;
   display: inline-block;
 }
 header .header-wrapper .header-nav .primary-nav li {
   color: #d7a628;
   list-style: none;
   display: inline-block;
-  background: #678;
   padding: 6px 53px;
   position: relative;
 }
@@ -108,12 +105,13 @@ header .header-wrapper .header-nav .secondary-nav {
 }
 header .header-wrapper .header-nav .secondary-nav li {
   list-style: none;
-  background: #678;
+  background: rgba(44, 14, 12, 0.85);
   min-width: 75px;
 }
 header .header-wrapper .header-nav .secondary-nav li a {
   text-decoration: none;
   color: #d7a628;
+  margin-left: -25px;
 }
 section {
   background-color: rgba(254, 254, 231, 0.6);
@@ -172,9 +170,10 @@ section .list_views .search {
 section .list_views .search .search-field {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
-  width: 50%;
+  width: 25%;
   float: left;
   height: 30px;
+  margin-left: 575px;
 }
 section .list_views .search .search-field input {
   color: #bcbcbc;
@@ -184,7 +183,7 @@ section .list_views .search .search-button {
   position: relative;
   left: -10px;
   border: 1px solid #adc5cf;
-  width: 25%;
+  width: 10%;
   height: 34px;
   line-height: 25px;
   text-align: center;
@@ -283,9 +282,10 @@ section .style_view .search {
 section .style_view .search .search-field {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
-  width: 50%;
+  width: 25%;
   float: left;
   height: 30px;
+  margin-left: 575px;
 }
 section .style_view .search .search-field input {
   color: #bcbcbc;
@@ -295,7 +295,7 @@ section .style_view .search .search-button {
   position: relative;
   left: -10px;
   border: 1px solid #adc5cf;
-  width: 25%;
+  width: 10%;
   height: 34px;
   line-height: 25px;
   text-align: center;
@@ -364,9 +364,10 @@ section .location_view .search {
 section .location_view .search .search-field {
   border: 1px solid #d0d0d0;
   border-radius: 3px;
-  width: 50%;
+  width: 25%;
   float: left;
   height: 30px;
+  margin-left: 575px;
 }
 section .location_view .search .search-field input {
   color: #bcbcbc;
@@ -376,7 +377,7 @@ section .location_view .search .search-button {
   position: relative;
   left: -10px;
   border: 1px solid #adc5cf;
-  width: 25%;
+  width: 10%;
   height: 34px;
   line-height: 25px;
   text-align: center;
