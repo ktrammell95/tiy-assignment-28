@@ -29,25 +29,6 @@ tiy.Router = Backbone.Router.extend({
       document.querySelector("header")
     );
 
-    this.section = React.render(
-      React.createElement(tiy.views.Section, {
-        model: tiy.currentUser,
-        onShowBeers: function() {
-          this.navigate("beers", {trigger: true, replace: true});
-        }.bind(this),
-        onShowBreweries: function() {
-          this.navigate("breweries", {trigger: true, replace: true});
-        }.bind(this),
-        onShowCategories: function() {
-          this.navigate("categories", {trigger: true, replace: true});
-        }.bind(this),
-        onShowLocations: function() {
-          this.navigate("locations", {trigger: true, replace: true});
-        }.bind(this)
-      }),
-      document.querySelector("section")
-    );
-
     this.navigate("", {trigger: true, replace: true});
 
     //  this.nav = React.render(
@@ -91,7 +72,19 @@ tiy.Router = Backbone.Router.extend({
   showHome: function(){
     this.section = React.render(
       React.createElement(tiy.views.Home, {
-
+        model: tiy.currentUser,
+        onShowBeers: function() {
+          this.navigate("beers", {trigger: true, replace: true});
+        }.bind(this),
+        onShowBreweries: function() {
+          this.navigate("breweries", {trigger: true, replace: true});
+        }.bind(this),
+        onShowCategories: function() {
+          this.navigate("categories", {trigger: true, replace: true});
+        }.bind(this),
+        onShowLocations: function() {
+          this.navigate("locations", {trigger: true, replace: true});
+        }.bind(this)
       }),
       document.querySelector("section")
     );

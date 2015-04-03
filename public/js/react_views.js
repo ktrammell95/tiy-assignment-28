@@ -438,25 +438,25 @@
   views.HomeImages = React.createClass({displayName: "HomeImages",
 
     beerList: function(e) {
-      console.log("beerList");
+      // console.log("beerList");
       e.preventDefault();
       this.props.onShowBeers();
     },
 
     categoryList: function(e) {
-      console.log("categoryList");
+      // console.log("categoryList");
       e.preventDefault();
       this.props.onShowCategories();
     },
 
     breweryList: function(e) {
-      console.log("breweryList");
+      // console.log("breweryList");
       e.preventDefault();
       this.props.onShowBreweries();
     },
 
     locationList: function(e) {
-      console.log("locationList");
+      // console.log("locationList");
       e.preventDefault();
       this.props.onShowLocations();
     },
@@ -495,16 +495,45 @@
 
   views.Home = React.createClass({displayName: "Home",
     render: function(){
+      window.x = this;
       return (
         React.createElement("div", {className: "index"}, 
           React.createElement(views.About, null), 
-          React.createElement(views.HomeImages, null)
+          React.createElement(views.HomeImages, {
+            onShowBeers: this.props.onShowBeers, 
+            onShowBreweries: this.props.onShowBreweries, 
+            onShowCategories: this.props.onShowCategories, 
+            onShowLocations: this.props.onShowLocations})
         )
       );
     }
   });
 
   views.Section = React.createClass({displayName: "Section",
+
+    // beerList: function(e) {
+    //   console.log("beerList");
+    //   e.preventDefault();
+    //   this.props.onShowBeers();
+    // },
+
+    // categoryList: function(e) {
+    //   console.log("categoryList");
+    //   e.preventDefault();
+    //   this.props.onShowCategories();
+    // },
+
+    // breweryList: function(e) {
+    //   console.log("breweryList");
+    //   e.preventDefault();
+    //   this.props.onShowBreweries();
+    // },
+
+    // locationList: function(e) {
+    //   console.log("locationList");
+    //   e.preventDefault();
+    //   this.props.onShowLocations();
+    // },
 
     render: function(){
       return (

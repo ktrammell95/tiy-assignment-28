@@ -18,25 +18,25 @@
   views.HomeImages = React.createClass({
 
     beerList: function(e) {
-      console.log("beerList");
+      // console.log("beerList");
       e.preventDefault();
       this.props.onShowBeers();
     },
 
     categoryList: function(e) {
-      console.log("categoryList");
+      // console.log("categoryList");
       e.preventDefault();
       this.props.onShowCategories();
     },
 
     breweryList: function(e) {
-      console.log("breweryList");
+      // console.log("breweryList");
       e.preventDefault();
       this.props.onShowBreweries();
     },
 
     locationList: function(e) {
-      console.log("locationList");
+      // console.log("locationList");
       e.preventDefault();
       this.props.onShowLocations();
     },
@@ -75,16 +75,45 @@
 
   views.Home = React.createClass({
     render: function(){
+      window.x = this;
       return (
         <div className="index">
           <views.About/>
-          <views.HomeImages/>
+          <views.HomeImages 
+            onShowBeers={this.props.onShowBeers}
+            onShowBreweries={this.props.onShowBreweries}
+            onShowCategories={this.props.onShowCategories}
+            onShowLocations={this.props.onShowLocations}/>
         </div>
       );
     }
   });
 
   views.Section = React.createClass({
+
+    // beerList: function(e) {
+    //   console.log("beerList");
+    //   e.preventDefault();
+    //   this.props.onShowBeers();
+    // },
+
+    // categoryList: function(e) {
+    //   console.log("categoryList");
+    //   e.preventDefault();
+    //   this.props.onShowCategories();
+    // },
+
+    // breweryList: function(e) {
+    //   console.log("breweryList");
+    //   e.preventDefault();
+    //   this.props.onShowBreweries();
+    // },
+
+    // locationList: function(e) {
+    //   console.log("locationList");
+    //   e.preventDefault();
+    //   this.props.onShowLocations();
+    // },
 
     render: function(){
       return (
