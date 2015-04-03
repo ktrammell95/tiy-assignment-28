@@ -10,24 +10,26 @@ tiy.Router = Backbone.Router.extend({
 
     this.header = React.render(
       React.createElement(tiy.views.Header, {
-      model: tiy.currentUser
+        model: tiy.currentUser,
+        onShowBeers: function() {
+          this.navigate("beers", {trigger: true, replace: true});
+        }.bind(this),
+        onShowBreweries: function() {
+          this.navigate("showBreweries");
+          this.showBreweries();
+        }.bind(this)
       }),
       document.querySelector("header")
     );
 
-    this.section = React.render(
-      React.createElement(tiy.views.Home, {
-      // model: tiy.currentUser
-      }),
-      document.querySelector("section")
-    );
+    this.navigate("", {trigger: true, replace: true});
 
-     this.nav = React.render(
-      React.createElement(tiy.views.Breadcrumbs, {
-        onRoute: this.onNav.bind(this)
-      }),
-      document.querySelector("nav")
-    );
+    //  this.nav = React.render(
+    //   React.createElement(tiy.views.Breadcrumbs, {
+    //     onRoute: this.onNav.bind(this)
+    //   }),
+    //   document.querySelector("nav")
+    // );
 
     // this.breweries = tiy.isLoggedIn() ? new tiy.models.Breweries() : null;
 
@@ -41,16 +43,16 @@ tiy.Router = Backbone.Router.extend({
 
     this.listenTo(tiy, "sign:out", function(){
       this.breweries = null;
-      this.main.setProps({collection: this.breweries});
+      this.section.setProps({collection: this.breweries});
       this.beers = null;
-      this.main.setProps({collection: this.beers});
+      this.section.setProps({collection: this.beers});
     });
 
     this.listenTo(tiy, "sign:in", function(){
       this.breweries = new tiy.models.Breweries();
-      this.main.setProps({collection: this.breweries});
+      this.section.setProps({collection: this.breweries});
       this.beers = new tiy.models.Beers();
-      this.main.setProps({collection: this.beers});
+      this.section.setProps({collection: this.beers});
     })
 
   },
@@ -60,32 +62,27 @@ tiy.Router = Backbone.Router.extend({
     this.navigate(route, {trigger: true});
   },
 
-  showIndex: function(){
-    this.navigate("home", {trigger: true, replace: true});
+  showHome: function(){
+    this.section = React.render(
+      React.createElement(tiy.views.Home, {
+        // model: tiy.currentUser
+      }),
+      document.querySelector("section")
+    );
   },
 
   showBeers: function(){
-    this.main.setProps({beerId: null});
-
-    //set the breadcrumbs
-    this.nav.setProps({data: [
-      {route: "beers", title: "Beers"}
-    ]});
+    // tell the section component to render the right section
+    this.section = React.render(
+      React.createElement(tiy.views.BreweryListView, {
+        // ...
+      }),
+      document.querySelector("section")
+    );
   },
 
-   showBreweries: function(){
-    this.main.setProps({breweryId: null});
+  showBreweries: function(){
 
-    //set the breadcrumbs
-    this.nav.setProps({data: [
-      {route: "breweries", title: "Breweries"}
-    ]});
   },
 
 });
-
-// var tid = tiy.router.tasks.first().id;
-// tid;
-// tiy.router.navigate("tasks/" + tid);
-// tiy.router.navigate("tasks");
-// tiy.router.navigate("tasks/" + tid, {trigger:true});

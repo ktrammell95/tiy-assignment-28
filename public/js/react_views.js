@@ -277,38 +277,41 @@
 })(tiy.views);
 (function(views){
 
-
-
   views.Header = React.createBackboneClass({
 
     homeClickHandler: function(e){
       console.log('home');
-      e.preventDefault();
-      this.props.onRoute(home);
     },
 
     beerList: function(e) {
-      console.log('beer list');
+      console.log(e);
+      e.preventDefault();
+      this.props.onShowBeers();
     },
 
     styleList: function() {
-    console.log('style list');
+     console.log('style list');
+      e.preventDefault();
     },
 
     breweryList: function() {
-    console.log('brewery list');
+      console.log('brewery list');
+      e.preventDefault();
     },
 
     locationList: function() {
-    console.log('location list');
+      console.log('location list');
+      e.preventDefault();
     },
 
     resources: function() {
-    console.log('resources');
+      console.log('resources');
+      e.preventDefault();
     },
 
     userAccount: function() {
-    console.log('userAccount');
+      console.log('userAccount');
+      e.preventDefault();
     },
 
     render: function(){

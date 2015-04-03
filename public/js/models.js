@@ -21,7 +21,7 @@
 
   });
 
-  models.VistedBreweries = Backbone.Firebase.Collection.extend({
+  models.VisitedBreweries = Backbone.Firebase.Collection.extend({
     model: models.Brewery,
 
 
