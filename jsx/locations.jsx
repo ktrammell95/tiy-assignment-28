@@ -9,7 +9,7 @@
         <div className="location">
           <h2>Brewery by Location</h2>
           <div className="map">
-            <img src="images/earth.jpg" alt="Satellite View of Earth" />
+            <img src="images/Blank_US_map_borders.svg" alt="Satellite View of Earth" />
           </div>
         </div>
       );
@@ -33,7 +33,7 @@
 
 
 
-  views.Section = React.createClass({
+  views.LocationListView = React.createClass({
     render: function(){
       return(
         <div className="location_view">
@@ -41,6 +41,14 @@
           <views.LocationList/>
           <views.Map/>
         </div>
+      )
+    }
+  });
+
+  views.LocationView = React.createClass({
+    render: function(){
+      return(
+          <views.LocationListView/>
       )
     }
   });

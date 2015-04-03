@@ -17,32 +17,28 @@
 
   views.HomeImages = React.createClass({
 
-    homeClickHandler: function() {
-    console.log('home');
+    beerList: function(e) {
+      console.log("beerList");
+      e.preventDefault();
+      this.props.onShowBeers();
     },
 
-    beerList: function() {
-    console.log('beer list');
+    categoryList: function(e) {
+      console.log("categoryList");
+      e.preventDefault();
+      this.props.onShowCategories();
     },
 
-    styleList: function() {
-    console.log('style list');
+    breweryList: function(e) {
+      console.log("breweryList");
+      e.preventDefault();
+      this.props.onShowBreweries();
     },
 
-    breweryList: function() {
-    console.log('brewery list');
-    },
-
-    locationList: function() {
-    console.log('location list');
-    },
-
-    resources: function() {
-    console.log('resources');
-    },
-
-    userAccount: function() {
-    console.log('userAccount');
+    locationList: function(e) {
+      console.log("locationList");
+      e.preventDefault();
+      this.props.onShowLocations();
     },
 
     render: function(){
@@ -50,26 +46,26 @@
           <div className="images">
             <div className="image_left">
               <a href="#" onClick={this.beerList}>
-                <img src="images/beer2.jpg" alt="brewery" />
-                Beer Name
+                <img src="images/beer2.jpg" alt="beer names" />
+                Beer Names
               </a>
             </div>
             <div className="image_right">
-              <a href="#" onClick={this.styleList}>
-                <img src="images/beer4.jpg" alt="brewery" />
-                Beer Style
+              <a href="#" onClick={this.categoryList}>
+                <img src="images/beer4.jpg" alt="beer category" />
+                Beer Categories
               </a>
             </div>
             <div className="image_left">
               <a href="#" onClick={this.breweryList}>
-                <img src="images/beer_bottles.jpg" alt="brewery" />
-                Brewery Name
+                <img src="images/beer_bottles.jpg" alt="brewery names" />
+                Brewery Names
               </a>
             </div>
             <div className="image_right">
               <a href="#" onClick={this.locationList}>
-                <img src="images/beer3.jpg" alt="brewery" />
-                Brewery Location
+                <img src="images/beer3.jpg" alt="brewery locations" />
+                Brewery Locations
               </a>
             </div>
           </div>
@@ -89,6 +85,7 @@
   });
 
   views.Section = React.createClass({
+
     render: function(){
       return (
           <views.Home/>

@@ -130,6 +130,77 @@
 // React.render(elem, document.body);
 
 // tiy.logout();
+// --------- STYLES PAGE VIEW --------- //
+
+(function(views){
+
+
+  views.Categories = React.createClass({displayName: "Categories",
+    render: function(){
+      return (
+        React.createElement("div", {className: "styles"}, 
+          React.createElement("h2", null, "Beer Styles"), 
+          React.createElement("div", {className: "images"}, 
+            React.createElement("div", {className: "image_left"}, 
+              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Amber / Red Ale"}), 
+              React.createElement("a", {href: "#"}, "American Amber / Red Ale")
+            ), 
+            React.createElement("div", {className: "image_right"}, 
+              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Barleywine"}), 
+              React.createElement("a", {href: "#"}, "American Barleywine")
+            ), 
+            React.createElement("div", {className: "image_left"}, 
+              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Black Ale"}), 
+              React.createElement("a", {href: "#"}, "American Black Ale")
+            ), 
+            React.createElement("div", {className: "image_right"}, 
+              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Blonde Ale"}), 
+              React.createElement("a", {href: "#"}, "American Blonde Ale")
+            )
+          )
+        )
+      );
+    }
+  });
+
+  views.CategoryList = React.createClass({displayName: "CategoryList",
+    render: function(){
+      return (
+        React.createElement("div", {className: "style_list"}, 
+          React.createElement("ul", null, 
+            React.createElement("li", null, React.createElement("a", {href: "American Amber / Red Ale"}, "American Amber / Red Ale")), 
+            React.createElement("li", null, React.createElement("a", {href: "American Barleywine"}, "American Barleywine")), 
+            React.createElement("li", null, React.createElement("a", {href: "American Black Ale"}, "American Black Ale")), 
+            React.createElement("li", null, React.createElement("a", {href: "American Blonde Ale"}, "American Blonde Ale"))
+          )
+        )
+      );
+    }
+  });
+
+  views.CategoryListView = React.createClass({displayName: "CategoryListView",
+    render: function(){
+      return(
+        React.createElement("div", {className: "style_view"}, 
+          React.createElement(views.Search, null), 
+          React.createElement(views.CategoryList, null), 
+          React.createElement(views.Categories, null)
+        )
+      )
+    }
+  });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+          React.createElement(views.CategoryListView, null)
+      )
+    }
+  });
+
+
+
+})(tiy.views);
 (function(views){
 
   views.BeerDetail = React.createClass({displayName: "BeerDetail",
@@ -279,37 +350,32 @@
 
   views.Header = React.createBackboneClass({
 
-    homeClickHandler: function(e){
-      console.log('home');
-    },
-
     beerList: function(e) {
-      console.log(e);
       e.preventDefault();
       this.props.onShowBeers();
     },
 
-    styleList: function() {
-     console.log('style list');
+    categoryList: function(e) {
       e.preventDefault();
+      this.props.onShowCategories();
     },
 
-    breweryList: function() {
-      console.log('brewery list');
+    breweryList: function(e) {
       e.preventDefault();
+      this.props.onShowBreweries();
     },
 
-    locationList: function() {
-      console.log('location list');
+    locationList: function(e) {
       e.preventDefault();
+      this.props.onShowLocations();
     },
 
-    resources: function() {
+    resources: function(e) {
       console.log('resources');
       e.preventDefault();
     },
 
-    userAccount: function() {
+    userAccount: function(e) {
       console.log('userAccount');
       e.preventDefault();
     },
@@ -329,11 +395,11 @@
           ), 
           React.createElement("div", {className: "header-nav"}, 
             React.createElement("ul", {className: "primary-nav"}, 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.homeClickHandler}, "Home")), 
+            React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
             React.createElement("li", null, "Find a Beer", 
               React.createElement("ul", {className: "secondary-nav"}, 
                   React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.beerList}, "List by Name")), 
-                  React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.styleList}, "List by Style"))
+                  React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.categoryList}, "List by Category"))
               )
             ), 
             React.createElement("li", null, "Find a Brewery", 
@@ -371,32 +437,28 @@
 
   views.HomeImages = React.createClass({displayName: "HomeImages",
 
-    homeClickHandler: function() {
-    console.log('home');
+    beerList: function(e) {
+      console.log("beerList");
+      e.preventDefault();
+      this.props.onShowBeers();
     },
 
-    beerList: function() {
-    console.log('beer list');
+    categoryList: function(e) {
+      console.log("categoryList");
+      e.preventDefault();
+      this.props.onShowCategories();
     },
 
-    styleList: function() {
-    console.log('style list');
+    breweryList: function(e) {
+      console.log("breweryList");
+      e.preventDefault();
+      this.props.onShowBreweries();
     },
 
-    breweryList: function() {
-    console.log('brewery list');
-    },
-
-    locationList: function() {
-    console.log('location list');
-    },
-
-    resources: function() {
-    console.log('resources');
-    },
-
-    userAccount: function() {
-    console.log('userAccount');
+    locationList: function(e) {
+      console.log("locationList");
+      e.preventDefault();
+      this.props.onShowLocations();
     },
 
     render: function(){
@@ -404,26 +466,26 @@
           React.createElement("div", {className: "images"}, 
             React.createElement("div", {className: "image_left"}, 
               React.createElement("a", {href: "#", onClick: this.beerList}, 
-                React.createElement("img", {src: "images/beer2.jpg", alt: "brewery"}), 
-                "Beer Name"
+                React.createElement("img", {src: "images/beer2.jpg", alt: "beer names"}), 
+                "Beer Names"
               )
             ), 
             React.createElement("div", {className: "image_right"}, 
-              React.createElement("a", {href: "#", onClick: this.styleList}, 
-                React.createElement("img", {src: "images/beer4.jpg", alt: "brewery"}), 
-                "Beer Style"
+              React.createElement("a", {href: "#", onClick: this.categoryList}, 
+                React.createElement("img", {src: "images/beer4.jpg", alt: "beer category"}), 
+                "Beer Categories"
               )
             ), 
             React.createElement("div", {className: "image_left"}, 
               React.createElement("a", {href: "#", onClick: this.breweryList}, 
-                React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery"}), 
-                "Brewery Name"
+                React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery names"}), 
+                "Brewery Names"
               )
             ), 
             React.createElement("div", {className: "image_right"}, 
               React.createElement("a", {href: "#", onClick: this.locationList}, 
-                React.createElement("img", {src: "images/beer3.jpg", alt: "brewery"}), 
-                "Brewery Location"
+                React.createElement("img", {src: "images/beer3.jpg", alt: "brewery locations"}), 
+                "Brewery Locations"
               )
             )
           )
@@ -443,6 +505,7 @@
   });
 
   views.Section = React.createClass({displayName: "Section",
+
     render: function(){
       return (
           React.createElement(views.Home, null)
@@ -610,7 +673,7 @@
         React.createElement("div", {className: "location"}, 
           React.createElement("h2", null, "Brewery by Location"), 
           React.createElement("div", {className: "map"}, 
-            React.createElement("img", {src: "images/earth.jpg", alt: "Satellite View of Earth"})
+            React.createElement("img", {src: "images/Blank_US_map_borders.svg", alt: "Satellite View of Earth"})
           )
         )
       );
@@ -634,7 +697,7 @@
 
 
 
-  views.Section = React.createClass({displayName: "Section",
+  views.LocationListView = React.createClass({displayName: "LocationListView",
     render: function(){
       return(
         React.createElement("div", {className: "location_view"}, 
@@ -646,65 +709,10 @@
     }
   });
 
-
-
-})(tiy.views);
-// --------- STYLES PAGE VIEW --------- //
-
-(function(views){
-
-
-  views.Styles = React.createClass({displayName: "Styles",
-    render: function(){
-      return (
-        React.createElement("div", {className: "styles"}, 
-          React.createElement("h2", null, "Beer Styles"), 
-          React.createElement("div", {className: "images"}, 
-            React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Amber / Red Ale"}), 
-              React.createElement("a", {href: "#"}, "American Amber / Red Ale")
-            ), 
-            React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Barleywine"}), 
-              React.createElement("a", {href: "#"}, "American Barleywine")
-            ), 
-            React.createElement("div", {className: "image_left"}, 
-              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Black Ale"}), 
-              React.createElement("a", {href: "#"}, "American Black Ale")
-            ), 
-            React.createElement("div", {className: "image_right"}, 
-              React.createElement("img", {src: "http://placehold.it/350x150", alt: "American Blonde Ale"}), 
-              React.createElement("a", {href: "#"}, "American Blonde Ale")
-            )
-          )
-        )
-      );
-    }
-  });
-
-  views.StyleList = React.createClass({displayName: "StyleList",
-    render: function(){
-      return (
-        React.createElement("div", {className: "style_list"}, 
-          React.createElement("ul", null, 
-            React.createElement("li", null, React.createElement("a", {href: "American Amber / Red Ale"}, "American Amber / Red Ale")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Barleywine"}, "American Barleywine")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Black Ale"}, "American Black Ale")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Blonde Ale"}, "American Blonde Ale"))
-          )
-        )
-      );
-    }
-  });
-
-  views.Section = React.createClass({displayName: "Section",
+  views.LocationView = React.createClass({displayName: "LocationView",
     render: function(){
       return(
-        React.createElement("div", {className: "style_view"}, 
-          React.createElement(views.Search, null), 
-          React.createElement(views.StyleList, null), 
-          React.createElement(views.Styles, null)
-        )
+          React.createElement(views.LocationListView, null)
       )
     }
   });

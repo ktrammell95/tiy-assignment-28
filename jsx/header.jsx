@@ -2,37 +2,32 @@
 
   views.Header = React.createBackboneClass({
 
-    homeClickHandler: function(e){
-      console.log('home');
-    },
-
     beerList: function(e) {
-      console.log(e);
       e.preventDefault();
       this.props.onShowBeers();
     },
 
-    styleList: function() {
-     console.log('style list');
+    categoryList: function(e) {
       e.preventDefault();
+      this.props.onShowCategories();
     },
 
-    breweryList: function() {
-      console.log('brewery list');
+    breweryList: function(e) {
       e.preventDefault();
+      this.props.onShowBreweries();
     },
 
-    locationList: function() {
-      console.log('location list');
+    locationList: function(e) {
       e.preventDefault();
+      this.props.onShowLocations();
     },
 
-    resources: function() {
+    resources: function(e) {
       console.log('resources');
       e.preventDefault();
     },
 
-    userAccount: function() {
+    userAccount: function(e) {
       console.log('userAccount');
       e.preventDefault();
     },
@@ -52,11 +47,11 @@
           </div>
           <div className="header-nav">
             <ul className="primary-nav">
-            <li><a href="#" onClick={this.homeClickHandler}>Home</a></li>
+            <li><a href="#">Home</a></li>
             <li>Find a Beer
               <ul className="secondary-nav">
                   <li><a href="#" onClick={this.beerList}>List by Name</a></li>
-                  <li><a href="#" onClick={this.styleList}>List by Style</a></li>
+                  <li><a href="#" onClick={this.categoryList}>List by Category</a></li>
               </ul>
             </li>
             <li>Find a Brewery

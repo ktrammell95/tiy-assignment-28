@@ -3,7 +3,7 @@
 (function(views){
 
 
-  views.Styles = React.createClass({
+  views.Categories = React.createClass({
     render: function(){
       return (
         <div className="styles">
@@ -31,7 +31,7 @@
     }
   });
 
-  views.StyleList = React.createClass({
+  views.CategoryList = React.createClass({
     render: function(){
       return (
         <div className="style_list">
@@ -46,14 +46,22 @@
     }
   });
 
-  views.Section = React.createClass({
+  views.CategoryListView = React.createClass({
     render: function(){
       return(
         <div className="style_view">
           <views.Search/>
-          <views.StyleList/>
-          <views.Styles/>
+          <views.CategoryList/>
+          <views.Categories/>
         </div>
+      )
+    }
+  });
+
+  views.Section = React.createClass({
+    render: function(){
+      return(
+          <views.CategoryListView/>
       )
     }
   });

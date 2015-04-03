@@ -1,9 +1,11 @@
 tiy.Router = Backbone.Router.extend({
 
   routes: {
-    ""            : "showHome",  
-    "beers"       : "showBeers",
-    // "breweries"   : "showBreweries"
+    ""              : "showHome",  
+    "beers"         : "showBeers",
+    "breweries"     : "showBreweries",
+    "categories"    : "showCategories",
+    "locations"     : "showLocations"
   },
 
   initialize: function(){
@@ -15,11 +17,35 @@ tiy.Router = Backbone.Router.extend({
           this.navigate("beers", {trigger: true, replace: true});
         }.bind(this),
         onShowBreweries: function() {
-          this.navigate("showBreweries");
-          this.showBreweries();
+          this.navigate("breweries", {trigger: true, replace: true});
+        }.bind(this),
+        onShowCategories: function() {
+          this.navigate("categories", {trigger: true, replace: true});
+        }.bind(this),
+        onShowLocations: function() {
+          this.navigate("locations", {trigger: true, replace: true});
         }.bind(this)
       }),
       document.querySelector("header")
+    );
+
+    this.section = React.render(
+      React.createElement(tiy.views.Section, {
+        model: tiy.currentUser,
+        onShowBeers: function() {
+          this.navigate("beers", {trigger: true, replace: true});
+        }.bind(this),
+        onShowBreweries: function() {
+          this.navigate("breweries", {trigger: true, replace: true});
+        }.bind(this),
+        onShowCategories: function() {
+          this.navigate("categories", {trigger: true, replace: true});
+        }.bind(this),
+        onShowLocations: function() {
+          this.navigate("locations", {trigger: true, replace: true});
+        }.bind(this)
+      }),
+      document.querySelector("section")
     );
 
     this.navigate("", {trigger: true, replace: true});
@@ -65,7 +91,7 @@ tiy.Router = Backbone.Router.extend({
   showHome: function(){
     this.section = React.render(
       React.createElement(tiy.views.Home, {
-        // model: tiy.currentUser
+
       }),
       document.querySelector("section")
     );
@@ -74,7 +100,7 @@ tiy.Router = Backbone.Router.extend({
   showBeers: function(){
     // tell the section component to render the right section
     this.section = React.render(
-      React.createElement(tiy.views.BreweryListView, {
+      React.createElement(tiy.views.BeerListView, {
         // ...
       }),
       document.querySelector("section")
@@ -82,7 +108,30 @@ tiy.Router = Backbone.Router.extend({
   },
 
   showBreweries: function(){
+    this.section = React.render(
+      React.createElement(tiy.views.BreweryListView, {
 
+      }),
+      document.querySelector("section")
+    );
   },
+
+  showCategories: function() {
+    this.section = React.render(
+      React.createElement(tiy.views.CategoryListView, {
+
+      }),
+      document.querySelector("section")
+    );
+  },
+
+  showLocations: function(){
+    this.section = React.render(
+      React.createElement(tiy.views.LocationListView, {
+
+      }),
+      document.querySelector("section")
+    );
+  }
 
 });
