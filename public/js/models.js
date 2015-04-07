@@ -19,6 +19,17 @@
     model: models.Brewery,
     url: "/api/breweries"
 
+  // initialize: function() {//FavoriteCollection down below
+  //   this.visitedBreweries = new VisitedBreweries();
+  // },
+
+  loadBreweries: function() {
+    this.get('/api/breweries', { id: breweryid }, function(breweries) {
+      console.log(breweries);
+      this.reset(breweries);
+    }.bind(this));
+  },
+
   });
 
   models.VisitedBreweries = Backbone.Firebase.Collection.extend({

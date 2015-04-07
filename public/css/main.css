@@ -389,6 +389,48 @@ section .location_view .location .map img {
   width: 960px;
   height: auto;
 }
+section .users .user_left,
+section .users .user_right {
+  float: left;
+  width: 50%;
+}
+section .users .user_left h2,
+section .users .user_right h2 {
+  font-size: 16px;
+}
+section .users .user_left .beer_name h3,
+section .users .user_right .beer_name h3,
+section .users .user_left .brewery_name h3,
+section .users .user_right .brewery_name h3 {
+  font-size: 14px;
+}
+section .users .user_left .beer_name .beer_image,
+section .users .user_right .beer_name .beer_image,
+section .users .user_left .brewery_name .beer_image,
+section .users .user_right .brewery_name .beer_image,
+section .users .user_left .beer_name .brewery_image,
+section .users .user_right .beer_name .brewery_image,
+section .users .user_left .brewery_name .brewery_image,
+section .users .user_right .brewery_name .brewery_image {
+  float: left;
+}
+section .users .user_left .beer_name .user_beer,
+section .users .user_right .beer_name .user_beer,
+section .users .user_left .brewery_name .user_beer,
+section .users .user_right .brewery_name .user_beer,
+section .users .user_left .beer_name .user_brewery,
+section .users .user_right .beer_name .user_brewery,
+section .users .user_left .brewery_name .user_brewery,
+section .users .user_right .brewery_name .user_brewery {
+  float: left;
+}
+section .blog h3 {
+  background: rgba(44, 14, 12, 0.85);
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 25px;
+  color: #e9e2d6;
+}
 footer {
   background-color: rgba(44, 14, 12, 0.85);
   margin: auto;

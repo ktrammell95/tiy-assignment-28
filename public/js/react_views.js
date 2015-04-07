@@ -130,6 +130,51 @@
 // React.render(elem, document.body);
 
 // tiy.logout();
+(function(views){
+
+  views.Blogfields = React.createClass({displayName: "Blogfields",
+    render: function(){
+      return(
+        React.createElement("form", null, 
+          React.createElement("h4", null, "Title:"), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "title"}), 
+          React.createElement("br", null), 
+          React.createElement("h4", null, "Blog Post:"), React.createElement("br", null), 
+          React.createElement("input", {type: "text", name: "lastname"})
+        )
+      )
+    }
+  });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.Blogfields, null)
+      )
+    }
+  });
+
+  views.Blog = React.createClass({displayName: "Blog",
+    render: function(){
+      return(
+        React.createElement("div", {className: "blog"}, 
+          React.createElement("h3", null, "Title et accusamus et iusto"), 
+          React.createElement("p", null, " At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.")
+        )
+      )
+    }
+  });
+
+  views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.Blog, null)
+      )
+    }
+  });
+
+
+})(tiy.views);
 // --------- STYLES PAGE VIEW --------- //
 
 (function(views){
@@ -370,14 +415,14 @@
       this.props.onShowLocations();
     },
 
-    resources: function(e) {
-      console.log('resources');
+    blog: function(e) {
       e.preventDefault();
+      this.props.onShowBlog();
     },
 
     userAccount: function(e) {
-      console.log('userAccount');
       e.preventDefault();
+      this.props.onShowUserInfo();
     },
 
     render: function(){
@@ -408,7 +453,7 @@
                 React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.locationList}, "List by Location"))
               )
             ), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.resources}, "Resources")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.blog}, "Blog")), 
             React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.userAccount}, "User Account"))
           )
           )
@@ -823,3 +868,76 @@
 // t.attributes.name
 // t.set("percent_complete", 0.5);
 // check FB
+(function(views){
+
+  views.UserBeerDetail = React.createClass({displayName: "UserBeerDetail",
+    render: function(){
+      return(
+        React.createElement("div", {className: "beer_name"}, 
+          React.createElement("h3", null, "Saison Lafayette"), 
+          React.createElement("div", {className: "beer_image"}, 
+            React.createElement("img", {src: "http://lorempixel.com/100/100/"})
+          ), 
+          React.createElement("div", {className: "user_beer"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, "Description:"), 
+              React.createElement("li", null, "Rating:"), 
+              React.createElement("li", null, "ABV:"), 
+              React.createElement("li", null, "Glassware:"), 
+              React.createElement("li", null, "Style:")
+            )
+          )
+        )
+      )
+    }
+  });
+
+//Brewery Detail Information
+  views.UserBreweryDetail = React.createBackboneClass({
+    render: function(){
+      return (
+          React.createElement("div", {className: "brewery_name"}, 
+          React.createElement("h3", null, "3 Daughters Brewing"), 
+          React.createElement("div", {className: "brewery_image"}, 
+            React.createElement("img", {src: "http://lorempixel.com/100/100/"})
+          ), 
+          React.createElement("div", {className: "user_brewery"}, 
+            React.createElement("ul", null, 
+              React.createElement("li", null, "Address"), 
+              React.createElement("li", null, "Address"), 
+              React.createElement("li", null, "Phone"), 
+              React.createElement("li", null, "Website")
+            )
+          )
+        )
+      );
+    }
+  });
+
+  views.UserSection = React.createClass({displayName: "UserSection",
+    render: function(){
+      return(
+        React.createElement("div", {className: "users"}, 
+          React.createElement("div", {className: "user_left"}, 
+            React.createElement("h2", null, "Beers"), 
+            React.createElement(views.UserBeerDetail, null)
+          ), 
+          React.createElement("div", {className: "user_right"}, 
+            React.createElement("h2", null, "Breweries"), 
+            React.createElement(views.UserBreweryDetail, null)
+          )
+        )
+      )
+    }
+  });
+
+    views.Section = React.createClass({displayName: "Section",
+    render: function(){
+      return(
+        React.createElement(views.UserSection, null)
+      )
+    }
+  });
+
+
+})(tiy.views);

@@ -22,14 +22,14 @@
       this.props.onShowLocations();
     },
 
-    resources: function(e) {
-      console.log('resources');
+    blog: function(e) {
       e.preventDefault();
+      this.props.onShowBlog();
     },
 
     userAccount: function(e) {
-      console.log('userAccount');
       e.preventDefault();
+      this.props.onShowUserInfo();
     },
 
     render: function(){
@@ -60,7 +60,7 @@
                 <li><a href="#" onClick={this.locationList}>List by Location</a></li>
               </ul>
             </li>
-            <li><a href="#" onClick={this.resources}>Resources</a></li>
+            <li><a href="#" onClick={this.blog}>Blog</a></li>
             <li><a href="#" onClick={this.userAccount}>User Account</a></li>
           </ul>
           </div>

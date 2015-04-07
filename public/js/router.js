@@ -5,7 +5,9 @@ tiy.Router = Backbone.Router.extend({
     "beers"         : "showBeers",
     "breweries"     : "showBreweries",
     "categories"    : "showCategories",
-    "locations"     : "showLocations"
+    "locations"     : "showLocations",
+    "user"          : "showUserInfo", 
+    "blog"          : "showBlog",
   },
 
   initialize: function(){
@@ -24,6 +26,12 @@ tiy.Router = Backbone.Router.extend({
         }.bind(this),
         onShowLocations: function() {
           this.navigate("locations", {trigger: true, replace: true});
+        }.bind(this),
+        onShowUserInfo: function() {
+          this.navigate("user", {trigger: true, replace: true});
+        }.bind(this),
+        onShowBlog: function() {
+          this.navigate("blog", {trigger: true, replace: true});
         }.bind(this)
       }),
       document.querySelector("header")
@@ -121,6 +129,24 @@ tiy.Router = Backbone.Router.extend({
   showLocations: function(){
     this.section = React.render(
       React.createElement(tiy.views.LocationListView, {
+
+      }),
+      document.querySelector("section")
+    );
+  },
+
+  showUserInfo: function(){
+    this.section = React.render(
+      React.createElement(tiy.views.UserSection, {
+
+      }),
+      document.querySelector("section")
+    );
+  },
+
+  showBlog: function(){
+    this.section = React.render(
+      React.createElement(tiy.views.Blog, {
 
       }),
       document.querySelector("section")
