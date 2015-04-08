@@ -214,7 +214,6 @@ section .list_views .brewery_list thead tr {
 section .list_views .beer_list tbody,
 section .list_views .brewery_list tbody {
   width: 28%;
-  text-align: center;
 }
 section .list_views .beer_list tbody tr:nth-child(even),
 section .list_views .brewery_list tbody tr:nth-child(even) {

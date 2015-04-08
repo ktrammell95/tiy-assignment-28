@@ -3,22 +3,30 @@
 
 //Beer List information
   views.BeerList = React.createClass({
+    getBeer: function(model) {
+      return (
+        <tr>
+          <td>{model.get("id")}</td>
+          <td>{model.get("name")}</td>
+          <td>{model.get("style")}</td>
+          <td>{model.get("available")}</td>
+        </tr>
+      );
+    },
+
     render: function(){
       return(
         <div className="beer_list brewery_list">
           <h2>Beer List</h2>
             <table>
               <thead>
+                <th>Beer Id</th>
                 <th>Name</th>
-                <th>Brewery</th>
                 <th>Style</th>
+                <th>Availability</th>
               </thead>
               <tbody>
-                <tr>
-                  <td>Saison Lafayette</td>
-                  <td>Two Sisters</td>
-                  <td>IPA</td>
-                </tr>
+                {this.props.collection.map(this.getBeer)}
               </tbody>
             </table>
         </div>
@@ -27,23 +35,29 @@
   });
 
 //Beer List information
-  views.BreweryList = React.createClass({
+  views.BreweryList = React.createBackboneClass({
+    getBrewery: function(model) {
+      return (
+        <tr>
+          <td>{model.get("id")}</td>
+          <td>{model.get("name")}</td>
+          <td>{model.get("website")}</td>
+        </tr>
+      );
+    },
+
     render: function(){
       return(
         <div className="beer_list brewery_list">
           <h2>Brewery List</h2>
             <table>
               <thead>
+                <th>Brewery Id</th>
                 <th>Name</th>
-                <th>City</th>
-                <th>State</th>
+                <th>Website</th>
               </thead>
               <tbody>
-                <tr>
-                  <td>Two Sisters</td>
-                  <td>St. Petersburg</td>
-                  <td>Florida</td>
-                </tr>
+                {this.props.collection.map(this.getBrewery)}
               </tbody>
             </table>
         </div>
@@ -104,45 +118,45 @@
   });
 
 
-  views.BeerListView = React.createClass({
+  views.BeerListView = React.createBackboneClass({
     render: function(){
       return(
         <div className="list_views">
           <views.Search/>
           <views.AlphabetList/>
-          <views.BeerList/>
+          <views.BeerList collection={this.props.collection}/>
         </div>
       )
     }
   });
 
-    views.BreweryListView = React.createClass({
+    views.BreweryListView = React.createBackboneClass({
     render: function(){
       return(
         <div className="list_views">
           <views.Search/>
           <views.AlphabetList/>
-          <views.BreweryList/>
+          <views.BreweryList collection={this.props.collection}/>
         </div>
       )
     }
   });
 
-  views.Section = React.createClass({
-    render: function(){
-      return(
-        <views.BeerListView/>
-      )
-    }
-  });
+  // views.BeerSection = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <views.BeerListView/>
+  //     )
+  //   }
+  // });
 
-  views.Section = React.createClass({
-    render: function(){
-      return(
-        <views.BreweryListView/>
-      )
-    }
-  });
+  // views.BrewerySection = React.createClass({
+  //   render: function(){
+  //     return(
+  //       <views.BreweryListView/>
+  //     )
+  //   }
+  // });
 
 
 })(tiy.views);

@@ -1,13 +1,15 @@
 tiy.Router = Backbone.Router.extend({
 
   routes: {
-    ""              : "showHome",  
-    "beers"         : "showBeers",
-    "breweries"     : "showBreweries",
-    "categories"    : "showCategories",
-    "locations"     : "showLocations",
-    "user"          : "showUserInfo", 
-    "blog"          : "showBlog",
+    ""                    : "showHome",  
+    "beers"               : "showBeers",
+    "breweries"           : "showBreweries",
+    "categories"          : "showCategories",
+    "locations"           : "showLocations",
+    "user"                : "showUserInfo", 
+    "blog"                : "showBlog",
+    "brewery/:breweryid"  : "showbrewery",
+    "beer/:beerid"        : "showbeer",
   },
 
   initialize: function(){
@@ -99,22 +101,42 @@ tiy.Router = Backbone.Router.extend({
   },
 
   showBeers: function(){
+    var beers = new tiy.models.Beers();
+
     // tell the section component to render the right section
     this.section = React.render(
       React.createElement(tiy.views.BeerListView, {
-        // ...
+        collection: beers
       }),
       document.querySelector("section")
     );
+    beers.fetch();
   },
 
-  showBreweries: function(){
-    this.section = React.render(
-      React.createElement(tiy.views.BreweryListView, {
+  showBrewery: function(){
+    var breweryLocations = new tiy.models.BreweryLocations(null, {brewery: brewery});
 
+    this.section = React.render(
+      React.createElement(tiy.views.BreweryLocation, {
+        collection: breweryLocations
       }),
       document.querySelector("section")
     );
+
+    breweryLocations.fetch();
+  }, 
+
+  showBreweries: function(){
+    var breweries = new tiy.models.Breweries();
+
+    this.section = React.render(
+      React.createElement(tiy.views.BreweryListView, {
+        collection: breweries
+      }),
+      document.querySelector("section")
+    );
+
+    breweries.fetch();
   },
 
   showCategories: function() {
