@@ -14,7 +14,7 @@
             </ul>
           </div>
           <div className="beer_image">
-            <img src="{model.get('labels')}"/>
+            <img src={model.getImages()}/>
           </div>
         </div>
       );
@@ -33,17 +33,18 @@
     getBreweryLocation: function(model) {
           return (
           <div>  
-            <h3>{model.get("name")}</h3>
+            <h3>{model.collection.brewery.get('name')}</h3>
             <div className="brewery_details">
               <ul>
-                <li>{model.get("locality")}</li>
+                <li>{model.get("streetAddress")}</li>
+                <li>{model.get("locality")}, {model.get("region")} {model.get("postalCode")}</li>
                 <li>{model.get("countryIsoCode")}</li>
                 <li>{model.get("phone")}</li>
-                <li>Website</li>
+                <li>{model.get("website")}</li>
               </ul>
             </div>
-            <div className="brewery_image">
-              <img src="http://lorempixel.com/400/200/" />
+            <div className="beer_image">
+              <img src={model.collection.brewery.getImages()}/>
             </div>
           </div>
           );

@@ -12,12 +12,16 @@
 // ---------- Breweries ---------- //
 
   models.Brewery = Backbone.Model.extend({
+    getImages: function() {
+      return (this.get('images') || {}).large;
+    }
 
   });
 
   models.Breweries = ApiCollection.extend({
     model: models.Brewery,
     url: "/api/breweries",
+
     parse: function(resp) {
       return resp.data;
     }
@@ -25,7 +29,9 @@
   });
 
   models.BreweryLocation = Backbone.Model.extend({
-
+    getImages: function() {
+      return (this.get('images') || {}).large;
+    }
   });
 
   models.BreweryLocations = Backbone.Collection.extend({
@@ -34,10 +40,12 @@
       this.brewery = opts.brewery;
     },
     url: function() {
-      var bid = this.breweries.id;
-      console.log(this.breweries.id);
-      return "/breweries/" + bid + "/locations";
+      var bid = this.brewery.id;
+      return "/api/brewery/" + bid + "/locations";
     },
+    parse: function(resp) {
+      return resp.data;
+    }
 
     // on the brewery page
     // you need to have a `brewery` model
@@ -72,7 +80,17 @@
 
   models.Beer = Backbone.Model.extend({
 
+    styleShortName: function() {
+      return (this.get('style') || {}).shortName;
+    },
 
+    availabilityName: function() {
+      return (this.get('available') || {}).name;
+    },
+
+    labelsIcon: function() {
+      return (this.get('labels') || {}).icon;
+    },
   });
 
 
@@ -82,7 +100,6 @@
     parse: function(resp) {
       return resp.data;
     }
-
   });
 
   // models.FavoritedBeers = Backbone.Firebase.Collection.extend({

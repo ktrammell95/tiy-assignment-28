@@ -6,10 +6,9 @@
     getBeer: function(model) {
       return (
         <tr>
-          <td>{model.get("id")}</td>
           <td>{model.get("name")}</td>
-          <td>{model.get("style")}</td>
-          <td>{model.get("available")}</td>
+          <td>{model.styleShortName()}</td>
+          <td>{model.availabilityName()}</td>
         </tr>
       );
     },
@@ -20,7 +19,6 @@
           <h2>Beer List</h2>
             <table>
               <thead>
-                <th>Beer Id</th>
                 <th>Name</th>
                 <th>Style</th>
                 <th>Availability</th>
@@ -39,9 +37,8 @@
     getBrewery: function(model) {
       return (
         <tr>
-          <td>{model.get("id")}</td>
+          <td><img src={model.getImages()}/></td>
           <td>{model.get("name")}</td>
-          <td>{model.get("website")}</td>
         </tr>
       );
     },
@@ -52,9 +49,8 @@
           <h2>Brewery List</h2>
             <table>
               <thead>
-                <th>Brewery Id</th>
+                <th>Logo</th>
                 <th>Name</th>
-                <th>Website</th>
               </thead>
               <tbody>
                 {this.props.collection.map(this.getBrewery)}
@@ -85,6 +81,7 @@
       return (
         <div className="alphabet">
           <ul>
+            <li><a href="number">#</a></li>
             <li><a href="A">A</a></li>
             <li><a href="B">B</a></li>
             <li><a href="C">C</a></li>

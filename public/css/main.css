@@ -254,7 +254,7 @@ section .beer .beer_details,
 section .brewery .beer_details,
 section .beer .brewery_details,
 section .brewery .brewery_details {
-  width: 55%;
+  width: 50%;
   float: left;
 }
 section .beer .beer_details ul li,
@@ -268,8 +268,9 @@ section .beer .beer_image,
 section .brewery .beer_image,
 section .beer .brewery_image,
 section .brewery .brewery_image {
-  width: 30%;
   float: left;
+  width: auto;
+  height: 125px;
 }
 section .style_view .search {
   float: left;

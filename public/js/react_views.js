@@ -262,7 +262,7 @@
             )
           ), 
           React.createElement("div", {className: "beer_image"}, 
-            React.createElement("img", {src: "{model.get('labels')}"})
+            React.createElement("img", {src: model.getImages()})
           )
         )
       );
@@ -281,17 +281,18 @@
     getBreweryLocation: function(model) {
           return (
           React.createElement("div", null, 
-            React.createElement("h3", null, model.get("name")), 
+            React.createElement("h3", null, model.collection.brewery.get('name')), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, model.get("locality")), 
+                React.createElement("li", null, model.get("streetAddress")), 
+                React.createElement("li", null, model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode")), 
                 React.createElement("li", null, model.get("countryIsoCode")), 
                 React.createElement("li", null, model.get("phone")), 
-                React.createElement("li", null, "Website")
+                React.createElement("li", null, model.get("website"))
               )
             ), 
-            React.createElement("div", {className: "brewery_image"}, 
-              React.createElement("img", {src: "http://lorempixel.com/400/200/"})
+            React.createElement("div", {className: "beer_image"}, 
+              React.createElement("img", {src: model.collection.brewery.getImages()})
             )
           )
           );
@@ -595,10 +596,9 @@
     getBeer: function(model) {
       return (
         React.createElement("tr", null, 
-          React.createElement("td", null, model.get("id")), 
           React.createElement("td", null, model.get("name")), 
-          React.createElement("td", null, model.get("style")), 
-          React.createElement("td", null, model.get("available"))
+          React.createElement("td", null, model.styleShortName()), 
+          React.createElement("td", null, model.availabilityName())
         )
       );
     },
@@ -609,7 +609,6 @@
           React.createElement("h2", null, "Beer List"), 
             React.createElement("table", null, 
               React.createElement("thead", null, 
-                React.createElement("th", null, "Beer Id"), 
                 React.createElement("th", null, "Name"), 
                 React.createElement("th", null, "Style"), 
                 React.createElement("th", null, "Availability")
@@ -628,9 +627,8 @@
     getBrewery: function(model) {
       return (
         React.createElement("tr", null, 
-          React.createElement("td", null, model.get("id")), 
-          React.createElement("td", null, model.get("name")), 
-          React.createElement("td", null, model.get("website"))
+          React.createElement("td", null, React.createElement("img", {src: model.getImages()})), 
+          React.createElement("td", null, model.get("name"))
         )
       );
     },
@@ -641,9 +639,8 @@
           React.createElement("h2", null, "Brewery List"), 
             React.createElement("table", null, 
               React.createElement("thead", null, 
-                React.createElement("th", null, "Brewery Id"), 
-                React.createElement("th", null, "Name"), 
-                React.createElement("th", null, "Website")
+                React.createElement("th", null, "Logo"), 
+                React.createElement("th", null, "Name")
               ), 
               React.createElement("tbody", null, 
                 this.props.collection.map(this.getBrewery)
@@ -674,6 +671,7 @@
       return (
         React.createElement("div", {className: "alphabet"}, 
           React.createElement("ul", null, 
+            React.createElement("li", null, React.createElement("a", {href: "number"}, "#")), 
             React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
             React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
             React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 

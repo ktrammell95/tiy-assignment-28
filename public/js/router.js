@@ -1,15 +1,15 @@
 tiy.Router = Backbone.Router.extend({
 
   routes: {
-    ""                    : "showHome",  
-    "beers"               : "showBeers",
-    "breweries"           : "showBreweries",
-    "categories"          : "showCategories",
-    "locations"           : "showLocations",
-    "user"                : "showUserInfo", 
-    "blog"                : "showBlog",
-    "brewery/:breweryid"  : "showbrewery",
-    "beer/:beerid"        : "showbeer",
+    ""                      : "showHome",  
+    "beers"                 : "showBeers",
+    "breweries"             : "showBreweries",
+    "categories"            : "showCategories",
+    "locations"             : "showLocations",
+    "user"                  : "showUserInfo", 
+    "blog"                  : "showBlog",
+    "breweries/:breweryid"  : "showBreweryLoc",
+    "beer/:beerid"          : "showBeer",
   },
 
   initialize: function(){
@@ -113,8 +113,9 @@ tiy.Router = Backbone.Router.extend({
     beers.fetch();
   },
 
-  showBrewery: function(){
-    var breweryLocations = new tiy.models.BreweryLocations(null, {brewery: brewery});
+  showBreweryLoc: function(breweryid){
+    var breweries = new tiy.models.Breweries();
+    var breweryLocations = new tiy.models.BreweryLocations(null, {});
 
     this.section = React.render(
       React.createElement(tiy.views.BreweryLocation, {
@@ -123,7 +124,13 @@ tiy.Router = Backbone.Router.extend({
       document.querySelector("section")
     );
 
-    breweryLocations.fetch();
+    breweries.fetch({
+      success: function() {
+        var brewery = breweries.get(breweryid);
+        breweryLocations.brewery = brewery;
+        breweryLocations.fetch();    
+      }
+    });
   }, 
 
   showBreweries: function(){

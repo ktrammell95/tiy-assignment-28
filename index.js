@@ -9,13 +9,15 @@ var port = process.env.PORT || 8025;
 console.log("listening on port", port);
 app.listen(port);
 
-app.get("/api/:endpoint", function(req, res) {
+app.get("/api/*", function(req, res) {
 
   var apiKey = process.env.API_KEY;
 
   var base = "http://api.brewerydb.com/v2/"
 
-  var url = base + req.params.endpoint + "?key=" + apiKey;
+  console.log("endpoint", req.params["0"])
+
+  var url = base + req.params["0"] + "?key=" + apiKey;
 
   loadJSON(url, function(err, data){
 
