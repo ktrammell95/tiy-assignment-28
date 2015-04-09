@@ -33,6 +33,7 @@
             <h3>{model.collection.brewery.get("name")}</h3>
             <div className="brewery_details">
               <ul>
+                <li>{model.get("locationTypeDisplay")}</li>
                 <li>{model.get("streetAddress")}</li>
                 <li>{model.get("locality")}, {model.get("region")} {model.get("postalCode")}</li>
                 <li>{model.get("countryIsoCode")}</li>

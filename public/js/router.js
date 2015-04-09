@@ -6,7 +6,7 @@ tiy.Router = Backbone.Router.extend({
     "breweries"             : "showBreweries",
     "categories"            : "showCategories",
     "locations"             : "showLocations",
-    "user"                  : "showUserInfo", 
+    "favorites"             : "showUserInfo", 
     "blog"                  : "showBlog",
     "breweries/:breweryid"  : "showBreweryLoc",
     "beers/:beerid"         : "showBeerDetails",
@@ -30,7 +30,7 @@ tiy.Router = Backbone.Router.extend({
           this.navigate("locations", {trigger: true, replace: true});
         }.bind(this),
         onShowUserInfo: function() {
-          this.navigate("user", {trigger: true, replace: true});
+          this.navigate("favorites", {trigger: true, replace: true});
         }.bind(this),
         onShowBlog: function() {
           this.navigate("blog", {trigger: true, replace: true});
@@ -108,10 +108,11 @@ tiy.Router = Backbone.Router.extend({
       React.createElement(tiy.views.BeerListView, {
         collection: beers,
 
-        onShowBeerDetail: function() {
-          this.navigate("beers/:beerid", {trigger: true, replace: true});
+      onShowBeerDetail: function(beerId) {
+        this.navigate("beers/"+beerId, {trigger: true, replace: true});
         }.bind(this),
       }),
+
       document.querySelector("section")
     );
     beers.fetch();

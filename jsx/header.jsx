@@ -27,7 +27,7 @@
       this.props.onShowBlog();
     },
 
-    userAccount: function(e) {
+    favorites: function(e) {
       e.preventDefault();
       this.props.onShowUserInfo();
     },
@@ -60,8 +60,8 @@
                 <li><a href="#" onClick={this.locationList}>List by Location</a></li>
               </ul>
             </li>
-            <li><a href="#" onClick={this.blog}>Blog</a></li>
-            <li><a href="#" onClick={this.userAccount}>User Account</a></li>
+            {/*<li><a href="#" onClick={this.blog}>Blog</a></li>*/}
+            <li><a href="#" onClick={this.favorites}>Favorites</a></li>
           </ul>
           </div>
         </div>

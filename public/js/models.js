@@ -63,9 +63,6 @@
       return (this.get('labels') || {}).icon;
     },
 
-    getGlass: function() {
-      return (this.get('glass').name || {}).name;
-    },
   });
 
   models.Beers = ApiCollection.extend({

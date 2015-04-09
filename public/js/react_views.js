@@ -278,6 +278,7 @@
             React.createElement("h3", null, model.collection.brewery.get("name")), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
+                React.createElement("li", null, model.get("locationTypeDisplay")), 
                 React.createElement("li", null, model.get("streetAddress")), 
                 React.createElement("li", null, model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode")), 
                 React.createElement("li", null, model.get("countryIsoCode")), 
@@ -417,7 +418,7 @@
       this.props.onShowBlog();
     },
 
-    userAccount: function(e) {
+    favorites: function(e) {
       e.preventDefault();
       this.props.onShowUserInfo();
     },
@@ -450,8 +451,8 @@
                 React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.locationList}, "List by Location"))
               )
             ), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.blog}, "Blog")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.userAccount}, "User Account"))
+            /*<li><a href="#" onClick={this.blog}>Blog</a></li>*/
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.favorites}, "Favorites"))
           )
           )
         )
@@ -565,34 +566,43 @@
 (function(views){
 
 //Beer List information
-  views.BeerList = React.createClass({displayName: "BeerList",
-
+    
+  views.BeerListView = React.createBackboneClass({
 
     getBeer: function(model) {
       return (
         React.createElement("tr", null, 
-          React.createElement("td", null, React.createElement("a", {href: "#", onClick: this.beerDetail}, model.get("name"))), 
+          React.createElement("td", null, React.createElement("a", {"data-beer-id": model.get("id"), href: "#", onClick: this.beerDetail}, model.get("name"))), 
           React.createElement("td", null, model.styleShortName()), 
           React.createElement("td", null, model.availabilityName())
         )
       );
     },
 
+    beerDetail: function(e) {
+      e.preventDefault();
+      var beerId = $(e.target).attr("data-beer-id");
+      // console.log(e.target, e.target.href);
+      this.props.onShowBeerDetail(beerId);
+    },
 
     render: function(){
       return(
-        React.createElement("div", {className: "beer_list brewery_list"}, 
-          React.createElement("h2", null, "Beer List"), 
-            React.createElement("table", null, 
-              React.createElement("thead", null, 
-                React.createElement("th", null, "Name"), 
-                React.createElement("th", null, "Style"), 
-                React.createElement("th", null, "Availability")
-              ), 
-              React.createElement("tbody", null, 
-                this.props.collection.map(this.getBeer)
+        React.createElement("div", {className: "list_views"}, 
+          /*<views.AlphabetList/>*/
+          React.createElement("div", {className: "beer_list brewery_list"}, 
+            React.createElement("h2", null, "Beer List"), 
+              React.createElement("table", null, 
+                React.createElement("thead", null, 
+                  React.createElement("th", null, "Name"), 
+                  React.createElement("th", null, "Style"), 
+                  React.createElement("th", null, "Availability")
+                ), 
+                React.createElement("tbody", null, 
+                  this.props.collection.map(this.getBeer)
+                )
               )
-            )
+          )
         )
       )
     }
@@ -681,52 +691,17 @@
   });
 
 
-  views.BeerListView = React.createBackboneClass({
-    beerDetail: function(e) {
-      // console.log("logging beerDetail");
-      e.preventDefault();
-      this.props.onShowBeerDetail();
-    },
-
-    render: function(){
-      return(
-        React.createElement("div", {className: "list_views"}, 
-          React.createElement(views.Search, null), 
-          React.createElement(views.AlphabetList, null), 
-          React.createElement(views.BeerList, {collection: this.props.collection})
-        )
-      )
-    }
-  });
 
     views.BreweryListView = React.createBackboneClass({
     render: function(){
       return(
         React.createElement("div", {className: "list_views"}, 
-          React.createElement(views.Search, null), 
-          React.createElement(views.AlphabetList, null), 
+          /*<views.AlphabetList/>*/
           React.createElement(views.BreweryList, {collection: this.props.collection})
         )
       )
     }
   });
-
-  // views.BeerSection = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BeerListView/>
-  //     )
-  //   }
-  // });
-
-  // views.BrewerySection = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BreweryListView/>
-  //     )
-  //   }
-  // });
-
 
 })(tiy.views);
 // --------- STYLES PAGE VIEW --------- //

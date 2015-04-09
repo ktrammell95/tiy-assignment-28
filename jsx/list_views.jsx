@@ -2,34 +2,43 @@
 (function(views){
 
 //Beer List information
-  views.BeerList = React.createClass({
-
+    
+  views.BeerListView = React.createBackboneClass({
 
     getBeer: function(model) {
       return (
         <tr>
-          <td><a href="#" onClick={this.beerDetail}>{model.get("name")}</a></td>
+          <td><a data-beer-id={model.get("id")} href="#" onClick={this.beerDetail}>{model.get("name")}</a></td>
           <td>{model.styleShortName()}</td>
           <td>{model.availabilityName()}</td>
         </tr>
       );
     },
 
+    beerDetail: function(e) {
+      e.preventDefault();
+      var beerId = $(e.target).attr("data-beer-id");
+      // console.log(e.target, e.target.href);
+      this.props.onShowBeerDetail(beerId);
+    },
 
     render: function(){
       return(
-        <div className="beer_list brewery_list">
-          <h2>Beer List</h2>
-            <table>
-              <thead>
-                <th>Name</th>
-                <th>Style</th>
-                <th>Availability</th>
-              </thead>
-              <tbody>
-                {this.props.collection.map(this.getBeer)}
-              </tbody>
-            </table>
+        <div className="list_views">
+          {/*<views.AlphabetList/>*/}
+          <div className="beer_list brewery_list">
+            <h2>Beer List</h2>
+              <table>
+                <thead>
+                  <th>Name</th>
+                  <th>Style</th>
+                  <th>Availability</th>
+                </thead>
+                <tbody>
+                  {this.props.collection.map(this.getBeer)}
+                </tbody>
+              </table>
+          </div>
         </div>
       )
     }
@@ -118,51 +127,16 @@
   });
 
 
-  views.BeerListView = React.createBackboneClass({
-    beerDetail: function(e) {
-      // console.log("logging beerDetail");
-      e.preventDefault();
-      this.props.onShowBeerDetail();
-    },
-
-    render: function(){
-      return(
-        <div className="list_views">
-          <views.Search/>
-          <views.AlphabetList/>
-          <views.BeerList collection={this.props.collection}/>
-        </div>
-      )
-    }
-  });
 
     views.BreweryListView = React.createBackboneClass({
     render: function(){
       return(
         <div className="list_views">
-          <views.Search/>
-          <views.AlphabetList/>
+          {/*<views.AlphabetList/>*/}
           <views.BreweryList collection={this.props.collection}/>
         </div>
       )
     }
   });
-
-  // views.BeerSection = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BeerListView/>
-  //     )
-  //   }
-  // });
-
-  // views.BrewerySection = React.createClass({
-  //   render: function(){
-  //     return(
-  //       <views.BreweryListView/>
-  //     )
-  //   }
-  // });
-
 
 })(tiy.views);
