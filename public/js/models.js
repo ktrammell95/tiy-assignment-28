@@ -51,6 +51,10 @@
 
   models.Beer = Backbone.Model.extend({
 
+    // initialize: function() {//FavoriteCollection down below
+    // this.favoriteBeer = new FavoriteBeer();
+    // },
+
     styleShortName: function() {
       return (this.get('style') || {}).shortName;
     },
@@ -62,6 +66,17 @@
     labelsIcon: function() {
       return (this.get('labels') || {}).icon;
     },
+
+    favorite: function() {
+      this.collection.favorites.add({
+        "id": this.get('id'), 
+        "name": this.get('name'), 
+     });
+    },
+
+    unfavorite: function() {
+    this.collection.favorites.remove({id: this.get('id')});
+    }
 
   });
 
@@ -83,7 +98,11 @@
     }
   });
 
-  // models.FavoritedBeers = Backbone.Firebase.Collection.extend({
+  // models.FavoriteBeer = Backbone.Model.extend({
+
+  // });
+
+  // models.FavoriteBeer = Backbone.Firebase.Collection.extend({
   //   model: models.Beer,
 
   //   url: function() {
@@ -95,26 +114,25 @@
   //     }
   //     var uid = encodeURIComponent(tiy.authData.uid);
   //     var bid = this.beer.id;
-  //     return tiy.firebaseURL + "/" + uid + "/beers/" + tid;
+  //     return tiy.firebaseURL + "/" + uid + "/favoritebeer/" + bid;
   //   },
-
   // });
 
   // ---------- Categories ---------- //
 
-  // models.Category = Backbone.Model.extend({
+//   models.Category = Backbone.Model.extend({
 
-  // });
+//   });
 
-  // models.Categories = ApiCollection.extend({
-  //   model: models.Category,
-  //   url: "/api/categories"
+//   models.Categories = ApiCollection.extend({
+//     model: models.Category,
+//     url: "/api/categories"
 
-  //   parse: function(resp) {
-  //     return resp.data;
-  //   }
+//     parse: function(resp) {
+//       return resp.data;
+//     }
 
-  // });
+//   });
 
 })(tiy.models);
 

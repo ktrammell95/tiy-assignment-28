@@ -11,6 +11,7 @@
             <h3>{b.name}</h3>
             <div className="beer_details">
               <ul>
+                <li><a className="nav-favorites" data-name="favorites" href="/favoritebeer/"><i className="fa fa-beer"></i> Favorite</a></li>
                 <li>Description: {b.description}</li>
                 <li>ABV: {b.abv}</li>
                 <li>Glassware: {(b.glass || {}).name}</li>

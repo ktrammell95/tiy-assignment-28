@@ -157,7 +157,12 @@ tiy.Router = Backbone.Router.extend({
 
     this.section = React.render(
       React.createElement(tiy.views.BreweryListView, {
-        collection: breweries
+        collection: breweries,
+
+      onShowBreweryDetail: function(breweryId) {
+        this.navigate("breweries/"+breweryId, {trigger: true, replace: true});
+      }.bind(this),
+
       }),
       document.querySelector("section")
     );
