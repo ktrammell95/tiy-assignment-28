@@ -5,7 +5,6 @@
     parse: function(resp) {
       return resp.data;
     }
-
   });
 
 
@@ -13,8 +12,8 @@
 
   models.Brewery = Backbone.Model.extend({
     getImages: function() {
-      return (this.get('images') || {}).large;
-    }
+      return (this.get('images') || {}).medium;
+    },
 
   });
 
@@ -25,12 +24,11 @@
     parse: function(resp) {
       return resp.data;
     }
-
   });
 
   models.BreweryLocation = Backbone.Model.extend({
     getImages: function() {
-      return (this.get('images') || {}).large;
+      return (this.get('images') || {}).medium;
     }
   });
 
@@ -46,34 +44,7 @@
     parse: function(resp) {
       return resp.data;
     }
-
-    // on the brewery page
-    // you need to have a `brewery` model
-    // then create a new locations collection:
-    // var breweryLocations = new BreweryLocations(null, {brewery: brewery});
-    // then you can fetch its data:
-    // breweryLocations.fetch();
-
   });
-
-
-  // models.VisitedBreweries = Backbone.Firebase.Collection.extend({
-  //   model: models.Brewery,
-
-
-  //   url: function() {
-  //     if(!tiy.authData || !tiy.authData.uid){
-  //       throw new Error("A user must be logged in");
-  //     }
-  //     if(!this.brewery){
-  //       throw new Error("No breweries have been selected");
-  //     }
-  //     var uid = encodeURIComponent(tiy.authData.uid);
-  //     var bid = this.brewery.id;
-  //     return tiy.firebaseURL + "/" + uid + "/breweries/" + bid;
-  //   },
-  // });
-
 
   // ---------- Beers ---------- //
 
@@ -91,12 +62,25 @@
     labelsIcon: function() {
       return (this.get('labels') || {}).icon;
     },
-  });
 
+    getGlass: function() {
+      return (this.get('glass').name || {}).name;
+    },
+  });
 
   models.Beers = ApiCollection.extend({
     model: models.Beer,
     url: "/api/beers",
+    parse: function(resp) {
+      return resp.data;
+    }
+  });
+
+  models.BeerDetails = Backbone.Model.extend({
+    url: function() {
+      // var bid = this.beer.id;
+      return "/api/beer/" + this.get("id");
+    },
     parse: function(resp) {
       return resp.data;
     }
@@ -129,25 +113,14 @@
   //   model: models.Category,
   //   url: "/api/categories"
 
+  //   parse: function(resp) {
+  //     return resp.data;
+  //   }
 
   // });
 
-    // ---------- Search ---------- //
-
-//   models.Search = Backbone.Model.extend({
-
-//   });
-
-//   models.Searches = ApiCollection.extend({
-//     model: models.Search,
-//     url: "/api/search/q="
-
-
-//   });
-
 })(tiy.models);
 
-//models is the namespace we are using
 
 // ----- console ----- //
 

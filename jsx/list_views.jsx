@@ -3,15 +3,18 @@
 
 //Beer List information
   views.BeerList = React.createClass({
+
+
     getBeer: function(model) {
       return (
         <tr>
-          <td>{model.get("name")}</td>
+          <td><a href="#" onClick={this.beerDetail}>{model.get("name")}</a></td>
           <td>{model.styleShortName()}</td>
           <td>{model.availabilityName()}</td>
         </tr>
       );
     },
+
 
     render: function(){
       return(
@@ -37,8 +40,8 @@
     getBrewery: function(model) {
       return (
         <tr>
-          <td><img src={model.getImages()}/></td>
           <td>{model.get("name")}</td>
+          <td><img src={model.getImages()}/></td>
         </tr>
       );
     },
@@ -116,6 +119,12 @@
 
 
   views.BeerListView = React.createBackboneClass({
+    beerDetail: function(e) {
+      // console.log("logging beerDetail");
+      e.preventDefault();
+      this.props.onShowBeerDetail();
+    },
+
     render: function(){
       return(
         <div className="list_views">

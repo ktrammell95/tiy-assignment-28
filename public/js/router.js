@@ -9,7 +9,7 @@ tiy.Router = Backbone.Router.extend({
     "user"                  : "showUserInfo", 
     "blog"                  : "showBlog",
     "breweries/:breweryid"  : "showBreweryLoc",
-    "beer/:beerid"          : "showBeer",
+    "beers/:beerid"         : "showBeerDetails",
   },
 
   initialize: function(){
@@ -59,15 +59,15 @@ tiy.Router = Backbone.Router.extend({
     // );
 
     this.listenTo(tiy, "sign:out", function(){
-      this.breweries = null;
-      this.section.setProps({collection: this.breweries});
+      // this.breweries = null;
+      // this.section.setProps({collection: this.breweries});
       this.beers = null;
       this.section.setProps({collection: this.beers});
     });
 
     this.listenTo(tiy, "sign:in", function(){
-      this.breweries = new tiy.models.Breweries();
-      this.section.setProps({collection: this.breweries});
+      // this.breweries = new tiy.models.Breweries();
+      // this.section.setProps({collection: this.breweries});
       this.beers = new tiy.models.Beers();
       this.section.setProps({collection: this.beers});
     })
@@ -82,7 +82,7 @@ tiy.Router = Backbone.Router.extend({
   showHome: function(){
     this.section = React.render(
       React.createElement(tiy.views.Home, {
-        model: tiy.currentUser,
+        // model: tiy.currentUser,
         onShowBeers: function() {
           this.navigate("beers", {trigger: true, replace: true});
         }.bind(this),
@@ -101,17 +101,35 @@ tiy.Router = Backbone.Router.extend({
   },
 
   showBeers: function(){
-    var beers = new tiy.models.Beers();
 
+    var beers = new tiy.models.Beers();
     // tell the section component to render the right section
     this.section = React.render(
       React.createElement(tiy.views.BeerListView, {
-        collection: beers
+        collection: beers,
+
+        onShowBeerDetail: function() {
+          this.navigate("beers/:beerid", {trigger: true, replace: true});
+        }.bind(this),
       }),
       document.querySelector("section")
     );
     beers.fetch();
   },
+
+  showBeerDetails: function(beerid){
+    // var beers = new tiy.models.Beers();
+    var beerDetails = new tiy.models.BeerDetails({id: beerid});
+
+    this.section = React.render(
+      React.createElement(tiy.views.BeerDetails, {
+        model: beerDetails
+      }),
+      document.querySelector("section")
+    );
+
+    beerDetails.fetch();
+  }, 
 
   showBreweryLoc: function(breweryid){
     var breweries = new tiy.models.Breweries();

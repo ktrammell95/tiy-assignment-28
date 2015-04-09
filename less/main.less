@@ -136,7 +136,7 @@ section {
   background-color: rgba(254, 254, 231, .6);
   padding: 0;
   width:960px;
-  height: 900px;
+  height: 5500px;
   margin: auto;
   .index{
     padding: 20px;
@@ -229,11 +229,12 @@ section {
         // background: grey;
         width: 28%;
         // text-align: center;
-        tr:nth-child(even) {
-          background: tan;
-        }
+        // tr:nth-child(even) {
+        //   background: tan;
+        // }
         td{ 
           min-width: 265px;
+          height: 100px;
           overflow: hidden;
         }
       }
@@ -262,8 +263,13 @@ section {
       font-size: 25px;
       color: @action-color;
     }
-    .beer_details, .brewery_details{
+    .beer_details{
+      width: 100%;
+    }
+    .brewery_details{
       width: 50%;
+    }
+    .beer_details, {
       float: left;
       ul li{
         list-style: none;
@@ -274,6 +280,10 @@ section {
       float: left;
       width: auto;
       height: 125px;
+    }
+    .description {
+      clear:both;
+      padding: 20px;
     }
   }
   .style_view{

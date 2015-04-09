@@ -1,28 +1,25 @@
 (function(views){
 
-  views.BeerDetail = React.createClass({
-    getBeerDetail: function(model) {
-      return (
-        <div className="beer">
-          <h3>{model.get("name")}</h3>
-          <div className="beer_details">
-            <ul>
-              <li>Description: {model.get("description")}</li>
-              <li>ABV:{model.get("abv")}</li>
-              <li>Glassware:{model.get("glass")}</li>
-              <li>Style:{model.get("style")}</li>
-            </ul>
-          </div>
-          <div className="beer_image">
-            <img src={model.getImages()}/>
-          </div>
-        </div>
-      );
-    },
+  views.BeerDetails = React.createBackboneClass({
+
     render: function(){
+      var b = this.props.model.toJSON();
+
       return(
         <div>
-          {this.props.collection.map(this.getBeerDetail)}
+          <div className="beer">
+            <h3>{b.name}</h3>
+            <div className="beer_details">
+              <ul>
+                <li>Description: {b.description}</li>
+                <li>ABV: {b.abv}</li>
+                <li>Glassware: {(b.glass || {}).name}</li>
+                <li>Availability: {(b.available|| {}).name}</li>
+                <li>Style: {(b.style|| {}).shortName}</li>
+                <li>Style Description: {(b.style|| {}).description}</li>
+              </ul>
+            </div>
+          </div>
         </div>
       )
     }
@@ -33,7 +30,7 @@
     getBreweryLocation: function(model) {
           return (
           <div>  
-            <h3>{model.collection.brewery.get('name')}</h3>
+            <h3>{model.collection.brewery.get("name")}</h3>
             <div className="brewery_details">
               <ul>
                 <li>{model.get("streetAddress")}</li>
@@ -43,8 +40,11 @@
                 <li>{model.get("website")}</li>
               </ul>
             </div>
-            <div className="beer_image">
+            <div className="brewery_image">
               <img src={model.collection.brewery.getImages()}/>
+            </div>
+            <div className="description">
+              <p>{model.collection.brewery.get("description")}</p>
             </div>
           </div>
           );

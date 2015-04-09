@@ -213,10 +213,7 @@
       return (
         React.createElement("div", {className: "style_list"}, 
           React.createElement("ul", null, 
-            React.createElement("li", null, React.createElement("a", {href: "American Amber / Red Ale"}, "American Amber / Red Ale")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Barleywine"}, "American Barleywine")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Black Ale"}, "American Black Ale")), 
-            React.createElement("li", null, React.createElement("a", {href: "American Blonde Ale"}, "American Blonde Ale"))
+            React.createElement("li", null, React.createElement("a", {href: "#"}, model.get("id")))
           )
         )
       );
@@ -248,29 +245,26 @@
 })(tiy.views);
 (function(views){
 
-  views.BeerDetail = React.createClass({displayName: "BeerDetail",
-    getBeerDetail: function(model) {
-      return (
-        React.createElement("div", {className: "beer"}, 
-          React.createElement("h3", null, model.get("name")), 
-          React.createElement("div", {className: "beer_details"}, 
-            React.createElement("ul", null, 
-              React.createElement("li", null, "Description: ", model.get("description")), 
-              React.createElement("li", null, "ABV:", model.get("abv")), 
-              React.createElement("li", null, "Glassware:", model.get("glass")), 
-              React.createElement("li", null, "Style:", model.get("style"))
-            )
-          ), 
-          React.createElement("div", {className: "beer_image"}, 
-            React.createElement("img", {src: model.getImages()})
-          )
-        )
-      );
-    },
+  views.BeerDetails = React.createBackboneClass({
+
     render: function(){
+      var b = this.props.model.toJSON();
+
       return(
         React.createElement("div", null, 
-          this.props.collection.map(this.getBeerDetail)
+          React.createElement("div", {className: "beer"}, 
+            React.createElement("h3", null, b.name), 
+            React.createElement("div", {className: "beer_details"}, 
+              React.createElement("ul", null, 
+                React.createElement("li", null, "Description: ", b.description), 
+                React.createElement("li", null, "ABV: ", b.abv), 
+                React.createElement("li", null, "Glassware: ", (b.glass || {}).name), 
+                React.createElement("li", null, "Availability: ", (b.available|| {}).name), 
+                React.createElement("li", null, "Style: ", (b.style|| {}).shortName), 
+                React.createElement("li", null, "Style Description: ", (b.style|| {}).description)
+              )
+            )
+          )
         )
       )
     }
@@ -281,7 +275,7 @@
     getBreweryLocation: function(model) {
           return (
           React.createElement("div", null, 
-            React.createElement("h3", null, model.collection.brewery.get('name')), 
+            React.createElement("h3", null, model.collection.brewery.get("name")), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
                 React.createElement("li", null, model.get("streetAddress")), 
@@ -291,8 +285,11 @@
                 React.createElement("li", null, model.get("website"))
               )
             ), 
-            React.createElement("div", {className: "beer_image"}, 
+            React.createElement("div", {className: "brewery_image"}, 
               React.createElement("img", {src: model.collection.brewery.getImages()})
+            ), 
+            React.createElement("div", {className: "description"}, 
+              React.createElement("p", null, model.collection.brewery.get("description"))
             )
           )
           );
@@ -540,7 +537,7 @@
 
   views.Home = React.createClass({displayName: "Home",
     render: function(){
-      window.x = this;
+      // window.x = this;
       return (
         React.createElement("div", {className: "index"}, 
           React.createElement(views.About, null), 
@@ -556,30 +553,6 @@
 
   views.Section = React.createClass({displayName: "Section",
 
-    // beerList: function(e) {
-    //   console.log("beerList");
-    //   e.preventDefault();
-    //   this.props.onShowBeers();
-    // },
-
-    // categoryList: function(e) {
-    //   console.log("categoryList");
-    //   e.preventDefault();
-    //   this.props.onShowCategories();
-    // },
-
-    // breweryList: function(e) {
-    //   console.log("breweryList");
-    //   e.preventDefault();
-    //   this.props.onShowBreweries();
-    // },
-
-    // locationList: function(e) {
-    //   console.log("locationList");
-    //   e.preventDefault();
-    //   this.props.onShowLocations();
-    // },
-
     render: function(){
       return (
           React.createElement(views.Home, null)
@@ -593,15 +566,18 @@
 
 //Beer List information
   views.BeerList = React.createClass({displayName: "BeerList",
+
+
     getBeer: function(model) {
       return (
         React.createElement("tr", null, 
-          React.createElement("td", null, model.get("name")), 
+          React.createElement("td", null, React.createElement("a", {href: "#", onClick: this.beerDetail}, model.get("name"))), 
           React.createElement("td", null, model.styleShortName()), 
           React.createElement("td", null, model.availabilityName())
         )
       );
     },
+
 
     render: function(){
       return(
@@ -627,8 +603,8 @@
     getBrewery: function(model) {
       return (
         React.createElement("tr", null, 
-          React.createElement("td", null, React.createElement("img", {src: model.getImages()})), 
-          React.createElement("td", null, model.get("name"))
+          React.createElement("td", null, model.get("name")), 
+          React.createElement("td", null, React.createElement("img", {src: model.getImages()}))
         )
       );
     },
@@ -706,6 +682,12 @@
 
 
   views.BeerListView = React.createBackboneClass({
+    beerDetail: function(e) {
+      // console.log("logging beerDetail");
+      e.preventDefault();
+      this.props.onShowBeerDetail();
+    },
+
     render: function(){
       return(
         React.createElement("div", {className: "list_views"}, 

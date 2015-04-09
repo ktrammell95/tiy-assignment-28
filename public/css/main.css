@@ -117,7 +117,7 @@ section {
   background-color: rgba(254, 254, 231, 0.6);
   padding: 0;
   width: 960px;
-  height: 900px;
+  height: 5500px;
   margin: auto;
 }
 section .index {
@@ -215,13 +215,10 @@ section .list_views .beer_list tbody,
 section .list_views .brewery_list tbody {
   width: 28%;
 }
-section .list_views .beer_list tbody tr:nth-child(even),
-section .list_views .brewery_list tbody tr:nth-child(even) {
-  background: tan;
-}
 section .list_views .beer_list tbody td,
 section .list_views .brewery_list tbody td {
   min-width: 265px;
+  height: 100px;
   overflow: hidden;
 }
 section .list_views .alphabet {
@@ -251,16 +248,19 @@ section .brewery h3 {
   color: #e9e2d6;
 }
 section .beer .beer_details,
-section .brewery .beer_details,
+section .brewery .beer_details {
+  width: 100%;
+}
 section .beer .brewery_details,
 section .brewery .brewery_details {
   width: 50%;
+}
+section .beer .beer_details,
+section .brewery .beer_details {
   float: left;
 }
 section .beer .beer_details ul li,
-section .brewery .beer_details ul li,
-section .beer .brewery_details ul li,
-section .brewery .brewery_details ul li {
+section .brewery .beer_details ul li {
   list-style: none;
   margin-bottom: 20px;
 }
@@ -271,6 +271,11 @@ section .brewery .brewery_image {
   float: left;
   width: auto;
   height: 125px;
+}
+section .beer .description,
+section .brewery .description {
+  clear: both;
+  padding: 20px;
 }
 section .style_view .search {
   float: left;

@@ -36,10 +36,7 @@
       return (
         <div className="style_list">
           <ul>
-            <li><a href="American Amber / Red Ale">American Amber / Red Ale</a></li>
-            <li><a href="American Barleywine">American Barleywine</a></li>
-            <li><a href="American Black Ale">American Black Ale</a></li>
-            <li><a href="American Blonde Ale">American Blonde Ale</a></li>
+            <li><a href="#">{model.get("id")}</a></li>
           </ul>
         </div>
       );
