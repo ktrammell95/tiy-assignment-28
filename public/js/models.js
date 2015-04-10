@@ -8,7 +8,56 @@
   });
 
 
-// ---------- Breweries ---------- //
+  // ---------- Beers ---------- //
+
+
+  models.Beer = Backbone.Model.extend({
+
+    styleShortName: function() {
+      return (this.get('style') || {}).shortName;
+    },
+
+    availabilityName: function() {
+      return (this.get('available') || {}).name;
+    },
+
+    labelsIcon: function() {
+      return (this.get('labels') || {}).icon;
+    },
+
+  });
+
+  models.Beers = ApiCollection.extend({
+    model: models.Beer,
+    url: "/api/beers",
+    
+    parse: function(resp) {
+      return resp.data;
+    }
+  });
+
+  models.BeerDetails = Backbone.Model.extend({
+    url: function() {
+      return "/api/beer/" + this.get("id");
+    },
+
+    parse: function(resp) {
+      return resp.data;
+    },
+
+    // favorite: function() {
+    //   this.collection.favorites.add({
+    //     "id": this.get('id'), 
+    //     "name": this.get('name'), 
+    //   });
+    // },
+
+    // unfavorite: function() {
+    //  this.collection.favorites.remove({id: this.get('id')});
+    // }
+  });
+
+  // ---------- Breweries ---------- //
 
   models.Brewery = Backbone.Model.extend({
     getImages: function() {
@@ -46,43 +95,6 @@
     }
   });
 
-  // ---------- Beers ---------- //
-
-
-  models.Beer = Backbone.Model.extend({
-
-    styleShortName: function() {
-      return (this.get('style') || {}).shortName;
-    },
-
-    availabilityName: function() {
-      return (this.get('available') || {}).name;
-    },
-
-    labelsIcon: function() {
-      return (this.get('labels') || {}).icon;
-    },
-
-  });
-
-  models.Beers = ApiCollection.extend({
-    model: models.Beer,
-    url: "/api/beers",
-    
-    parse: function(resp) {
-      return resp.data;
-    }
-  });
-
-  models.BeerDetails = Backbone.Model.extend({
-    url: function() {
-      return "/api/beer/" + this.get("id");
-    },
-
-    parse: function(resp) {
-      return resp.data;
-    }
-  });
 
   // ---------- Categories ---------- //
 
@@ -100,38 +112,52 @@
 
   });
 
-  // ---------- Locations ---------- //
 
+  // ---------- Favorites ---------- //
 
-  models.Location = Backbone.Model.extend({
+  models.User = Backbone.Model.extend({
 
-  });
+    hasBeerAsFav: function(beer) {
+      // if (!this.favorites) {
+      //   return false;
+      // }
+      return !!this.favorites.beers.get(beer.id);
+    },
 
-  models.Locations = ApiCollection.extend({
-    model: models.Location,
-    url: "/api/locations",
+    addBeerAsFav: function(beer) {
+      return this.favorites.beers.add(beer);
+    },
 
-    parse: function(resp) {
-      return resp.data;
+    removeBeerAsFav: function(beer) {
+      return this.favorites.beers.remove(beer);
     }
 
   });
 
 
-  // ---------- Favorites ---------- //
+  models.FavoriteBeersCollection = Backbone.Firebase.Collection.extend({
 
+    model: models.Beer,
+  
+    url: function() {
+      if(!tiy.isLoggedIn()){
+        throw new Error("A user must be logged in");
+      }
+      // if(!this.beers){
+      //   throw new Error("No favorites have been chosen");
+      // }
+      var uid = encodeURIComponent(tiy.authData.uid);
+      // var bid = this.beer.id;
+      var url = tiy.firebaseURL + uid + "/favorites/beers/";
+      return url;
+    }
 
-  // models.FavoriteCollection = Backbone.Model.extend({
+    // initialize: function(data, options){
+    //   options || (options = {});
+    //   this.beers = options.beers;
+    // }
 
-  // });
-
-  // models.FavoritesCollection = Backbone.Firebase.Collection.extend({
-
-  // model: Beers,
-  // url: "https://kt-musicapp.firebaseio.com/favorites",
-
-
-  // });
+  });
 
 })(tiy.models);
 

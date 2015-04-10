@@ -29,7 +29,7 @@
 
     favorites: function(e) {
       e.preventDefault();
-      this.props.onShowUserInfo();
+      this.props.onShowFavorites();
     },
 
     render: function(){

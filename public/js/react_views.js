@@ -179,6 +179,16 @@
 
   views.BeerDetails = React.createBackboneClass({
 
+    checkFavorite: function(e){
+      e.preventDefault();
+      var beer = this.props.model; // find the beer...
+      if (tiy.currentUser.hasBeerAsFav(beer)) {
+        tiy.currentUser.removeBeerAsFav(beer);
+      } else {
+        tiy.currentUser.addBeerAsFav(beer);
+      }
+    },
+
     render: function(){
       var b = this.props.model.toJSON();
 
@@ -188,7 +198,9 @@
             React.createElement("h3", null, b.name), 
             React.createElement("div", {className: "beer_details"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, React.createElement("a", {className: "nav-favorites", "data-name": "favorites", href: "/favoritebeer/"}, React.createElement("i", {className: "fa fa-beer"}), " Favorite")), 
+                React.createElement("li", null, React.createElement("a", {"data-beer-id": b.id, className: "btn btn-lg btn-success", href: "#", onClick: this.checkFavorite}, 
+                  React.createElement("i", {className: "fa fa-beer fa-2x pull-left"}), "Add to", React.createElement("br", null), "Favorites")
+                ), 
                 React.createElement("li", null, "Description: ", b.description), 
                 React.createElement("li", null, "ABV: ", b.abv), 
                 React.createElement("li", null, "Glassware: ", (b.glass || {}).name), 
@@ -245,9 +257,9 @@
 })(tiy.views);
 (function(views){
 
-  views.UserBeerDetail = React.createClass({displayName: "UserBeerDetail",
-    render: function(){
-      return(
+  views.BeerFavorites = React.createBackboneClass({
+    getBeerFavorites: function(model) {
+      return (
         React.createElement("div", {className: "beer_name"}, 
           React.createElement("h3", null, "Saison Lafayette"), 
           React.createElement("div", {className: "beer_image"}, 
@@ -263,12 +275,20 @@
             )
           )
         )
+      );
+    },
+
+    render: function(){
+      return(
+        React.createElement("div", null, 
+          this.props.collection.map(this.getBeerFavorites)
+        )
       )
     }
   });
 
 //Brewery Detail Information
-  views.UserBreweryDetail = React.createBackboneClass({
+  views.BreweryFavorites = React.createBackboneClass({
     render: function(){
       return (
           React.createElement("div", {className: "brewery_name"}, 
@@ -289,17 +309,17 @@
     }
   });
 
-  views.UserSection = React.createClass({displayName: "UserSection",
+  views.FavoritesSection = React.createClass({displayName: "FavoritesSection",
     render: function(){
       return(
         React.createElement("div", {className: "users"}, 
           React.createElement("div", {className: "user_left"}, 
             React.createElement("h2", null, "Beers"), 
-            React.createElement(views.UserBeerDetail, null)
+            React.createElement(views.BeerFavorites, null)
           ), 
           React.createElement("div", {className: "user_right"}, 
             React.createElement("h2", null, "Breweries"), 
-            React.createElement(views.UserBreweryDetail, null)
+            React.createElement(views.BreweryFavorites, null)
           )
         )
       )
@@ -421,7 +441,7 @@
 
     favorites: function(e) {
       e.preventDefault();
-      this.props.onShowUserInfo();
+      this.props.onShowFavorites();
     },
 
     render: function(){

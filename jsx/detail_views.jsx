@@ -2,6 +2,16 @@
 
   views.BeerDetails = React.createBackboneClass({
 
+    checkFavorite: function(e){
+      e.preventDefault();
+      var beer = this.props.model; // find the beer...
+      if (tiy.currentUser.hasBeerAsFav(beer)) {
+        tiy.currentUser.removeBeerAsFav(beer);
+      } else {
+        tiy.currentUser.addBeerAsFav(beer);
+      }
+    },
+
     render: function(){
       var b = this.props.model.toJSON();
 
@@ -11,7 +21,9 @@
             <h3>{b.name}</h3>
             <div className="beer_details">
               <ul>
-                <li><a className="nav-favorites" data-name="favorites" href="/favoritebeer/"><i className="fa fa-beer"></i> Favorite</a></li>
+                <li><a data-beer-id={b.id} className="btn btn-lg btn-success" href="#" onClick={this.checkFavorite}>
+                  <i className="fa fa-beer fa-2x pull-left"></i>Add to<br/>Favorites</a>
+                </li>
                 <li>Description: {b.description}</li>
                 <li>ABV: {b.abv}</li>
                 <li>Glassware: {(b.glass || {}).name}</li>

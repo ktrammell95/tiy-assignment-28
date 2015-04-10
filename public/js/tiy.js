@@ -25,7 +25,7 @@ window.tiy = {
     _.extend(this, Backbone.Events);
 
     //create a model to store our current user
-    this.currentUser = new Backbone.Model();
+    this.currentUser = new tiy.models.User();
 
     //connect to firebase
     this.fireRef = new Firebase(this.firebaseURL);
@@ -39,10 +39,14 @@ window.tiy = {
     if (authData) {
       tiy.authData = authData;
       tiy.currentUser.set(authData.twitter.cachedUserProfile);
+      tiy.currentUser.favorites = {
+        beers: new tiy.models.FavoriteBeersCollection()
+      }
       console.log("A user has logged in:", tiy.currentUser.get("name"));
       tiy.trigger("sign:in");
     } else {
       tiy.authData = null;
+      tiy.currentUser.favorites = null;
       tiy.currentUser.clear();
       console.log("No one is signed in");
       tiy.trigger("sign:out");

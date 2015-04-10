@@ -5,12 +5,9 @@ tiy.Router = Backbone.Router.extend({
     "beers"                   : "showBeers",
     "breweries"               : "showBreweries",
     "styles"                  : "showStyles",
-    "locations"               : "showLocations",
-    "favorites"               : "showUserInfo", 
-    "blog"                    : "showBlog",
+    "favorites"               : "showFavorites", 
     "breweries/:breweryid"    : "showBreweryLoc",
     "beers/:beerid"           : "showBeerDetails",
-    // "categories/:categoryid"  : "showCategories",
   },
 
   initialize: function(){
@@ -27,50 +24,23 @@ tiy.Router = Backbone.Router.extend({
         onShowStyle: function() {
           this.navigate("styles", {trigger: true, replace: true});
         }.bind(this),
-        onShowLocations: function() {
-          this.navigate("locations", {trigger: true, replace: true});
-        }.bind(this),
-        onShowUserInfo: function() {
+        onShowFavorites: function() {
           this.navigate("favorites", {trigger: true, replace: true});
         }.bind(this),
-        onShowBlog: function() {
-          this.navigate("blog", {trigger: true, replace: true});
-        }.bind(this)
       }),
       document.querySelector("header")
     );
 
     this.navigate("", {trigger: true, replace: true});
 
-    //  this.nav = React.render(
-    //   React.createElement(tiy.views.Breadcrumbs, {
-    //     onRoute: this.onNav.bind(this)
-    //   }),
-    //   document.querySelector("nav")
-    // );
-
-    // this.breweries = tiy.isLoggedIn() ? new tiy.models.Breweries() : null;
-
-    // this.main = React.render(
-    //   React.createElement(tiy.views.Section, {
-    //   collection: this.breweries,
-    //   onBrewerySelect: this.onBrewerySelect.bind(this)
-    //   }),
-    //   document.querySelector("section")
-    // );
-
     this.listenTo(tiy, "sign:out", function(){
-      // this.breweries = null;
-      // this.section.setProps({collection: this.breweries});
       this.beers = null;
-      this.section.setProps({collection: this.beers});
+      this.section.setProps({collection: this.models.beers});
     });
 
     this.listenTo(tiy, "sign:in", function(){
-      // this.breweries = new tiy.models.Breweries();
-      // this.section.setProps({collection: this.breweries});
       this.beers = new tiy.models.Beers();
-      this.section.setProps({collection: this.beers});
+      this.section.setProps({collection: this.models.beers});
     })
 
   },
@@ -93,9 +63,6 @@ tiy.Router = Backbone.Router.extend({
         onShowCategories: function() {
           this.navigate("styles", {trigger: true, replace: true});
         }.bind(this),
-        onShowLocations: function() {
-          this.navigate("locations", {trigger: true, replace: true});
-        }.bind(this)
       }),
       document.querySelector("section")
     );
@@ -194,25 +161,21 @@ tiy.Router = Backbone.Router.extend({
       }),
       document.querySelector("section")
     );
+
     locations.fetch();
   },
 
-  showUserInfo: function(){
-    this.section = React.render(
-      React.createElement(tiy.views.UserSection, {
+  showFavorites: function(){
+    var favorites = new tiy.models.FavoritesCollection();
 
+    this.section = React.render(
+      React.createElement(tiy.views.FavoritesSection, {
+        collection: favorites,
       }),
       document.querySelector("section")
     );
+    
+    favorites.fetch();
   },
-
-  showBlog: function(){
-    this.section = React.render(
-      React.createElement(tiy.views.Blog, {
-
-      }),
-      document.querySelector("section")
-    );
-  }
 
 });
