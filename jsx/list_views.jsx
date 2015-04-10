@@ -25,7 +25,7 @@
     render: function(){
       return(
         <div className="list_views">
-          {/*<views.AlphabetList/>*/}
+          <views.AlphabetList/>
           <div className="beer_list brewery_list">
             <h2>Beer List</h2>
               <table>

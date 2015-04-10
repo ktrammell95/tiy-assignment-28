@@ -51,10 +51,6 @@
 
   models.Beer = Backbone.Model.extend({
 
-    // initialize: function() {//FavoriteCollection down below
-    // this.favoriteBeer = new FavoriteBeer();
-    // },
-
     styleShortName: function() {
       return (this.get('style') || {}).shortName;
     },
@@ -67,22 +63,12 @@
       return (this.get('labels') || {}).icon;
     },
 
-    favorite: function() {
-      this.collection.favorites.add({
-        "id": this.get('id'), 
-        "name": this.get('name'), 
-     });
-    },
-
-    unfavorite: function() {
-    this.collection.favorites.remove({id: this.get('id')});
-    }
-
   });
 
   models.Beers = ApiCollection.extend({
     model: models.Beer,
     url: "/api/beers",
+    
     parse: function(resp) {
       return resp.data;
     }
@@ -90,52 +76,64 @@
 
   models.BeerDetails = Backbone.Model.extend({
     url: function() {
-      // var bid = this.beer.id;
       return "/api/beer/" + this.get("id");
     },
+
     parse: function(resp) {
       return resp.data;
     }
   });
 
-  // models.FavoriteBeer = Backbone.Model.extend({
-
-  // });
-
-  // models.FavoriteBeer = Backbone.Firebase.Collection.extend({
-  //   model: models.Beer,
-
-  //   url: function() {
-  //     if(!tiy.authData || !tiy.authData.uid){
-  //       throw new Error("A user must be logged in");
-  //     }
-  //     if(!this.beer){
-  //       throw new Error("No beers have been selected");
-  //     }
-  //     var uid = encodeURIComponent(tiy.authData.uid);
-  //     var bid = this.beer.id;
-  //     return tiy.firebaseURL + "/" + uid + "/favoritebeer/" + bid;
-  //   },
-  // });
-
   // ---------- Categories ---------- //
 
-//   models.Category = Backbone.Model.extend({
+  models.Style = Backbone.Model.extend({
 
-//   });
+  });
 
-//   models.Categories = ApiCollection.extend({
-//     model: models.Category,
-//     url: "/api/categories"
+  models.Styles = ApiCollection.extend({
+    model: models.Style,
+    url: "/api/styles",
 
-//     parse: function(resp) {
-//       return resp.data;
-//     }
+    parse: function(resp) {
+      return resp.data;
+    }
 
-//   });
+  });
+
+  // ---------- Locations ---------- //
+
+
+  models.Location = Backbone.Model.extend({
+
+  });
+
+  models.Locations = ApiCollection.extend({
+    model: models.Location,
+    url: "/api/locations",
+
+    parse: function(resp) {
+      return resp.data;
+    }
+
+  });
+
+
+  // ---------- Favorites ---------- //
+
+
+  // models.FavoriteCollection = Backbone.Model.extend({
+
+  // });
+
+  // models.FavoritesCollection = Backbone.Firebase.Collection.extend({
+
+  // model: Beers,
+  // url: "https://kt-musicapp.firebaseio.com/favorites",
+
+
+  // });
 
 })(tiy.models);
-
 
 // ----- console ----- //
 

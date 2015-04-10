@@ -61,13 +61,5 @@
     }
   });
 
-    views.Section = React.createClass({
-    render: function(){
-      return(
-        <views.UserSection/>
-      )
-    }
-  });
-
 
 })(tiy.views);

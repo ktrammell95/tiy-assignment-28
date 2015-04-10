@@ -51,23 +51,23 @@
               </a>
             </div>
             <div className="image_right">
-              <a href="#" onClick={this.categoryList}>
-                <img src="images/beer4.jpg" alt="beer category" />
-                Beer Categories
-              </a>
-            </div>
-            <div className="image_left">
               <a href="#" onClick={this.breweryList}>
                 <img src="images/beer_bottles.jpg" alt="brewery names" />
                 Brewery Names
               </a>
             </div>
-            <div className="image_right">
+            <div className="image_left">
+              <a href="#" onClick={this.categoryList}>
+                <img src="images/beer4.jpg" alt="beer category" />
+                Beer Styles
+              </a>
+            </div>
+            {/*<div className="image_right">
               <a href="#" onClick={this.locationList}>
                 <img src="images/beer3.jpg" alt="brewery locations" />
                 Brewery Locations
               </a>
-            </div>
+            </div>*/}
           </div>
       );
     }

@@ -22,9 +22,9 @@
       this.props.onShowLocations();
     },
 
-    blog: function(e) {
+    styles: function(e) {
       e.preventDefault();
-      this.props.onShowBlog();
+      this.props.onShowStyle();
     },
 
     favorites: function(e) {
@@ -48,19 +48,10 @@
           <div className="header-nav">
             <ul className="primary-nav">
             <li><a href="#">Home</a></li>
-            <li>Find a Beer
-              <ul className="secondary-nav">
-                  <li><a href="#" onClick={this.beerList}>List by Name</a></li>
-                  <li><a href="#" onClick={this.categoryList}>List by Category</a></li>
-              </ul>
+            <li><a href="#" onClick={this.beerList}>Find a Beer</a>
             </li>
-            <li>Find a Brewery
-              <ul className="secondary-nav">
-                <li><a href="#" onClick={this.breweryList}>List by Name</a></li>
-                <li><a href="#" onClick={this.locationList}>List by Location</a></li>
-              </ul>
-            </li>
-            {/*<li><a href="#" onClick={this.blog}>Blog</a></li>*/}
+            <li><a href="#" onClick={this.breweryList}>Find a Brewery</a></li>
+            <li><a href="#" onClick={this.styles}>Beer Styles</a></li>
             <li><a href="#" onClick={this.favorites}>Favorites</a></li>
           </ul>
           </div>

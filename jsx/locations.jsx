@@ -16,43 +16,25 @@
     }
   });
 
-  views.LocationList = React.createClass({
-    render: function(){
+  views.LocationList = React.createBackboneClass({
+    getLocation: function(model) {
       return (
         <div className="location_list">
           <ul>
-            <li><a href="#">Location 1</a></li>
-            <li><a href="#">Location 2</a></li>
-            <li><a href="#">Location 3</a></li>
-            <li><a href="#">Location 4</a></li>
+            <li>{model.get("region")}</li>
           </ul>
+        </div>
+      );
+    },
+
+    render: function(){
+      return (
+        <div>
+          {this.props.collection.map(this.getLocation)}
         </div>
       );
     }
   });
-
-
-
-  views.LocationListView = React.createClass({
-    render: function(){
-      return(
-        <div className="location_view">
-          <views.Search/>
-          <views.LocationList/>
-          <views.Map/>
-        </div>
-      )
-    }
-  });
-
-  views.LocationView = React.createClass({
-    render: function(){
-      return(
-          <views.LocationListView/>
-      )
-    }
-  });
-
 
 
 })(tiy.views);

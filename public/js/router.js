@@ -1,15 +1,16 @@
 tiy.Router = Backbone.Router.extend({
 
   routes: {
-    ""                      : "showHome",  
-    "beers"                 : "showBeers",
-    "breweries"             : "showBreweries",
-    "categories"            : "showCategories",
-    "locations"             : "showLocations",
-    "favorites"             : "showUserInfo", 
-    "blog"                  : "showBlog",
-    "breweries/:breweryid"  : "showBreweryLoc",
-    "beers/:beerid"         : "showBeerDetails",
+    ""                        : "showHome",  
+    "beers"                   : "showBeers",
+    "breweries"               : "showBreweries",
+    "styles"                  : "showStyles",
+    "locations"               : "showLocations",
+    "favorites"               : "showUserInfo", 
+    "blog"                    : "showBlog",
+    "breweries/:breweryid"    : "showBreweryLoc",
+    "beers/:beerid"           : "showBeerDetails",
+    // "categories/:categoryid"  : "showCategories",
   },
 
   initialize: function(){
@@ -23,8 +24,8 @@ tiy.Router = Backbone.Router.extend({
         onShowBreweries: function() {
           this.navigate("breweries", {trigger: true, replace: true});
         }.bind(this),
-        onShowCategories: function() {
-          this.navigate("categories", {trigger: true, replace: true});
+        onShowStyle: function() {
+          this.navigate("styles", {trigger: true, replace: true});
         }.bind(this),
         onShowLocations: function() {
           this.navigate("locations", {trigger: true, replace: true});
@@ -90,7 +91,7 @@ tiy.Router = Backbone.Router.extend({
           this.navigate("breweries", {trigger: true, replace: true});
         }.bind(this),
         onShowCategories: function() {
-          this.navigate("categories", {trigger: true, replace: true});
+          this.navigate("styles", {trigger: true, replace: true});
         }.bind(this),
         onShowLocations: function() {
           this.navigate("locations", {trigger: true, replace: true});
@@ -170,22 +171,30 @@ tiy.Router = Backbone.Router.extend({
     breweries.fetch();
   },
 
-  showCategories: function() {
+  showStyles: function() {
+    var styles = new tiy.models.Styles();
+
     this.section = React.render(
-      React.createElement(tiy.views.CategoryListView, {
+      React.createElement(tiy.views.StyleList, {
+        collection: styles,
 
       }),
       document.querySelector("section")
     );
+
+    styles.fetch();
   },
 
   showLocations: function(){
-    this.section = React.render(
-      React.createElement(tiy.views.LocationListView, {
+    var locations = new tiy.models.Locations();
 
+    this.section = React.render(
+      React.createElement(tiy.views.LocationList, {
+        collection: locations,
       }),
       document.querySelector("section")
     );
+    locations.fetch();
   },
 
   showUserInfo: function(){

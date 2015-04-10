@@ -20,6 +20,9 @@
                 <li>Style Description: {(b.style|| {}).description}</li>
               </ul>
             </div>
+            <div>
+              <img src={(b.labels|| {}).medium}/>
+            </div>
           </div>
         </div>
       )
