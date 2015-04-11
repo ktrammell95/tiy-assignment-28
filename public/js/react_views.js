@@ -230,7 +230,7 @@
                 React.createElement("li", null, "ABV: ", b.abv), 
                 React.createElement("li", null, "Glassware: ", (b.glass || {}).name), 
                 React.createElement("li", null, "Availability: ", (b.available|| {}).name), 
-                React.createElement("li", null, "Style: ", (b.style|| {}).shortName), 
+                React.createElement("li", null, "Style: ", (b.style|| {}).name), 
                 React.createElement("li", null, "Style Description: ", (b.style|| {}).description)
               )
             ), 
@@ -282,27 +282,30 @@
 })(tiy.views);
 (function(views){
 
-  views.BeerFavorites = React.createBackboneClass({
-    getBeerFavorites: function(model) {
+  views.FavoriteBeers = React.createBackboneClass({
+    getFavoriteBeers: function(model) {
       return (
-        React.createElement("div", {className: "beer_name"}, 
-          React.createElement("h3", null, "name"), 
-          React.createElement("div", {className: "beer_image"}, 
-            React.createElement("img", {src: "http://lorempixel.com/100/100/"})
-          ), 
-          React.createElement("div", {className: "user_beer"}, 
-            React.createElement("ul", null, 
-              React.createElement("li", null, "Description:")
+          React.createElement("div", {className: "beer_name"}, 
+            React.createElement("h3", null, model.get("name")), 
+            React.createElement("div", {className: "beer_image"}, 
+              React.createElement("img", {src: "http://lorempixel.com/100/100/"})
+            ), 
+            React.createElement("div", {className: "user_beer"}, 
+              React.createElement("ul", null, 
+                React.createElement("li", null, "Description: ", model.get("description")), 
+                React.createElement("li", null, "ABV: ", model.get("abv")), 
+                React.createElement("li", null, "Style: ", model.get("style").shortName), 
+                React.createElement("li", null, "Style Description: ", model.get("style").description)
+              )
             )
           )
-        )
       );
     },
 
     render: function(){
       return(
         React.createElement("div", null, 
-          this.props.collection.map(this.getBeerFavorites)
+          this.props.collection.map(this.getFavoriteBeers)
         )
       )
     }
@@ -330,17 +333,13 @@
     }
   });
 
-  views.FavoritesSection = React.createClass({displayName: "FavoritesSection",
+  views.FavoritesSection = React.createBackboneClass({
     render: function(){
       return(
         React.createElement("div", {className: "users"}, 
           React.createElement("div", {className: "user_left"}, 
-            React.createElement("h2", null, "Beers"), 
-            React.createElement(views.BeerFavorites, null)
-          ), 
-          React.createElement("div", {className: "user_right"}, 
-            React.createElement("h2", null, "Breweries"), 
-            React.createElement(views.BreweryFavorites, null)
+            React.createElement("h2", null, "Favorite Beers"), 
+              React.createElement(views.FavoriteBeers, null)
           )
         )
       )
@@ -460,9 +459,9 @@
       this.props.onShowStyle();
     },
 
-    favorites: function(e) {
+    favoriteBeers: function(e) {
       e.preventDefault();
-      this.props.onShowFavorites();
+      this.props.onshowFavoriteBeers();
     },
 
     render: function(){
@@ -485,7 +484,7 @@
             ), 
             React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.breweryList}, "Find a Brewery")), 
             React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.styles}, "Beer Styles")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.favorites}, "Favorites"))
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.favoriteBeers}, "Favorites"))
           )
           )
         )
@@ -606,7 +605,7 @@
       return (
         React.createElement("tr", null, 
           React.createElement("td", null, React.createElement("a", {"data-beer-id": model.get("id"), href: "#", onClick: this.beerDetail}, model.get("name"))), 
-          React.createElement("td", null, model.styleShortName()), 
+          React.createElement("td", null, model.styleName()), 
           React.createElement("td", null, model.availabilityName())
         )
       );
@@ -803,77 +802,3 @@
 
 
 })(tiy.views);
-(function(views){
-
-  views.Task = React.createBackboneClass({
-
-    destroy: function(){
-      this.props.model.destroy();
-    },
-
-    render: function() {
-      var d = this.props.model.toJSON();
-      return (
-        React.createElement("div", {className: "task item", onClick: this.props.onClick}, 
-          React.createElement("span", {className: "item-title"}, d.name), 
-          React.createElement(views.DeleteButton, {
-            confirm: "Really delete task? You will lose all milestones", 
-            onDelete: this.destroy}), 
-          React.createElement(views.Progress, {percent: d.percent_complete})
-        )
-      );
-    }
-
-  });
-
-  views.Tasks = React.createBackboneClass({
-
-    selectTask: function(model){
-      this.props.onSelect(model);
-    },
-
-    getItem: function(model, index){
-      return (
-        React.createElement(views.Task, {
-          model: model, 
-          onClick: this.selectTask.bind(this, model), 
-          key: index})
-      );
-    },
-
-    add: function(data){
-      // console.log("add task", data);
-      this.props.collection.add(data);
-    },
-
-    render: function(){
-      return(
-        React.createElement("div", {className: "tasks list"}, 
-          React.createElement("div", {className: "heading"}, 
-            React.createElement("h2", null, "Tasks")
-          ), 
-          React.createElement("div", {className: "items"}, 
-             this.props.collection.map(this.getItem) 
-          ), 
-          React.createElement("div", {className: "add-item"}, 
-            React.createElement(views.AddForm, {adding: "task", onAdd: this.add})
-          )
-        )
-      );
-    }
-
-  });
-
-})(tiy.views);
-
-//backbone class if it has a model that goes with it
-
-
-// var tasks = new tiy.models.Tasks();
-// var t = tasks.first();
-// t.toJSON();
-// t.set("percent_complete", 1);
-// t = tasks.at(1);
-// t.attributes.name
-// t.set("percent_complete", 0.5);
-// check FB

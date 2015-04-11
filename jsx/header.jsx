@@ -27,9 +27,9 @@
       this.props.onShowStyle();
     },
 
-    favorites: function(e) {
+    favoriteBeers: function(e) {
       e.preventDefault();
-      this.props.onShowFavorites();
+      this.props.onshowFavoriteBeers();
     },
 
     render: function(){
@@ -52,7 +52,7 @@
             </li>
             <li><a href="#" onClick={this.breweryList}>Find a Brewery</a></li>
             <li><a href="#" onClick={this.styles}>Beer Styles</a></li>
-            <li><a href="#" onClick={this.favorites}>Favorites</a></li>
+            <li><a href="#" onClick={this.favoriteBeers}>Favorites</a></li>
           </ul>
           </div>
         </div>

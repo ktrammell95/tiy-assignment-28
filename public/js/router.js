@@ -5,7 +5,7 @@ tiy.Router = Backbone.Router.extend({
     "beers"                   : "showBeers",
     "breweries"               : "showBreweries",
     "styles"                  : "showStyles",
-    "favorites"               : "showFavorites", 
+    "favoritebeers"           : "showFavoriteBeers", 
     "breweries/:breweryid"    : "showBreweryLoc",
     "beers/:beerid"           : "showBeerDetails",
   },
@@ -24,8 +24,8 @@ tiy.Router = Backbone.Router.extend({
         onShowStyle: function() {
           this.navigate("styles", {trigger: true, replace: true});
         }.bind(this),
-        onShowFavorites: function() {
-          this.navigate("favorites", {trigger: true, replace: true});
+        onshowFavoriteBeers: function() {
+          this.navigate("favoritebeers", {trigger: true, replace: true});
         }.bind(this),
       }),
       document.querySelector("header")
@@ -169,7 +169,7 @@ tiy.Router = Backbone.Router.extend({
     var favoriteBeers = new tiy.models.FavoriteBeersCollection();
 
     this.section = React.render(
-      React.createElement(tiy.views.FavoritesSection, {
+      React.createElement(tiy.views.FavoriteBeers, {
         collection: favoriteBeers,
       }),
       document.querySelector("section")
@@ -189,6 +189,6 @@ tiy.Router = Backbone.Router.extend({
     // );
     
     // favoriteBreweries.fetch();
-  },
+  // },
 
 });

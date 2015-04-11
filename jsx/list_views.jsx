@@ -9,7 +9,7 @@
       return (
         <tr>
           <td><a data-beer-id={model.get("id")} href="#" onClick={this.beerDetail}>{model.get("name")}</a></td>
-          <td>{model.styleShortName()}</td>
+          <td>{model.styleName()}</td>
           <td>{model.availabilityName()}</td>
         </tr>
       );

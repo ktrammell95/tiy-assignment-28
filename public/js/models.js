@@ -13,8 +13,8 @@
 
   models.Beer = Backbone.Model.extend({
 
-    styleShortName: function() {
-      return (this.get('style') || {}).shortName;
+    styleName: function() {
+      return (this.get('style') || {}).name;
     },
 
     availabilityName: function() {
@@ -147,7 +147,7 @@
       var uid = encodeURIComponent(tiy.authData.uid);
       var url = tiy.firebaseURL + uid + "/favorites/beers/";
       return url;
-    }
+    },
 
   });
 

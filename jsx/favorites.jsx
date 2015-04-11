@@ -1,26 +1,29 @@
 (function(views){
 
-  views.BeerFavorites = React.createBackboneClass({
-    getBeerFavorites: function(model) {
+  views.FavoriteBeers = React.createBackboneClass({
+    getFavoriteBeers: function(model) {
       return (
-        <div className="beer_name">
-          <h3>name</h3>
-          <div className="beer_image">
-            <img src="http://lorempixel.com/100/100/"/>
+          <div className="beer_name">
+            <h3>{model.get("name")}</h3>
+            <div className="beer_image">
+              <img src="http://lorempixel.com/100/100/"/>
+            </div>
+            <div className="user_beer">
+              <ul>
+                <li>Description: {model.get("description")}</li>
+                <li>ABV: {model.get("abv")}</li>
+                <li>Style: {model.get("style").shortName}</li>
+                <li>Style Description: {model.get("style").description}</li>
+              </ul>
+            </div>
           </div>
-          <div className="user_beer">
-            <ul>
-              <li>Description:</li>
-            </ul>
-          </div>
-        </div>
       );
     },
 
     render: function(){
       return(
         <div>
-          {this.props.collection.map(this.getBeerFavorites)}
+          {this.props.collection.map(this.getFavoriteBeers)}
         </div>
       )
     }
@@ -48,17 +51,13 @@
     }
   });
 
-  views.FavoritesSection = React.createClass({
+  views.FavoritesSection = React.createBackboneClass({
     render: function(){
       return(
         <div className="users">
           <div className="user_left">
-            <h2>Beers</h2>
-            <views.BeerFavorites/>
-          </div>
-          <div className="user_right">
-            <h2>Breweries</h2>
-            <views.BreweryFavorites/>
+            <h2>Favorite Beers</h2>
+              <views.FavoriteBeers/>
           </div>
         </div>
       )

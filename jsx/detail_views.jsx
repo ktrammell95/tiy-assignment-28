@@ -53,7 +53,7 @@
                 <li>ABV: {b.abv}</li>
                 <li>Glassware: {(b.glass || {}).name}</li>
                 <li>Availability: {(b.available|| {}).name}</li>
-                <li>Style: {(b.style|| {}).shortName}</li>
+                <li>Style: {(b.style|| {}).name}</li>
                 <li>Style Description: {(b.style|| {}).description}</li>
               </ul>
             </div>
