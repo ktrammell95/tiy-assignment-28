@@ -5,15 +5,13 @@
       return (
           <div className="beer_name">
             <h3>{model.get("name")}</h3>
-            <div className="beer_image">
-              <img src="http://lorempixel.com/100/100/"/>
-            </div>
             <div className="user_beer">
               <ul>
-                <li>Description: {model.get("description")}</li>
+                <li>{model.get("description")}</li>
                 <li>ABV: {model.get("abv")}</li>
+                <li>Food Pairings: {model.get("foodPairings")}</li>
                 <li>Style: {model.get("style").shortName}</li>
-                <li>Style Description: {model.get("style").description}</li>
+                <li>Style Description:<p>{model.get("style").description}</p></li>
               </ul>
             </div>
           </div>
@@ -23,7 +21,10 @@
     render: function(){
       return(
         <div>
+          <h2>Favorited Beers</h2>
+          <div>
           {this.props.collection.map(this.getFavoriteBeers)}
+          </div>
         </div>
       )
     }

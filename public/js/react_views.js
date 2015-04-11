@@ -220,18 +220,19 @@
       return(
         React.createElement("div", null, 
           React.createElement("div", {className: "beer"}, 
-            React.createElement("h3", null, b.name), 
+            React.createElement("h2", null, b.name), 
             React.createElement("div", {className: "favButton"}, 
               favButton
             ), 
             React.createElement("div", {className: "beer_details"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, "Description: ", b.description), 
-                React.createElement("li", null, "ABV: ", b.abv), 
-                React.createElement("li", null, "Glassware: ", (b.glass || {}).name), 
-                React.createElement("li", null, "Availability: ", (b.available|| {}).name), 
-                React.createElement("li", null, "Style: ", (b.style|| {}).name), 
-                React.createElement("li", null, "Style Description: ", (b.style|| {}).description)
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Description:"), React.createElement("span", null, " ", b.description)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "ABV:"), React.createElement("span", null, " ", b.abv)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Glassware:"), React.createElement("span", null, " ", (b.glass || {}).name)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Availability:"), React.createElement("span", null, " ", (b.available|| {}).description)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Food Pairings:"), React.createElement("span", null, " ", b.foodPairings)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style:"), React.createElement("span", null, " ", (b.style|| {}).name)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style Description:"), React.createElement("span", null, " ", (b.style|| {}).description))
               )
             ), 
             React.createElement("div", null, 
@@ -248,22 +249,22 @@
     getBreweryLocation: function(model) {
           return (
           React.createElement("div", null, 
-            React.createElement("h3", null, model.collection.brewery.get("name")), 
+            React.createElement("h2", null, model.collection.brewery.get("name")), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, model.get("locationTypeDisplay")), 
-                React.createElement("li", null, model.get("streetAddress")), 
-                React.createElement("li", null, model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode")), 
-                React.createElement("li", null, model.get("countryIsoCode")), 
-                React.createElement("li", null, model.get("phone")), 
-                React.createElement("li", null, model.get("website"))
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Location Type:"), React.createElement("span", null, " ", model.get("locationTypeDisplay"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Address:"), React.createElement("span", null, " ", model.get("streetAddress"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "City, State, Zip:"), React.createElement("span", null, " ", model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Country:"), React.createElement("span", null, " ", model.get("countryIsoCode"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", model.get("website")))
               )
             ), 
             React.createElement("div", {className: "brewery_image"}, 
               React.createElement("img", {src: model.collection.brewery.getImages()})
             ), 
             React.createElement("div", {className: "description"}, 
-              React.createElement("p", null, model.collection.brewery.get("description"))
+              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
             )
           )
           );
@@ -287,15 +288,13 @@
       return (
           React.createElement("div", {className: "beer_name"}, 
             React.createElement("h3", null, model.get("name")), 
-            React.createElement("div", {className: "beer_image"}, 
-              React.createElement("img", {src: "http://lorempixel.com/100/100/"})
-            ), 
             React.createElement("div", {className: "user_beer"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, "Description: ", model.get("description")), 
+                React.createElement("li", null, model.get("description")), 
                 React.createElement("li", null, "ABV: ", model.get("abv")), 
+                React.createElement("li", null, "Food Pairings: ", model.get("foodPairings")), 
                 React.createElement("li", null, "Style: ", model.get("style").shortName), 
-                React.createElement("li", null, "Style Description: ", model.get("style").description)
+                React.createElement("li", null, "Style Description:", React.createElement("p", null, model.get("style").description))
               )
             )
           )
@@ -305,7 +304,10 @@
     render: function(){
       return(
         React.createElement("div", null, 
+          React.createElement("h2", null, "Favorited Beers"), 
+          React.createElement("div", null, 
           this.props.collection.map(this.getFavoriteBeers)
+          )
         )
       )
     }
@@ -539,22 +541,22 @@
     render: function(){
       return (
           React.createElement("div", {className: "images"}, 
-            React.createElement("div", {className: "image_left"}, 
+            React.createElement("div", {className: "image"}, 
               React.createElement("a", {href: "#", onClick: this.beerList}, 
                 React.createElement("img", {src: "images/beer2.jpg", alt: "beer names"}), 
-                "Beer Names"
+                React.createElement("h3", null, "Find a Beer")
               )
             ), 
-            React.createElement("div", {className: "image_right"}, 
+            React.createElement("div", {className: "image"}, 
               React.createElement("a", {href: "#", onClick: this.breweryList}, 
                 React.createElement("img", {src: "images/beer_bottles.jpg", alt: "brewery names"}), 
-                "Brewery Names"
+                React.createElement("h3", null, "Find a Brewery")
               )
             ), 
-            React.createElement("div", {className: "image_left"}, 
+            React.createElement("div", {className: "image"}, 
               React.createElement("a", {href: "#", onClick: this.categoryList}, 
                 React.createElement("img", {src: "images/beer4.jpg", alt: "beer category"}), 
-                "Beer Styles"
+                React.createElement("h3", null, "Learn about Beer Styles")
               )
             )
             /*<div className="image_right">
@@ -624,6 +626,7 @@
           React.createElement(views.AlphabetList, null), 
           React.createElement("div", {className: "beer_list brewery_list"}, 
             React.createElement("h2", null, "Beer List"), 
+            React.createElement("p", null, "Select a beer by name or use filter the list by the first letter of the name"), 
               React.createElement("table", null, 
                 React.createElement("thead", null, 
                   React.createElement("th", null, "Name"), 
@@ -654,25 +657,26 @@
     breweryDetail: function(e) {
       e.preventDefault();
       var breweryId = $(e.target).attr("data-brewery-id");
-      // console.log(e.target, e.target.href);
+      console.log(e.target, e.target.href);
       this.props.onShowBreweryDetail(breweryId);
     },
 
     render: function(){
       return(
         React.createElement("div", null, 
-          React.createElement("div", {className: "list_views"}
-            /*<views.AlphabetList/>*/
-          ), 
-          React.createElement("div", {className: "beer_list brewery_list"}, 
-            React.createElement("h2", null, "Brewery List"), 
-              React.createElement("table", null, 
-                React.createElement("thead", null, 
-                  React.createElement("th", null, "Logo"), 
-                  React.createElement("th", null, "Name")
-                ), 
-                React.createElement("tbody", null, 
-                  this.props.collection.map(this.getBrewery)
+          React.createElement("div", {className: "list_views"}, 
+            React.createElement(views.AlphabetList, null), 
+            React.createElement("div", {className: "beer_list brewery_list"}, 
+              React.createElement("h2", null, "Brewery List"), 
+              React.createElement("p", null, "Select a brewery by name or use filter the list by the first letter of the name"), 
+                React.createElement("table", null, 
+                  React.createElement("thead", null, 
+                    React.createElement("th", null, "Name"), 
+                    React.createElement("th", null, "Logo")
+                  ), 
+                  React.createElement("tbody", null, 
+                    this.props.collection.map(this.getBrewery)
+                  )
                 )
               )
           )
@@ -697,37 +701,44 @@
   });
   
   views.AlphabetList = React.createClass({displayName: "AlphabetList",
+
+    alphabetSort: function(e) {
+      e.preventDefault();
+      console.log(e.target, e.target.href);
+
+    },
+
     render: function(){
       return (
         React.createElement("div", {className: "alphabet"}, 
           React.createElement("ul", null, 
-            React.createElement("li", null, React.createElement("a", {href: "number"}, "#")), 
-            React.createElement("li", null, React.createElement("a", {href: "A"}, "A")), 
-            React.createElement("li", null, React.createElement("a", {href: "B"}, "B")), 
-            React.createElement("li", null, React.createElement("a", {href: "C"}, "C")), 
-            React.createElement("li", null, React.createElement("a", {href: "D"}, "D")), 
-            React.createElement("li", null, React.createElement("a", {href: "E"}, "E")), 
-            React.createElement("li", null, React.createElement("a", {href: "F"}, "F")), 
-            React.createElement("li", null, React.createElement("a", {href: "G"}, "G")), 
-            React.createElement("li", null, React.createElement("a", {href: "H"}, "H")), 
-            React.createElement("li", null, React.createElement("a", {href: "I"}, "I")), 
-            React.createElement("li", null, React.createElement("a", {href: "J"}, "J")), 
-            React.createElement("li", null, React.createElement("a", {href: "K"}, "K")), 
-            React.createElement("li", null, React.createElement("a", {href: "L"}, "L")), 
-            React.createElement("li", null, React.createElement("a", {href: "M"}, "M")), 
-            React.createElement("li", null, React.createElement("a", {href: "N"}, "N")), 
-            React.createElement("li", null, React.createElement("a", {href: "O"}, "O")), 
-            React.createElement("li", null, React.createElement("a", {href: "P"}, "P")), 
-            React.createElement("li", null, React.createElement("a", {href: "Q"}, "Q")), 
-            React.createElement("li", null, React.createElement("a", {href: "R"}, "R")), 
-            React.createElement("li", null, React.createElement("a", {href: "S"}, "S")), 
-            React.createElement("li", null, React.createElement("a", {href: "T"}, "T")), 
-            React.createElement("li", null, React.createElement("a", {href: "U"}, "U")), 
-            React.createElement("li", null, React.createElement("a", {href: "V"}, "V")), 
-            React.createElement("li", null, React.createElement("a", {href: "W"}, "W")), 
-            React.createElement("li", null, React.createElement("a", {href: "X"}, "X")), 
-            React.createElement("li", null, React.createElement("a", {href: "Y"}, "Y")), 
-            React.createElement("li", null, React.createElement("a", {href: "Z"}, "Z"))
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "#")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "A")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "B")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "C")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "D")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "E")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "F")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "G")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "H")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "I")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "J")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "K")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "L")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "M")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "N")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "O")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "P")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Q")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "R")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "S")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "T")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "U")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "V")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "W")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "X")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Y")), 
+            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Z"))
           )
         )
       );
@@ -784,7 +795,7 @@
       return (
         React.createElement("div", {className: "style_list"}, 
           React.createElement("h3", {className: "style_name"}, model.get("name")), 
-          React.createElement("div", {className: "style_desc"}, model.get("description"))
+          React.createElement("div", {className: "style_desc"}, React.createElement("p", null, model.get("description")))
         )
       );
     },
@@ -792,7 +803,14 @@
     render: function(){
       return (
         React.createElement("div", null, 
-          this.props.collection.map(this.getStyle)
+          React.createElement("div", null, 
+            React.createElement("h2", null, "Beer Styles"), 
+            React.createElement("p", null, " Love beer but not sure what styles of beers are out there?"), 
+            React.createElement("p", null, "Check out our style list to learn more about the beers you love.")
+          ), 
+          React.createElement("div", null, 
+            this.props.collection.map(this.getStyle)
+          )
         )
       );
     }

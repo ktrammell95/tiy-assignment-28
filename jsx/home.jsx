@@ -44,22 +44,22 @@
     render: function(){
       return (
           <div className="images">
-            <div className="image_left">
+            <div className="image">
               <a href="#" onClick={this.beerList}>
                 <img src="images/beer2.jpg" alt="beer names" />
-                Beer Names
+                <h3>Find a Beer</h3>
               </a>
             </div>
-            <div className="image_right">
+            <div className="image">
               <a href="#" onClick={this.breweryList}>
                 <img src="images/beer_bottles.jpg" alt="brewery names" />
-                Brewery Names
+                <h3>Find a Brewery</h3>
               </a>
             </div>
-            <div className="image_left">
+            <div className="image">
               <a href="#" onClick={this.categoryList}>
                 <img src="images/beer4.jpg" alt="beer category" />
-                Beer Styles
+                <h3>Learn about Beer Styles</h3>
               </a>
             </div>
             {/*<div className="image_right">

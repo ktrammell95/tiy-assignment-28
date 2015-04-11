@@ -5,8 +5,8 @@
 @dark-color: rgba(44, 14, 12, .85);
 @highlight-color: #D7A628;
 @action-color: #E9E2D6;
-@fb-cl:#3B579D;
-@twt-cl:#00ACED;
+@fb-cl: #3B579D;
+@twt-cl: #00ACED;
 
 body {
   background-image: url("../images/beer_taster1.jpg");
@@ -21,7 +21,74 @@ body {
   margin: 0;
   padding: 0;
   font-family: @text-font;
+  color: @dark-color;
 }
+
+h2 { 
+  background:rgba(44, 14, 12, .85);
+  line-height: 50px;
+  padding-left: 20px;
+  font-size: 25px;
+  color: @action-color;
+}
+
+h3 { 
+  background:rgba(44, 14, 12, .5);
+  padding: 0 20px;
+  font-size: 18px;
+  line-height: 30px;
+  margin: 0;
+  color: @action-color;
+}
+
+p {
+  padding: 0 20px; 
+}
+
+a {
+  text-decoration: none;
+  color: @dark-color;
+}
+
+ul li {
+  list-style: none;
+}
+
+.bold {
+  font-weight: bolder;
+}
+
+.search {
+  float: left;
+  width: 100%;
+  height: 30px;
+  margin-top: 8px;
+  margin-left: 10px;
+  .search-field {
+    border: 1px solid #d0d0d0;
+    border-radius: 3px;
+    width: 25%;
+    float: left;
+    height: 30px;
+    margin-left: 575px;
+      input {
+        color: #bcbcbc;
+      }
+  }
+  .search-button {
+    background-color: #54ACC7;
+    position:relative;
+    left: -10px;
+    border: 1px solid #adc5cf;
+    width: 10%;
+    height: 34px;
+    line-height: 25px;
+    text-align: center;
+    color: white;
+    float: left;
+    border-radius: 3px;
+  }
+}//search_bar
 
 header{
   background: rgba(44, 14, 12, .8);
@@ -99,9 +166,6 @@ header{
       // background: #678;
       padding: 6px 53px;
       position: relative;
-        &:hover .secondary-nav {
-        display: block;
-        }
         a {
         text-decoration: none;
         color: @highlight-color;
@@ -136,27 +200,22 @@ section {
   background-color: rgba(254, 254, 231, .6);
   padding: 0;
   width:960px;
-  height: 5500px;
+  // height: 1000px;
   margin: auto;
+  overflow: auto;
   .index{
     padding: 20px;
-    h2 {
-      opacity: 1;
-      font-size: 24px;
-      border-bottom: 2px solid @dark-color;
-      color: @dark-color;
-    }
     p {
       font-size: 16px;
     }
     .images {
       margin: 40px;
       height: 525px;
-      .image_left, .image_right{
-        // background: red;
-        width: 45%;
-        height: 300px;
-        padding-bottom: 10px;
+      .image{
+          width: 30%;
+          height: 230px;
+          padding-right: 20px;
+          float: left;
         a{
           text-decoration: none;
           text-align: center;
@@ -166,50 +225,18 @@ section {
         img {
           width: 100%;
           height: 85%;
+          border-radius: 2px 2px 0 0;
         }
-      }
-      .image_left{
-        float: left;
-      }
-      .image_right{
-        float: right;
+        h3 {
+          margin-top: -5px;
+          border-radius: 0 0 2px 2px;
+
+        }
       }
     }
   } //index
   .list_views{
-    .search {
-      float: left;
-      width: 100%;
-      height: 30px;
-      margin-top: 8px;
-      margin-left: 10px;
-      .search-field {
-        border: 1px solid #d0d0d0;
-        border-radius: 3px;
-        width: 25%;
-        float: left;
-        height: 30px;
-        margin-left: 575px;
-          input {
-            color: #bcbcbc;
-          }
-      }
-      .search-button {
-        background-color: #54ACC7;
-        // border-radius: 5px;
-        position:relative;
-        left: -10px;
-        border: 1px solid #adc5cf;
-        width: 10%;
-        height: 34px;
-        line-height: 25px;
-        text-align: center;
-        color: white;
-        // font-size: 12px;
-        float: left;
-        border-radius: 3px;
-      }
-    }//search_bar
+
     .beer_list, .brewery_list{
       width: 85%;
       float: left;
@@ -226,16 +253,19 @@ section {
         }
       }
       tbody {
-        // background: grey;
         width: 28%;
-        // text-align: center;
-        // tr:nth-child(even) {
-        //   background: tan;
-        // }
-        td{ 
+        td { 
           min-width: 265px;
           height: 100px;
           overflow: hidden;
+          a{
+          text-decoration: none;
+          color: @dark-color;
+          }
+          a:hover { 
+            font-weight: bold;
+            font-size: 18px;
+          }
         }
       }
     }
@@ -249,6 +279,10 @@ section {
           text-decoration: none;
           color: @dark-color;
         }
+        a:hover { 
+          font-weight: bold;
+          font-size: 18px;
+        }
       }
     }//alphabet
   } //list_views
@@ -256,25 +290,30 @@ section {
     float: left;
     width: 100%;
     height: auto;
-    h3{
-      background: @dark-color;
-      line-height: 50px;
-      padding-left: 20px;
-      font-size: 25px;
-      color: @action-color;
-    }
     .beer_details{
       width: 100%;
     }
     .brewery_details{
       width: 50%;
     }
-    .beer_details, .brewery_details {
+    .beer_details, .brewery_details, .beer_style {
       float: left;
-      ul li{
+      ul li {
         list-style: none;
         margin-bottom: 20px;
       }
+    }
+    .beer_image, .brewery_image{
+      float: left;
+      width: auto;
+      height: 125px;
+    }
+    .description {
+      clear:both;
+      padding: 20px;
+    }
+    .favButton {
+      margin-left: 40px;
       .btn{
         box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
         display: inline-block;
@@ -288,158 +327,18 @@ section {
         -webkit-user-select: none;
       }
       .btn-lg{
-        padding: 10px 16px;
-        font-size: 18px;
-        line-height: 1.33;
+        padding: 10px;
+        font-size: 13px;
+        line-height: 2;
         border-radius: 6px;
+        text-decoration: none;
       }
       .btn-success{
         text-shadow: 0 1px 0 rgba(0,0,0,0.2);
         color: #fff;
-        background-color: #61ba9e;
-        border-color: #4fb393;
-      }
-      // .fa-beer:before {
-      //   content: "\f0fc";
-      //   box-sizing: border-box;
-      // }
-    }
-    .beer_image, .brewery_image{
-      float: left;
-      width: auto;
-      height: 125px;
-    }
-    .description {
-      clear:both;
-      padding: 20px;
-    }
-  }
-  .style_view{
-    .search {
-      float: left;
-      width: 100%;
-      height: 30px;
-      margin-top: 8px;
-      margin-left: 10px;
-      .search-field {
-        border: 1px solid #d0d0d0;
-        border-radius: 3px;
-        width: 25%;
-        float: left;
-        height: 30px;
-        margin-left: 575px;
-          input {
-            color: #bcbcbc;
-          }
-      }
-      .search-button {
-        background-color: #54ACC7;
-        // border-radius: 5px;
-        position:relative;
-        left: -10px;
-        border: 1px solid #adc5cf;
-        width: 10%;
-        height: 34px;
-        line-height: 25px;
-        text-align: center;
-        color: white;
-        // font-size: 12px;
-        float: left;
-        border-radius: 3px;
-      }
-    }//search_bar
-    .style_list{
-      float: left;
-      width: 30%;
-      margin-top: 10px;
-      ul {
-        list-style: none;
-        a{
-          text-decoration: none;
-          color: @dark-color;
-        }
-      }
-    }
-    .styles{
-      float:left;
-      width: 65%;
-      h2{
-        background: @dark-color;
-        line-height: 50px;
-        padding-left: 20px;
-        font-size: 25px;
-        color: @action-color;
-      }
-      .images {
-        margin: 40px;
-        height: 525px;
-        .image_left, .image_right{
-          // background: red;
-          width: 45%;
-          height: 300px;
-          padding-bottom: 10px;
-          a{
-            text-decoration: none;
-            text-align: center;
-            color: @dark-color;
-            font-size: 20px;
-          }
-          img {
-            width: 100%;
-            height: 85%;
-          }
-        }
-        .image_left{
-          float: left;
-        }
-        .image_right{
-          float: right;
-        }
-      } 
-    }
-  }
-  .location_view{
-    .search {
-      float: left;
-      width: 100%;
-      height: 30px;
-      margin-top: 8px;
-      margin-left: 10px;
-      .search-field {
-        border: 1px solid #d0d0d0;
-        border-radius: 3px;
-        width: 25%;
-        float: left;
-        height: 30px;
-        margin-left: 575px;
-          input {
-            color: #bcbcbc;
-          }
-      }
-      .search-button {
-        background-color: #54ACC7;
-        // border-radius: 5px;
-        position:relative;
-        left: -10px;
-        border: 1px solid #adc5cf;
-        width: 10%;
-        height: 34px;
-        line-height: 25px;
-        text-align: center;
-        color: white;
-        // font-size: 12px;
-        float: left;
-        border-radius: 3px;
-      }
-    }//search_bar
-
-    .location{
-      .map{
-        img{
-          width: 960px;
-          height: auto;
-        }
-      }
+        background-color: @highlight-color;
+        border-color: @highlight-color;
+      }   
     }
   }
   .users{
@@ -450,7 +349,7 @@ section {
         font-size: 16px;
       }
       .beer_name, .brewery_name{
-        h3{
+        h2{
           font-size: 14px;
         }
         .beer_image, .brewery_image{
@@ -460,15 +359,6 @@ section {
           float: left;
         }
       }
-    }
-  }
-  .blog{
-    h3 {
-      background: @dark-color;
-      line-height: 50px;
-      padding-left: 20px;
-      font-size: 25px;
-      color: @action-color;
     }
   }
 }//section
@@ -481,6 +371,7 @@ footer {
   width: 100%;
   height: 50px;
   line-height: 50px;
+  clear: both;
   .footer-wrapper{
     width: 960px;
     margin: auto;

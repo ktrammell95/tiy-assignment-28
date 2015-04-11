@@ -28,6 +28,7 @@
           <views.AlphabetList/>
           <div className="beer_list brewery_list">
             <h2>Beer List</h2>
+            <p>Select a beer by name or use filter the list by the first letter of the name</p>
               <table>
                 <thead>
                   <th>Name</th>
@@ -58,7 +59,7 @@
     breweryDetail: function(e) {
       e.preventDefault();
       var breweryId = $(e.target).attr("data-brewery-id");
-      // console.log(e.target, e.target.href);
+      console.log(e.target, e.target.href);
       this.props.onShowBreweryDetail(breweryId);
     },
 
@@ -66,19 +67,20 @@
       return(
         <div>
           <div className="list_views">
-            {/*<views.AlphabetList/>*/}
-          </div>
-          <div className="beer_list brewery_list">
-            <h2>Brewery List</h2>
-              <table>
-                <thead>
-                  <th>Logo</th>
-                  <th>Name</th>
-                </thead>
-                <tbody>
-                  {this.props.collection.map(this.getBrewery)}
-                </tbody>
-              </table>
+            <views.AlphabetList/>
+            <div className="beer_list brewery_list">
+              <h2>Brewery List</h2>
+              <p>Select a brewery by name or use filter the list by the first letter of the name</p>
+                <table>
+                  <thead>
+                    <th>Name</th>
+                    <th>Logo</th>
+                  </thead>
+                  <tbody>
+                    {this.props.collection.map(this.getBrewery)}
+                  </tbody>
+                </table>
+              </div>
           </div>
         </div>
       )
@@ -101,37 +103,44 @@
   });
   
   views.AlphabetList = React.createClass({
+
+    alphabetSort: function(e) {
+      e.preventDefault();
+      console.log(e.target, e.target.href);
+
+    },
+
     render: function(){
       return (
         <div className="alphabet">
           <ul>
-            <li><a href="number">#</a></li>
-            <li><a href="A">A</a></li>
-            <li><a href="B">B</a></li>
-            <li><a href="C">C</a></li>
-            <li><a href="D">D</a></li>
-            <li><a href="E">E</a></li>
-            <li><a href="F">F</a></li>
-            <li><a href="G">G</a></li>
-            <li><a href="H">H</a></li>
-            <li><a href="I">I</a></li>
-            <li><a href="J">J</a></li>
-            <li><a href="K">K</a></li>
-            <li><a href="L">L</a></li>
-            <li><a href="M">M</a></li>
-            <li><a href="N">N</a></li>
-            <li><a href="O">O</a></li>
-            <li><a href="P">P</a></li>
-            <li><a href="Q">Q</a></li>
-            <li><a href="R">R</a></li>
-            <li><a href="S">S</a></li>
-            <li><a href="T">T</a></li>
-            <li><a href="U">U</a></li>
-            <li><a href="V">V</a></li>
-            <li><a href="W">W</a></li>
-            <li><a href="X">X</a></li>
-            <li><a href="Y">Y</a></li>
-            <li><a href="Z">Z</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>#</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>A</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>B</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>C</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>D</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>E</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>F</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>G</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>H</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>I</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>J</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>K</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>L</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>M</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>N</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>O</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>P</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>Q</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>R</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>S</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>T</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>U</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>V</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>W</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>X</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>Y</a></li>
+            <li><a href="#" onClick={this.alphabetSort}>Z</a></li>
           </ul>
         </div>
       );

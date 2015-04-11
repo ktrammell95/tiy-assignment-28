@@ -35,12 +35,16 @@ tiy.Router = Backbone.Router.extend({
 
     this.listenTo(tiy, "sign:out", function(){
       this.beers = null;
+      // this.favorites = null;
       this.section.setProps({collection: this.models.beers});
+      // this.section.setProps({collection: this.models.FavoriteBeersCollection});
     });
 
     this.listenTo(tiy, "sign:in", function(){
       this.beers = new tiy.models.Beers();
+      // this.favorites = new tiy.models.FavoriteBeersCollection();
       this.section.setProps({collection: this.models.beers});
+      // this.section.setProps({collection: this.models.favorites});
     })
 
   },

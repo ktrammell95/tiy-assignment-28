@@ -43,18 +43,19 @@
       return(
         <div>
           <div className="beer">
-            <h3>{b.name}</h3>
+            <h2>{b.name}</h2>
             <div className="favButton">
               {favButton}
             </div>
             <div className="beer_details">
               <ul>
-                <li>Description: {b.description}</li>
-                <li>ABV: {b.abv}</li>
-                <li>Glassware: {(b.glass || {}).name}</li>
-                <li>Availability: {(b.available|| {}).name}</li>
-                <li>Style: {(b.style|| {}).name}</li>
-                <li>Style Description: {(b.style|| {}).description}</li>
+                <li><span className="bold">Description:</span><span> {b.description}</span></li>
+                <li><span className="bold">ABV:</span><span> {b.abv}</span></li>
+                <li><span className="bold">Glassware:</span><span> {(b.glass || {}).name}</span></li>
+                <li><span className="bold">Availability:</span><span> {(b.available|| {}).description}</span></li>
+                <li><span className="bold">Food Pairings:</span><span> {b.foodPairings}</span></li>
+                <li><span className="bold">Style:</span><span> {(b.style|| {}).name}</span></li>
+                <li><span className="bold">Style Description:</span><span> {(b.style|| {}).description}</span></li>
               </ul>
             </div>
             <div>
@@ -71,22 +72,22 @@
     getBreweryLocation: function(model) {
           return (
           <div>  
-            <h3>{model.collection.brewery.get("name")}</h3>
+            <h2>{model.collection.brewery.get("name")}</h2>
             <div className="brewery_details">
               <ul>
-                <li>{model.get("locationTypeDisplay")}</li>
-                <li>{model.get("streetAddress")}</li>
-                <li>{model.get("locality")}, {model.get("region")} {model.get("postalCode")}</li>
-                <li>{model.get("countryIsoCode")}</li>
-                <li>{model.get("phone")}</li>
-                <li>{model.get("website")}</li>
+                <li><span className="bold">Location Type:</span><span> {model.get("locationTypeDisplay")}</span></li>
+                <li><span className="bold">Address:</span><span> {model.get("streetAddress")}</span></li>
+                <li><span className="bold">City, State, Zip:</span><span> {model.get("locality")}, {model.get("region")} {model.get("postalCode")}</span></li>
+                <li><span className="bold">Country:</span><span> {model.get("countryIsoCode")}</span></li>
+                <li><span className="bold">Phone:</span><span> {model.get("phone")}</span></li>
+                <li><span className="bold">Website:</span><span> {model.get("website")}</span></li>
               </ul>
             </div>
             <div className="brewery_image">
               <img src={model.collection.brewery.getImages()}/>
             </div>
             <div className="description">
-              <p>{model.collection.brewery.get("description")}</p>
+              <span className="bold">Brewery Description:</span><span> {model.collection.brewery.get("description")}</span>
             </div>
           </div>
           );
