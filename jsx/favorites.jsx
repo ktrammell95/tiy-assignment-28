@@ -4,17 +4,13 @@
     getBeerFavorites: function(model) {
       return (
         <div className="beer_name">
-          <h3>Saison Lafayette</h3>
+          <h3>name</h3>
           <div className="beer_image">
             <img src="http://lorempixel.com/100/100/"/>
           </div>
           <div className="user_beer">
             <ul>
               <li>Description:</li>
-              <li>Rating:</li>
-              <li>ABV:</li>
-              <li>Glassware:</li>
-              <li>Style:</li>
             </ul>
           </div>
         </div>

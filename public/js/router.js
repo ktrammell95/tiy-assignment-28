@@ -165,17 +165,30 @@ tiy.Router = Backbone.Router.extend({
     locations.fetch();
   },
 
-  showFavorites: function(){
-    var favorites = new tiy.models.FavoritesCollection();
+  showFavoriteBeers: function(){
+    var favoriteBeers = new tiy.models.FavoriteBeersCollection();
 
     this.section = React.render(
       React.createElement(tiy.views.FavoritesSection, {
-        collection: favorites,
+        collection: favoriteBeers,
       }),
       document.querySelector("section")
     );
     
-    favorites.fetch();
+    favoriteBeers.fetch();
+  },
+
+    // showFavoriteBreweries: function(){
+    // var favoriteBreweries = new tiy.models.FavoriteBreweriesCollection();
+
+    // this.section = React.render(
+    //   React.createElement(tiy.views.FavoritesSection, {
+    //     collection: favoriteBreweries,
+    //   }),
+    //   document.querySelector("section")
+    // );
+    
+    // favoriteBreweries.fetch();
   },
 
 });

@@ -45,16 +45,6 @@
       return resp.data;
     },
 
-    // favorite: function() {
-    //   this.collection.favorites.add({
-    //     "id": this.get('id'), 
-    //     "name": this.get('name'), 
-    //   });
-    // },
-
-    // unfavorite: function() {
-    //  this.collection.favorites.remove({id: this.get('id')});
-    // }
   });
 
   // ---------- Breweries ---------- //
@@ -118,9 +108,6 @@
   models.User = Backbone.Model.extend({
 
     hasBeerAsFav: function(beer) {
-      // if (!this.favorites) {
-      //   return false;
-      // }
       return !!this.favorites.beers.get(beer.id);
     },
 
@@ -130,6 +117,19 @@
 
     removeBeerAsFav: function(beer) {
       return this.favorites.beers.remove(beer);
+    },
+
+    hasBreweryAsFav: function(brewery) {
+      // console.log(beer.toJSON(), this.favorites.beers.toJSON());
+      return !!this.favorites.Brewery.get(brewery.id);
+    },
+
+    addBreweryAsFav: function(brewery) {
+      return this.favorites.Brewery.add(brewery);
+    },
+
+    removeBreweryAsFav: function(brewery) {
+      return this.favorites.Brewery.remove(beer);
     }
 
   });
@@ -143,21 +143,28 @@
       if(!tiy.isLoggedIn()){
         throw new Error("A user must be logged in");
       }
-      // if(!this.beers){
-      //   throw new Error("No favorites have been chosen");
-      // }
+
       var uid = encodeURIComponent(tiy.authData.uid);
-      // var bid = this.beer.id;
       var url = tiy.firebaseURL + uid + "/favorites/beers/";
       return url;
     }
 
-    // initialize: function(data, options){
-    //   options || (options = {});
-    //   this.beers = options.beers;
-    // }
-
   });
+
+  // models.FavoriteBreweriesCollection = Backbone.Firebase.Collection.extend({
+
+  //   model: models.Brewery,
+  
+  //   url: function() {
+  //     if(!tiy.isLoggedIn()){
+  //       throw new Error("A user must be logged in");
+  //     }
+  //     var uid = encodeURIComponent(tiy.authData.uid);
+  //     var url = tiy.firebaseURL + uid + "/favorites/breweries/";
+  //     return url;
+  //   }
+
+  // });
 
 })(tiy.models);
 

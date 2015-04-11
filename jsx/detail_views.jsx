@@ -2,28 +2,53 @@
 
   views.BeerDetails = React.createBackboneClass({
 
+    getInitialState: function() {
+      var beer = this.props.model; // find the beer...
+      return {
+        favorited: tiy.currentUser.hasBeerAsFav(beer)
+      };
+    },
+
+    componentDidMount: function() {      
+      tiy.currentUser.favorites.beers.on("sync", function() {
+        var beer = this.props.model; // find the beer...      
+        this.setState({favorited: tiy.currentUser.hasBeerAsFav(beer)});
+      }, this);
+    }, 
+
     checkFavorite: function(e){
       e.preventDefault();
       var beer = this.props.model; // find the beer...
       if (tiy.currentUser.hasBeerAsFav(beer)) {
         tiy.currentUser.removeBeerAsFav(beer);
+        this.setState({favorited: false});
       } else {
         tiy.currentUser.addBeerAsFav(beer);
+        this.setState({favorited: true});
       }
     },
 
     render: function(){
       var b = this.props.model.toJSON();
+      var beer = this.props.model;
+      var favButton;
+      if (this.state.favorited) {
+        favButton = <a data-beer-id={b.id} className="btn btn-lg btn-success" href="#" onClick={this.checkFavorite}>
+                  <i className="fa fa-beer fa-2x pull-left"></i>Remove Favorite</a>;
+      } else {
+        favButton = <a data-beer-id={b.id} className="btn btn-lg btn-success" href="#" onClick={this.checkFavorite}>
+                  <i className="fa fa-beer fa-2x pull-left"></i>Add Favorite</a>;
+      }
 
       return(
         <div>
           <div className="beer">
             <h3>{b.name}</h3>
+            <div className="favButton">
+              {favButton}
+            </div>
             <div className="beer_details">
               <ul>
-                <li><a data-beer-id={b.id} className="btn btn-lg btn-success" href="#" onClick={this.checkFavorite}>
-                  <i className="fa fa-beer fa-2x pull-left"></i>Add to<br/>Favorites</a>
-                </li>
                 <li>Description: {b.description}</li>
                 <li>ABV: {b.abv}</li>
                 <li>Glassware: {(b.glass || {}).name}</li>

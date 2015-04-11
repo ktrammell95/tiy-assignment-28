@@ -179,28 +179,53 @@
 
   views.BeerDetails = React.createBackboneClass({
 
+    getInitialState: function() {
+      var beer = this.props.model; // find the beer...
+      return {
+        favorited: tiy.currentUser.hasBeerAsFav(beer)
+      };
+    },
+
+    componentDidMount: function() {      
+      tiy.currentUser.favorites.beers.on("sync", function() {
+        var beer = this.props.model; // find the beer...      
+        this.setState({favorited: tiy.currentUser.hasBeerAsFav(beer)});
+      }, this);
+    }, 
+
     checkFavorite: function(e){
       e.preventDefault();
       var beer = this.props.model; // find the beer...
       if (tiy.currentUser.hasBeerAsFav(beer)) {
         tiy.currentUser.removeBeerAsFav(beer);
+        this.setState({favorited: false});
       } else {
         tiy.currentUser.addBeerAsFav(beer);
+        this.setState({favorited: true});
       }
     },
 
     render: function(){
       var b = this.props.model.toJSON();
+      var beer = this.props.model;
+      var favButton;
+      if (this.state.favorited) {
+        favButton = React.createElement("a", {"data-beer-id": b.id, className: "btn btn-lg btn-success", href: "#", onClick: this.checkFavorite}, 
+                  React.createElement("i", {className: "fa fa-beer fa-2x pull-left"}), "Remove Favorite");
+      } else {
+        favButton = React.createElement("a", {"data-beer-id": b.id, className: "btn btn-lg btn-success", href: "#", onClick: this.checkFavorite}, 
+                  React.createElement("i", {className: "fa fa-beer fa-2x pull-left"}), "Add Favorite");
+      }
 
       return(
         React.createElement("div", null, 
           React.createElement("div", {className: "beer"}, 
             React.createElement("h3", null, b.name), 
+            React.createElement("div", {className: "favButton"}, 
+              favButton
+            ), 
             React.createElement("div", {className: "beer_details"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, React.createElement("a", {"data-beer-id": b.id, className: "btn btn-lg btn-success", href: "#", onClick: this.checkFavorite}, 
-                  React.createElement("i", {className: "fa fa-beer fa-2x pull-left"}), "Add to", React.createElement("br", null), "Favorites")
-                ), 
                 React.createElement("li", null, "Description: ", b.description), 
                 React.createElement("li", null, "ABV: ", b.abv), 
                 React.createElement("li", null, "Glassware: ", (b.glass || {}).name), 
@@ -261,17 +286,13 @@
     getBeerFavorites: function(model) {
       return (
         React.createElement("div", {className: "beer_name"}, 
-          React.createElement("h3", null, "Saison Lafayette"), 
+          React.createElement("h3", null, "name"), 
           React.createElement("div", {className: "beer_image"}, 
             React.createElement("img", {src: "http://lorempixel.com/100/100/"})
           ), 
           React.createElement("div", {className: "user_beer"}, 
             React.createElement("ul", null, 
-              React.createElement("li", null, "Description:"), 
-              React.createElement("li", null, "Rating:"), 
-              React.createElement("li", null, "ABV:"), 
-              React.createElement("li", null, "Glassware:"), 
-              React.createElement("li", null, "Style:")
+              React.createElement("li", null, "Description:")
             )
           )
         )

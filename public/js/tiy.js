@@ -74,8 +74,6 @@ window.tiy = {
   logout: function() {
     this.fireRef.unauth();
   }
-
-
 };
 
 
