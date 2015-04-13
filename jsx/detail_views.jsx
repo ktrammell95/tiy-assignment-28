@@ -83,8 +83,8 @@
                 <li><span className="bold">Website:</span><span> {model.get("website")}</span></li>
               </ul>
             </div>
-            <div className="brewery_image">
-              <img src={model.collection.brewery.getImages()}/>
+            <div>
+              <img className="brewery_image" src={model.collection.brewery.getImages()}/>
             </div>
             <div className="description">
               <span className="bold">Brewery Description:</span><span> {model.collection.brewery.get("description")}</span>

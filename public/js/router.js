@@ -31,20 +31,23 @@ tiy.Router = Backbone.Router.extend({
       document.querySelector("header")
     );
 
+    this.footer = React.render(
+      React.createElement(tiy.views.Footer, {
+        model: tiy.currentUser,
+      }),
+      document.querySelector("footer")
+    );
+
     this.navigate("", {trigger: true, replace: true});
 
     this.listenTo(tiy, "sign:out", function(){
       this.beers = null;
-      // this.favorites = null;
       this.section.setProps({collection: this.models.beers});
-      // this.section.setProps({collection: this.models.FavoriteBeersCollection});
     });
 
     this.listenTo(tiy, "sign:in", function(){
       this.beers = new tiy.models.Beers();
-      // this.favorites = new tiy.models.FavoriteBeersCollection();
       this.section.setProps({collection: this.models.beers});
-      // this.section.setProps({collection: this.models.favorites});
     })
 
   },
@@ -182,17 +185,18 @@ tiy.Router = Backbone.Router.extend({
     favoriteBeers.fetch();
   },
 
-    // showFavoriteBreweries: function(){
-    // var favoriteBreweries = new tiy.models.FavoriteBreweriesCollection();
+  // showBeerSearchResults: function(){
+  //   var beerSearchResults = new tiy.models.BeerSearchResults();
 
-    // this.section = React.render(
-    //   React.createElement(tiy.views.FavoritesSection, {
-    //     collection: favoriteBreweries,
-    //   }),
-    //   document.querySelector("section")
-    // );
-    
-    // favoriteBreweries.fetch();
+  //   this.section = React.render(
+  //     React.createElement(tiy.views.BeerListView, {
+  //       collection: beerSearchResults,
+
+  //     }),
+  //     document.querySelector("section")
+  //   );
+
+  //   beerSearchResults.fetch();
   // },
 
 });

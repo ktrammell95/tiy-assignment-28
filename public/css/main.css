@@ -41,6 +41,13 @@ ul li {
 .bold {
   font-weight: bolder;
 }
+.brewery_image {
+  float: left;
+  width: auto;
+  height: 125px;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
 .search {
   float: left;
   width: 100%;
@@ -79,7 +86,7 @@ header {
 }
 header .header-wrapper {
   width: 960px;
-  height: 125px;
+  height: 130px;
   margin: auto;
 }
 header .header-wrapper .header-upper {
@@ -89,6 +96,7 @@ header .header-wrapper .header-upper {
   height: 70%;
 }
 header .header-wrapper .header-upper .logo {
+  padding-top: 10px;
   width: 250px;
   float: left;
   font-family: 'Oxygen', sans-serif;
@@ -96,7 +104,7 @@ header .header-wrapper .header-upper .logo {
   text-align: center;
 }
 header .header-wrapper .header-upper .logo img {
-  height: 90px;
+  height: 80px;
   margin-bottom: 0;
 }
 header .header-wrapper .header-upper .login {
@@ -108,19 +116,18 @@ header .header-wrapper .header-upper .login .facebook-login {
   margin: auto;
   font-family: 'Bitter', serif;
   float: right;
-  width: 200px;
-  padding: 8px 25px;
+  width: 215px;
+  padding: 15px 0;
   color: #e9e2d6;
   display: inline-block;
   cursor: pointer;
-  border-left: 1px solid #e9e2d6;
   font-size: 14px;
 }
 header .header-wrapper .header-upper .login .twitter-login .profile-image,
 header .header-wrapper .header-upper .login .facebook-login .profile-image {
   vertical-align: middle;
-  height: 30px;
-  border-radius: 15px;
+  height: 40px;
+  border-radius: 5px;
   margin-right: 10px;
 }
 header .header-wrapper .header-upper .login .twitter-login .fa,
@@ -140,35 +147,19 @@ header .header-wrapper .header-nav ul {
   padding: 0;
   display: inline-block;
 }
+header .header-wrapper .header-nav .primary-nav {
+  float: right;
+}
 header .header-wrapper .header-nav .primary-nav li {
   color: #d7a628;
   list-style: none;
   display: inline-block;
-  padding: 6px 53px;
+  padding: 6px 50px;
   position: relative;
 }
 header .header-wrapper .header-nav .primary-nav li a {
   text-decoration: none;
   color: #d7a628;
-}
-header .header-wrapper .header-nav .secondary-nav {
-  position: absolute;
-  font-size: 12px;
-  top: 100%;
-  bottom: 0;
-  margin: 0;
-  padding: 0;
-  display: none;
-}
-header .header-wrapper .header-nav .secondary-nav li {
-  list-style: none;
-  background: rgba(44, 14, 12, 0.85);
-  min-width: 75px;
-}
-header .header-wrapper .header-nav .secondary-nav li a {
-  text-decoration: none;
-  color: #d7a628;
-  margin-left: -25px;
 }
 section {
   background-color: rgba(254, 254, 231, 0.6);
@@ -220,10 +211,6 @@ section .list_views .brewery_list thead {
   padding-right: 10px;
   text-align: center;
 }
-section .list_views .beer_list thead th,
-section .list_views .brewery_list thead th {
-  min-width: 265px;
-}
 section .list_views .beer_list thead tr,
 section .list_views .brewery_list thead tr {
   height: 30px;
@@ -234,7 +221,6 @@ section .list_views .brewery_list tbody {
 }
 section .list_views .beer_list tbody td,
 section .list_views .brewery_list tbody td {
-  min-width: 265px;
   height: 100px;
   overflow: hidden;
 }
@@ -294,19 +280,12 @@ section .beer .beer_style ul li,
 section .brewery .beer_style ul li {
   list-style: none;
   margin-bottom: 20px;
-}
-section .beer .beer_image,
-section .brewery .beer_image,
-section .beer .brewery_image,
-section .brewery .brewery_image {
-  float: left;
-  width: auto;
-  height: 125px;
+  margin-right: 26px;
 }
 section .beer .description,
 section .brewery .description {
   clear: both;
-  padding: 20px;
+  padding: 20px 40px;
 }
 section .beer .favButton,
 section .brewery .favButton {
@@ -355,16 +334,6 @@ section .users .user_left .brewery_name h2,
 section .users .user_right .brewery_name h2 {
   font-size: 14px;
 }
-section .users .user_left .beer_name .beer_image,
-section .users .user_right .beer_name .beer_image,
-section .users .user_left .brewery_name .beer_image,
-section .users .user_right .brewery_name .beer_image,
-section .users .user_left .beer_name .brewery_image,
-section .users .user_right .beer_name .brewery_image,
-section .users .user_left .brewery_name .brewery_image,
-section .users .user_right .brewery_name .brewery_image {
-  float: left;
-}
 section .users .user_left .beer_name .user_beer,
 section .users .user_right .beer_name .user_beer,
 section .users .user_left .brewery_name .user_beer,
@@ -374,26 +343,28 @@ section .users .user_right .beer_name .user_brewery,
 section .users .user_left .brewery_name .user_brewery,
 section .users .user_right .brewery_name .user_brewery {
   float: left;
+  margin-right: 20px;
 }
 footer {
   background-color: rgba(44, 14, 12, 0.85);
   margin: auto;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 75px;
+  line-height: 75px;
   clear: both;
 }
 footer .footer-wrapper {
   width: 960px;
   margin: auto;
-}
-footer .footer-wrapper .footnav1,
-footer .footer-wrapper .footnav2,
-footer .footer-wrapper .footnav3,
-footer .footer-wrapper .footnav4 {
-  list-style: none;
-  display: inline;
-  color: #eae1c0;
-  margin-left: 115px;
   padding: 0;
+}
+footer .footer-wrapper span {
+  color: #eae1c0;
+  float: right;
+}
+footer .footer-wrapper img {
+  height: 50px;
+  padding: 13px;
+  width: auto;
+  float: right;
 }

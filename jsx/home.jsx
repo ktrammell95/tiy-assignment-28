@@ -3,18 +3,6 @@
 (function(views){
 
 
-  views.About = React.createClass({
-    render: function(){
-      return (
-          <div>
-            <h2>About Brewery Bee</h2>
-            <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-            </p>
-          </div>
-      );
-    }
-  });
-
   views.HomeImages = React.createClass({
 
     beerList: function(e) {
@@ -78,22 +66,17 @@
       // window.x = this;
       return (
         <div className="index">
-          <views.About/>
+          <div>
+            <h2>About Brewery Bee</h2>
+            <p>Brewery Bee came in a stroke of inspiration as I sat in a bar listening to my husband ask the bartender question after question about the beer choices they offer. Do you have any IPAs? What does that beer taste like?  Fruit taste, how fruity? Is that a dark beer?  Is that a local beer? What local beers do you have? The questions can just keep going on and on.  The idea behind Brewery Bee was to create an application that would help beer enthusiasts to find information on the beers they never knew existed, would love to try, and the beers they already love. </p>
+            <p>Brewery Bee also has the added feature of allowing beer lovers log in and save their favorite beers so they never have to worry about forgetting them as they continue to expand their beer pallet.</p>
+          </div>
           <views.HomeImages 
             onShowBeers={this.props.onShowBeers}
             onShowBreweries={this.props.onShowBreweries}
             onShowCategories={this.props.onShowCategories}
             onShowLocations={this.props.onShowLocations}/>
         </div>
-      );
-    }
-  });
-
-  views.Section = React.createClass({
-
-    render: function(){
-      return (
-          <views.Home/>
       );
     }
   });

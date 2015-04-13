@@ -1,5 +1,6 @@
 var express = require("express");
 var http = require("http");
+var qs = require("qs");
 
 var app = express();
 
@@ -18,6 +19,8 @@ app.get("/api/*", function(req, res) {
   console.log("endpoint", req.params["0"])
 
   var url = base + req.params["0"] + "?key=" + apiKey;
+
+  url += "&" + qs.stringify(req.query);
 
   loadJSON(url, function(err, data){
 

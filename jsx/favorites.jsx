@@ -8,10 +8,13 @@
             <div className="user_beer">
               <ul>
                 <li>{model.get("description")}</li>
-                <li>ABV: {model.get("abv")}</li>
-                <li>Food Pairings: {model.get("foodPairings")}</li>
-                <li>Style: {model.get("style").shortName}</li>
-                <li>Style Description:<p>{model.get("style").description}</p></li>
+                <li><span className="bold">ABV:</span> {model.get("abv")}</li>
+                <li><span className="bold">Food Pairings:</span> {model.get("foodPairings")}</li>
+              </ul>
+              <ul>
+                <li><span className="bold">Style:</span> {model.get("style").shortName}
+                    <p>{model.get("style").description}</p>
+                </li>
               </ul>
             </div>
           </div>
@@ -27,28 +30,6 @@
           </div>
         </div>
       )
-    }
-  });
-
-//Brewery Detail Information
-  views.BreweryFavorites = React.createBackboneClass({
-    render: function(){
-      return (
-          <div className="brewery_name">
-          <h3>3 Daughters Brewing</h3>
-          <div className="brewery_image">
-            <img src="http://lorempixel.com/100/100/" />
-          </div>
-          <div className="user_brewery">
-            <ul>
-              <li>Address</li>
-              <li>Address</li>
-              <li>Phone</li>
-              <li>Website</li>
-            </ul>
-          </div>
-        </div>
-      );
     }
   });
 

@@ -25,11 +25,15 @@
       return (this.get('labels') || {}).icon;
     },
 
+    breweryNames: function() {
+      return (this.get('breweries') || []).map(function(b) { return b.name }).join(' and ');
+    },
+
   });
 
   models.Beers = ApiCollection.extend({
     model: models.Beer,
-    url: "/api/beers",
+    url: "/api/beers?withBreweries=Y",
     
     parse: function(resp) {
       return resp.data;
@@ -151,20 +155,19 @@
 
   });
 
-  // models.FavoriteBreweriesCollection = Backbone.Firebase.Collection.extend({
 
-  //   model: models.Brewery,
-  
-  //   url: function() {
-  //     if(!tiy.isLoggedIn()){
-  //       throw new Error("A user must be logged in");
-  //     }
-  //     var uid = encodeURIComponent(tiy.authData.uid);
-  //     var url = tiy.firebaseURL + uid + "/favorites/breweries/";
-  //     return url;
-  //   }
+// // ----- search ----- //
+//   models.Search = Backbone.Model.extend({
+//   });
 
-  // });
+//   models.BeerSearchResults = ApiCollection.extend({
+//     model: models.Search,
+//     url: "/api/search?=/",
+    
+//     parse: function(resp) {
+//       return resp.data;
+//     }
+//   });
 
 })(tiy.models);
 

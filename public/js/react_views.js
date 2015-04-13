@@ -260,8 +260,8 @@
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", model.get("website")))
               )
             ), 
-            React.createElement("div", {className: "brewery_image"}, 
-              React.createElement("img", {src: model.collection.brewery.getImages()})
+            React.createElement("div", null, 
+              React.createElement("img", {className: "brewery_image", src: model.collection.brewery.getImages()})
             ), 
             React.createElement("div", {className: "description"}, 
               React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
@@ -291,10 +291,13 @@
             React.createElement("div", {className: "user_beer"}, 
               React.createElement("ul", null, 
                 React.createElement("li", null, model.get("description")), 
-                React.createElement("li", null, "ABV: ", model.get("abv")), 
-                React.createElement("li", null, "Food Pairings: ", model.get("foodPairings")), 
-                React.createElement("li", null, "Style: ", model.get("style").shortName), 
-                React.createElement("li", null, "Style Description:", React.createElement("p", null, model.get("style").description))
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "ABV:"), " ", model.get("abv")), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Food Pairings:"), " ", model.get("foodPairings"))
+              ), 
+              React.createElement("ul", null, 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style:"), " ", model.get("style").shortName, 
+                    React.createElement("p", null, model.get("style").description)
+                )
               )
             )
           )
@@ -313,28 +316,6 @@
     }
   });
 
-//Brewery Detail Information
-  views.BreweryFavorites = React.createBackboneClass({
-    render: function(){
-      return (
-          React.createElement("div", {className: "brewery_name"}, 
-          React.createElement("h3", null, "3 Daughters Brewing"), 
-          React.createElement("div", {className: "brewery_image"}, 
-            React.createElement("img", {src: "http://lorempixel.com/100/100/"})
-          ), 
-          React.createElement("div", {className: "user_brewery"}, 
-            React.createElement("ul", null, 
-              React.createElement("li", null, "Address"), 
-              React.createElement("li", null, "Address"), 
-              React.createElement("li", null, "Phone"), 
-              React.createElement("li", null, "Website")
-            )
-          )
-        )
-      );
-    }
-  });
-
   views.FavoritesSection = React.createBackboneClass({
     render: function(){
       return(
@@ -348,6 +329,22 @@
     }
   });
 
+
+})(tiy.views);
+(function(views){
+
+  views.Footer = React.createBackboneClass({
+
+    render: function(){
+      return (
+        React.createElement("div", {className: "footer-wrapper"}, 
+          React.createElement("div", {className: "footer-nav"}, 
+            React.createElement("span", null, React.createElement("a", {href: "http://katherinetrammell.me/"}, React.createElement("img", {src: "images/bee.svg", alt: "portfolio"}), "Like this site? Click here to find out more about the creator"))
+          )
+        )
+      );
+    }
+  });
 
 })(tiy.views);
 (function(views){
@@ -471,7 +468,7 @@
         React.createElement("div", {className: "header-wrapper"}, 
           React.createElement("div", {className: "header-upper"}, 
             React.createElement("div", {className: "logo"}, 
-              React.createElement("img", {src: "images/BreweryBeeLogo4.svg", alt: "Brewery Bee"})
+              React.createElement("a", {href: "#"}, React.createElement("img", {src: "images/BreweryBeeLogo4.svg", alt: "Brewery Bee"}))
             ), 
             React.createElement("div", {className: "login"}, 
               React.createElement("div", null, 
@@ -481,7 +478,6 @@
           ), 
           React.createElement("div", {className: "header-nav"}, 
             React.createElement("ul", {className: "primary-nav"}, 
-            React.createElement("li", null, React.createElement("a", {href: "#"}, "Home")), 
             React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.beerList}, "Find a Beer")
             ), 
             React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.breweryList}, "Find a Brewery")), 
@@ -499,18 +495,6 @@
 
 (function(views){
 
-
-  views.About = React.createClass({displayName: "About",
-    render: function(){
-      return (
-          React.createElement("div", null, 
-            React.createElement("h2", null, "About Brewery Bee"), 
-            React.createElement("p", null, "\"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?\""
-            )
-          )
-      );
-    }
-  });
 
   views.HomeImages = React.createClass({displayName: "HomeImages",
 
@@ -575,7 +559,11 @@
       // window.x = this;
       return (
         React.createElement("div", {className: "index"}, 
-          React.createElement(views.About, null), 
+          React.createElement("div", null, 
+            React.createElement("h2", null, "About Brewery Bee"), 
+            React.createElement("p", null, "Brewery Bee came in a stroke of inspiration as I sat in a bar listening to my husband ask the bartender question after question about the beer choices they offer. Do you have any IPAs? What does that beer taste like?  Fruit taste, how fruity? Is that a dark beer?  Is that a local beer? What local beers do you have? The questions can just keep going on and on.  The idea behind Brewery Bee was to create an application that would help beer enthusiasts to find information on the beers they never knew existed, would love to try, and the beers they already love. "), 
+            React.createElement("p", null, "Brewery Bee also has the added feature of allowing beer lovers log in and save their favorite beers so they never have to worry about forgetting them as they continue to expand their beer pallet.")
+          ), 
           React.createElement(views.HomeImages, {
             onShowBeers: this.props.onShowBeers, 
             onShowBreweries: this.props.onShowBreweries, 
@@ -586,29 +574,44 @@
     }
   });
 
-  views.Section = React.createClass({displayName: "Section",
-
-    render: function(){
-      return (
-          React.createElement(views.Home, null)
-      );
-    }
-  });
-
 })(tiy.views);
 // ------------ Beer and Brewery Lists ------------ //
 (function(views){
 
+  views.Search = React.createBackboneClass({
+    handleSubmit: function(e) {
+      e.preventDefault();
+      var q = this.refs.q.getDOMNode().value;
+      this.props.onSearch(q);
+    },
+
+    render: function() {
+      return (
+          React.createElement("div", {className: "search"}, 
+            React.createElement("form", {className: "search-form", action: "", method: "", onSubmit: this.handleSubmit}, 
+              React.createElement("span", null), 
+              React.createElement("input", {ref: "q", type: "text", className: "search-field", name: "q", placeholder: "Enter Search Words"}), 
+              React.createElement("input", {type: "submit", className: "search-button"})
+            )
+          )
+        )
+    }
+  }),
 //Beer List information
     
   views.BeerListView = React.createBackboneClass({
+
+    getInitialState: function() {
+      return { searchResults: this.props.collection };
+    },
 
     getBeer: function(model) {
       return (
         React.createElement("tr", null, 
           React.createElement("td", null, React.createElement("a", {"data-beer-id": model.get("id"), href: "#", onClick: this.beerDetail}, model.get("name"))), 
           React.createElement("td", null, model.styleName()), 
-          React.createElement("td", null, model.availabilityName())
+          React.createElement("td", null, model.availabilityName()), 
+          React.createElement("td", null, model.breweryNames())
         )
       );
     },
@@ -620,21 +623,47 @@
       this.props.onShowBeerDetail(beerId);
     },
 
+    performSearch: function(query) {
+
+      var url = "/api/search?type=beer&withBreweries=Y&q=" + query;
+
+      $.getJSON(url, function(results){
+        // do something with results
+        // console.log(results);
+        this.setState({searchResults: new tiy.models.Beers(results.data)});
+      }.bind(this));
+
+// componentDidMount: function() {
+//     $.ajax({
+//       url: this.props.url,
+//       dataType: 'json',
+//       success: function(data) {
+//         this.setState({data: data});
+//       }.bind(this),
+//       error: function(xhr, status, err) {
+//         console.error(this.props.url, status, err.toString());
+//       }.bind(this)
+//     });
+//   },
+
+
+    },
+
     render: function(){
       return(
         React.createElement("div", {className: "list_views"}, 
-          React.createElement(views.AlphabetList, null), 
+          React.createElement(views.Search, {onSearch: this.performSearch}), 
           React.createElement("div", {className: "beer_list brewery_list"}, 
             React.createElement("h2", null, "Beer List"), 
-            React.createElement("p", null, "Select a beer by name or use filter the list by the first letter of the name"), 
               React.createElement("table", null, 
                 React.createElement("thead", null, 
                   React.createElement("th", null, "Name"), 
                   React.createElement("th", null, "Style"), 
-                  React.createElement("th", null, "Availability")
+                  React.createElement("th", null, "Availability"), 
+                  React.createElement("th", null, "Brewery")
                 ), 
                 React.createElement("tbody", null, 
-                  this.props.collection.map(this.getBeer)
+                  this.state.searchResults.map(this.getBeer)
                 )
               )
           )
@@ -649,7 +678,7 @@
       return (
         React.createElement("tr", null, 
           React.createElement("td", null, React.createElement("a", {"data-brewery-id": model.get("id"), href: "#", onClick: this.breweryDetail}, model.get("name"))), 
-          React.createElement("td", null, React.createElement("img", {src: model.getImages()}))
+          React.createElement("td", null, React.createElement("img", {className: "brewery_image", src: model.getImages()}))
         )
       );
     },
@@ -665,10 +694,8 @@
       return(
         React.createElement("div", null, 
           React.createElement("div", {className: "list_views"}, 
-            React.createElement(views.AlphabetList, null), 
             React.createElement("div", {className: "beer_list brewery_list"}, 
               React.createElement("h2", null, "Brewery List"), 
-              React.createElement("p", null, "Select a brewery by name or use filter the list by the first letter of the name"), 
                 React.createElement("table", null, 
                   React.createElement("thead", null, 
                     React.createElement("th", null, "Name"), 
@@ -684,68 +711,11 @@
       )
     }
   });
-
-
-  views.Search = React.createClass({displayName: "Search",
-    render: function(){
-      return (
-        React.createElement("div", {className: "search"}, 
-          React.createElement("form", {className: "search-form", action: "", method: ""}, 
-            React.createElement("span", null), 
-            React.createElement("input", {type: "text", className: "search-field", name: "search", placeholder: "enter keywords"}), 
-            React.createElement("input", {type: "submit", className: "search-button", name: "submit", value: "Search"})
-          )
-        )
-      )
-    }
-  });
-  
-  views.AlphabetList = React.createClass({displayName: "AlphabetList",
-
-    alphabetSort: function(e) {
-      e.preventDefault();
-      console.log(e.target, e.target.href);
-
-    },
-
-    render: function(){
-      return (
-        React.createElement("div", {className: "alphabet"}, 
-          React.createElement("ul", null, 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "#")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "A")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "B")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "C")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "D")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "E")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "F")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "G")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "H")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "I")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "J")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "K")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "L")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "M")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "N")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "O")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "P")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Q")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "R")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "S")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "T")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "U")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "V")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "W")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "X")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Y")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.alphabetSort}, "Z"))
-          )
-        )
-      );
-    }
-  });
+ 
 
 })(tiy.views);
+
+
 // --------- STYLES PAGE VIEW --------- //
 
 (function(views){

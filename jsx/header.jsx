@@ -37,7 +37,7 @@
         <div className="header-wrapper">
           <div className="header-upper">
             <div className= "logo">
-              <img src="images/BreweryBeeLogo4.svg" alt="Brewery Bee"/>
+              <a href="#"><img src="images/BreweryBeeLogo4.svg" alt="Brewery Bee"/></a>
             </div>
             <div className="login">
               <div>
@@ -47,7 +47,6 @@
           </div>
           <div className="header-nav">
             <ul className="primary-nav">
-            <li><a href="#">Home</a></li>
             <li><a href="#" onClick={this.beerList}>Find a Beer</a>
             </li>
             <li><a href="#" onClick={this.breweryList}>Find a Brewery</a></li>

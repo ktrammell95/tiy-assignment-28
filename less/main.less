@@ -58,6 +58,14 @@ ul li {
   font-weight: bolder;
 }
 
+.brewery_image{
+  float: left;
+  width: auto;
+  height: 125px;
+  margin: 10px 20px;
+  border-radius: 5px;
+}
+
 .search {
   float: left;
   width: 100%;
@@ -96,7 +104,7 @@ header{
   width: 100%;
   .header-wrapper{
     width: 960px;
-    height: 125px;
+    height: 130px;
     margin: auto;
     .header-upper{  
       margin: 0;
@@ -104,13 +112,14 @@ header{
       width: 100%;
       height: 70%;
       .logo {
+        padding-top: 10px;
         width: 250px;
         float: left;
         font-family: @display-font;
         color: @highlight-color; 
         text-align: center;
         img {
-          height: 90px;
+          height: 80px;
           margin-bottom: 0;
         }
       }//logo
@@ -123,18 +132,17 @@ header{
           font-family: @text-font;
           float: right;
           // height: 25px;
-          width: 200px;
-          padding: 8px 25px;
+          width: 215px;
+          padding: 15px 0;
           color: @action-color;
           display: inline-block;
           cursor: pointer;
-          border-left: 1px solid @action-color;
           font-size: 14px;
 
           .profile-image{
             vertical-align: middle;
-            height: 30px;
-            border-radius: 15px;
+            height: 40px;
+            border-radius: 5px;
             margin-right: 10px;
           }
 
@@ -155,40 +163,22 @@ header{
       ul {
         margin: 0;
         padding: 0;
-        // background: #678;
         display: inline-block;
       }
+      .primary-nav{
+        float: right;
+      }
       .primary-nav li {
-      // color: #abc;
       color: @highlight-color;
       list-style: none;
       display: inline-block;
       // background: #678;
-      padding: 6px 53px;
+      padding: 6px 50px;
       position: relative;
         a {
         text-decoration: none;
         color: @highlight-color;
           }
-      }
-      .secondary-nav {
-      position: absolute;
-      font-size: 12px;
-      top: 100%;
-      bottom: 0;
-      margin: 0;
-      padding: 0;
-      display: none;
-        li{
-          list-style: none;
-          background: @dark-color;
-          min-width: 75px;
-          a {
-            text-decoration: none;
-            color: @highlight-color;
-            margin-left: -25px;
-          }
-        }
       }
     }
   }//header-wrapper
@@ -246,7 +236,7 @@ section {
         padding-right: 10px;
         text-align: center;
         th {
-          min-width: 265px;
+          // min-width: 265px;
         }
         tr { 
           height: 30px;
@@ -255,7 +245,7 @@ section {
       tbody {
         width: 28%;
         td { 
-          min-width: 265px;
+          // min-width: 265px;
           height: 100px;
           overflow: hidden;
           a{
@@ -301,16 +291,12 @@ section {
       ul li {
         list-style: none;
         margin-bottom: 20px;
+        margin-right: 26px;
       }
-    }
-    .beer_image, .brewery_image{
-      float: left;
-      width: auto;
-      height: 125px;
     }
     .description {
       clear:both;
-      padding: 20px;
+      padding: 20px 40px;
     }
     .favButton {
       margin-left: 40px;
@@ -352,35 +338,35 @@ section {
         h2{
           font-size: 14px;
         }
-        .beer_image, .brewery_image{
-          float: left;
-        }
         .user_beer, .user_brewery{
           float: left;
+          margin-right: 20px;
         }
       }
     }
   }
 }//section
 
-
-
 footer {
   background-color: @dark-color;
   margin: auto;
   width: 100%;
-  height: 50px;
-  line-height: 50px;
+  height: 75px;
+  line-height: 75px;
   clear: both;
   .footer-wrapper{
     width: 960px;
     margin: auto;
-    .footnav1, .footnav2, .footnav3, .footnav4 {
-      list-style: none;
-      display: inline;
-      color: @light-color;
-      margin-left: 115px;
-      padding: 0;
+    padding: 0;
+    span{ 
+    color: @light-color;
+    float: right;
+    }
+    img{
+      height: 50px;
+      padding: 13px;
+      width: auto;
+      float: right;
     }
   }
 }
