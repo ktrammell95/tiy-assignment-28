@@ -14,7 +14,7 @@
             <form className="search-form" action="" method="" onSubmit={this.handleSubmit}>
               <span></span>
               <input ref="q" type="text" className="search-field" name="q" placeholder="Enter Search Words"/>
-              <input type="submit" className = "search-button"/>
+              <input type="submit" className="search-button"/>
             </form>
           </div>
         )
@@ -33,7 +33,6 @@
         <tr>
           <td><a data-beer-id={model.get("id")} href="#" onClick={this.beerDetail}>{model.get("name")}</a></td>
           <td>{model.styleName()}</td>
-          <td>{model.availabilityName()}</td>
           <td>{model.breweryNames()}</td>
         </tr>
       );
@@ -51,25 +50,9 @@
       var url = "/api/search?type=beer&withBreweries=Y&q=" + query;
 
       $.getJSON(url, function(results){
-        // do something with results
-        // console.log(results);
+        // console.log(url);
         this.setState({searchResults: new tiy.models.Beers(results.data)});
       }.bind(this));
-
-// componentDidMount: function() {
-//     $.ajax({
-//       url: this.props.url,
-//       dataType: 'json',
-//       success: function(data) {
-//         this.setState({data: data});
-//       }.bind(this),
-//       error: function(xhr, status, err) {
-//         console.error(this.props.url, status, err.toString());
-//       }.bind(this)
-//     });
-//   },
-
-
     },
 
     render: function(){
@@ -82,7 +65,6 @@
                 <thead>
                   <th>Name</th>
                   <th>Style</th>
-                  <th>Availability</th>
                   <th>Brewery</th>
                 </thead>
                 <tbody>
@@ -97,6 +79,11 @@
 
 //Beer List information
   views.BreweryListView = React.createBackboneClass({
+
+    getInitialState: function() {
+      return { searchResults: this.props.collection };
+    },
+
     getBrewery: function(model) {
       return (
         <tr>
@@ -113,10 +100,22 @@
       this.props.onShowBreweryDetail(breweryId);
     },
 
+    performSearch: function(query) {
+
+      var url = "/api/search?type=brewery&q=" + query;
+
+      $.getJSON(url, function(results){
+        // do something with results
+        // console.log(results);
+        this.setState({searchResults: new tiy.models.Breweries(results.data)});
+      }.bind(this));
+    },
+
     render: function(){
       return(
         <div>
           <div className="list_views">
+            <views.Search onSearch={this.performSearch}/>
             <div className="beer_list brewery_list">
               <h2>Brewery List</h2>
                 <table>
@@ -125,7 +124,7 @@
                     <th>Logo</th>
                   </thead>
                   <tbody>
-                    {this.props.collection.map(this.getBrewery)}
+                    {this.state.searchResults.map(this.getBrewery)}
                   </tbody>
                 </table>
               </div>

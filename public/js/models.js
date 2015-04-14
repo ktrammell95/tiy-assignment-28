@@ -42,7 +42,7 @@
 
   models.BeerDetails = Backbone.Model.extend({
     url: function() {
-      return "/api/beer/" + this.get("id");
+      return "/api/beer/" + this.get("id") + "?withBreweries=Y";
     },
 
     parse: function(resp) {
@@ -72,7 +72,8 @@
   models.BreweryLocation = Backbone.Model.extend({
     getImages: function() {
       return (this.get('images') || {}).medium;
-    }
+    },
+
   });
 
   models.BreweryLocations = Backbone.Collection.extend({
@@ -88,6 +89,20 @@
       return resp.data;
     }
   });
+
+  // models.BreweryBeers = Backbone.Collection.extend({
+  //   model: models.BreweryBeers,
+  //   initialize: function(data, opts) {
+  //     this.brewery = opts.brewery;
+  //   },
+  //   url: function() {
+  //     var bid = this.brewery.id;
+  //     return "/api/brewery/" + bid + "/beers/?withBreweries=Y";
+  //   },
+  //   parse: function(resp) {
+  //     return resp.data;
+  //   }
+  // });
 
 
   // ---------- Categories ---------- //

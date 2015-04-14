@@ -17,8 +17,7 @@
         <div>
           <div>
             <h2>Beer Styles</h2>
-            <p> Love beer but not sure what styles of beers are out there?</p>
-            <p>Check out our style list to learn more about the beers you love.</p>
+            <p> Love beer but not sure what styles of beers are out there? Check out our style list to learn more about the beers you love.</p>
           </div>
           <div>
             {this.props.collection.map(this.getStyle)}

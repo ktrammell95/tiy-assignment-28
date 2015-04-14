@@ -224,13 +224,13 @@
             React.createElement("div", {className: "favButton"}, 
               favButton
             ), 
-            React.createElement("div", {className: "beer_details"}, 
+            React.createElement("div", {className: "beer_details description"}, 
               React.createElement("ul", null, 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Description:"), React.createElement("span", null, " ", b.description)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold "}, "Description:"), React.createElement("span", null, " ", b.description)), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Brewery:"), React.createElement("span", null, " ", (b.breweries || []).map(function(b) { return b.name }).join(' and '))), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "ABV:"), React.createElement("span", null, " ", b.abv)), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Glassware:"), React.createElement("span", null, " ", (b.glass || {}).name)), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Availability:"), React.createElement("span", null, " ", (b.available|| {}).description)), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Food Pairings:"), React.createElement("span", null, " ", b.foodPairings)), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style:"), React.createElement("span", null, " ", (b.style|| {}).name)), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style Description:"), React.createElement("span", null, " ", (b.style|| {}).description))
               )
@@ -250,21 +250,22 @@
           return (
           React.createElement("div", null, 
             React.createElement("h2", null, model.collection.brewery.get("name")), 
+            React.createElement("div", {className: "description"}, 
+              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
+            ), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", model.get("website"))), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Established:"), React.createElement("span", null, " ", model.get("established"))), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Location Type:"), React.createElement("span", null, " ", model.get("locationTypeDisplay"))), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Address:"), React.createElement("span", null, " ", model.get("streetAddress"))), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "City, State, Zip:"), React.createElement("span", null, " ", model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode"))), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Country:"), React.createElement("span", null, " ", model.get("countryIsoCode"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", model.get("website")))
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone")))
               )
             ), 
             React.createElement("div", null, 
               React.createElement("img", {className: "brewery_image", src: model.collection.brewery.getImages()})
-            ), 
-            React.createElement("div", {className: "description"}, 
-              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
             )
           )
           );
@@ -288,16 +289,11 @@
       return (
           React.createElement("div", {className: "beer_name"}, 
             React.createElement("h3", null, model.get("name")), 
-            React.createElement("div", {className: "user_beer"}, 
-              React.createElement("ul", null, 
-                React.createElement("li", null, model.get("description")), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "ABV:"), " ", model.get("abv")), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Food Pairings:"), " ", model.get("foodPairings"))
-              ), 
-              React.createElement("ul", null, 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style:"), " ", model.get("style").shortName, 
-                    React.createElement("p", null, model.get("style").description)
-                )
+            React.createElement("div", {className: "user_beer description"}, 
+              React.createElement("div", null, model.get("description")), 
+              React.createElement("div", null, React.createElement("span", {className: "bold"}, "ABV:"), " ", model.get("abv")), 
+              React.createElement("div", null, React.createElement("span", {className: "bold"}, "Style:"), " ", model.get("style").shortName, 
+                   React.createElement("p", null, model.get("style").description)
               )
             )
           )
@@ -610,7 +606,6 @@
         React.createElement("tr", null, 
           React.createElement("td", null, React.createElement("a", {"data-beer-id": model.get("id"), href: "#", onClick: this.beerDetail}, model.get("name"))), 
           React.createElement("td", null, model.styleName()), 
-          React.createElement("td", null, model.availabilityName()), 
           React.createElement("td", null, model.breweryNames())
         )
       );
@@ -628,25 +623,9 @@
       var url = "/api/search?type=beer&withBreweries=Y&q=" + query;
 
       $.getJSON(url, function(results){
-        // do something with results
-        // console.log(results);
+        // console.log(url);
         this.setState({searchResults: new tiy.models.Beers(results.data)});
       }.bind(this));
-
-// componentDidMount: function() {
-//     $.ajax({
-//       url: this.props.url,
-//       dataType: 'json',
-//       success: function(data) {
-//         this.setState({data: data});
-//       }.bind(this),
-//       error: function(xhr, status, err) {
-//         console.error(this.props.url, status, err.toString());
-//       }.bind(this)
-//     });
-//   },
-
-
     },
 
     render: function(){
@@ -659,7 +638,6 @@
                 React.createElement("thead", null, 
                   React.createElement("th", null, "Name"), 
                   React.createElement("th", null, "Style"), 
-                  React.createElement("th", null, "Availability"), 
                   React.createElement("th", null, "Brewery")
                 ), 
                 React.createElement("tbody", null, 
@@ -674,6 +652,11 @@
 
 //Beer List information
   views.BreweryListView = React.createBackboneClass({
+
+    getInitialState: function() {
+      return { searchResults: this.props.collection };
+    },
+
     getBrewery: function(model) {
       return (
         React.createElement("tr", null, 
@@ -690,10 +673,22 @@
       this.props.onShowBreweryDetail(breweryId);
     },
 
+    performSearch: function(query) {
+
+      var url = "/api/search?type=brewery&q=" + query;
+
+      $.getJSON(url, function(results){
+        // do something with results
+        // console.log(results);
+        this.setState({searchResults: new tiy.models.Breweries(results.data)});
+      }.bind(this));
+    },
+
     render: function(){
       return(
         React.createElement("div", null, 
           React.createElement("div", {className: "list_views"}, 
+            React.createElement(views.Search, {onSearch: this.performSearch}), 
             React.createElement("div", {className: "beer_list brewery_list"}, 
               React.createElement("h2", null, "Brewery List"), 
                 React.createElement("table", null, 
@@ -702,7 +697,7 @@
                     React.createElement("th", null, "Logo")
                   ), 
                   React.createElement("tbody", null, 
-                    this.props.collection.map(this.getBrewery)
+                    this.state.searchResults.map(this.getBrewery)
                   )
                 )
               )
@@ -775,8 +770,7 @@
         React.createElement("div", null, 
           React.createElement("div", null, 
             React.createElement("h2", null, "Beer Styles"), 
-            React.createElement("p", null, " Love beer but not sure what styles of beers are out there?"), 
-            React.createElement("p", null, "Check out our style list to learn more about the beers you love.")
+            React.createElement("p", null, " Love beer but not sure what styles of beers are out there? Check out our style list to learn more about the beers you love.")
           ), 
           React.createElement("div", null, 
             this.props.collection.map(this.getStyle)

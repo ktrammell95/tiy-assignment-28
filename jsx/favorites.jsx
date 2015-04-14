@@ -5,17 +5,12 @@
       return (
           <div className="beer_name">
             <h3>{model.get("name")}</h3>
-            <div className="user_beer">
-              <ul>
-                <li>{model.get("description")}</li>
-                <li><span className="bold">ABV:</span> {model.get("abv")}</li>
-                <li><span className="bold">Food Pairings:</span> {model.get("foodPairings")}</li>
-              </ul>
-              <ul>
-                <li><span className="bold">Style:</span> {model.get("style").shortName}
-                    <p>{model.get("style").description}</p>
-                </li>
-              </ul>
+            <div className="user_beer description">
+              <div>{model.get("description")}</div>
+              <div><span className="bold">ABV:</span> {model.get("abv")}</div>
+              <div><span className="bold">Style:</span> {model.get("style").shortName}
+                   <p>{model.get("style").description}</p>
+              </div>
             </div>
           </div>
       );

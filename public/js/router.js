@@ -3,6 +3,7 @@ tiy.Router = Backbone.Router.extend({
   routes: {
     ""                        : "showHome",  
     "beers"                   : "showBeers",
+    // "search/:query"           : "showBeers",
     "breweries"               : "showBreweries",
     "styles"                  : "showStyles",
     "favoritebeers"           : "showFavoriteBeers", 

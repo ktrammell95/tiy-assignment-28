@@ -30,6 +30,7 @@ h2 {
   padding-left: 20px;
   font-size: 25px;
   color: @action-color;
+  margin: 10px 0;
 }
 
 h3 { 
@@ -56,6 +57,7 @@ ul li {
 
 .bold {
   font-weight: bolder;
+  color: #896718;
 }
 
 .brewery_image{
@@ -66,35 +68,43 @@ ul li {
   border-radius: 5px;
 }
 
+.description {
+  clear:both;
+  padding: 20px 40px;
+  line-height: 1.5em;
+}
+
 .search {
   float: left;
   width: 100%;
   height: 30px;
-  margin-top: 8px;
-  margin-left: 10px;
+  margin: 10px 10px 10px 0;
   .search-field {
-    border: 1px solid #d0d0d0;
-    border-radius: 3px;
+    border: 1px solid @highlight-color;
+    border-radius: 0 3px 3px 0;
     width: 25%;
-    float: left;
+    float: right;
+    font-size: 10px;
+    padding-left: 5px;
+    line-height: 25px;
     height: 30px;
-    margin-left: 575px;
+    // margin-left: 575px;
       input {
         color: #bcbcbc;
       }
   }
   .search-button {
-    background-color: #54ACC7;
+    background-color: @highlight-color;
     position:relative;
-    left: -10px;
-    border: 1px solid #adc5cf;
+    font-size: 12px;
+    border: 1px solid @highlight-color;
     width: 10%;
-    height: 34px;
+    height: 33px;
     line-height: 25px;
     text-align: center;
     color: white;
-    float: left;
-    border-radius: 3px;
+    float: right;
+    border-radius: 3px 0 0 3px;
   }
 }//search_bar
 
@@ -188,7 +198,7 @@ header{
 
 section {
   background-color: rgba(254, 254, 231, .6);
-  padding: 0;
+  padding: 20px;
   width:960px;
   // height: 1000px;
   margin: auto;
@@ -228,59 +238,43 @@ section {
   .list_views{
 
     .beer_list, .brewery_list{
-      width: 85%;
       float: left;
-      margin: 10px;
-      thead {
-        background: @highlight-color;
-        padding-right: 10px;
-        text-align: center;
-        th {
-          // min-width: 265px;
-        }
-        tr { 
-          height: 30px;
-        }
-      }
-      tbody {
-        width: 28%;
-        td { 
-          // min-width: 265px;
-          height: 100px;
-          overflow: hidden;
-          a{
-          text-decoration: none;
-          color: @dark-color;
+      width: 100%;
+      table {
+        width: 100%;
+        thead {
+          background: @highlight-color;
+          padding-right: 10px;
+          text-align: center;
+          tr { 
+            height: 30px;
           }
-          a:hover { 
-            font-weight: bold;
-            font-size: 18px;
+        }
+        tbody {
+          td { 
+            height: 30px;
+            padding-right: 0 10px;
+            a{
+            text-decoration: none;
+            color: @dark-color;
+            }
+            a:hover { 
+              font-weight: bold;
+              font-size: 18px;
+            }
           }
         }
       }
     }
-    .alphabet{
-      float: left;
-      width: 10%;
-      margin: 10px;
-      ul {
-        list-style: none;
-        a{
-          text-decoration: none;
-          color: @dark-color;
-        }
-        a:hover { 
-          font-weight: bold;
-          font-size: 18px;
-        }
-      }
-    }//alphabet
   } //list_views
   .beer, .brewery{
     float: left;
     width: 100%;
     height: auto;
-    .beer_details{
+    img {
+      float: right;
+    }
+    .beer_details, .brewery_details{
       width: 100%;
     }
     .brewery_details{
@@ -293,10 +287,6 @@ section {
         margin-bottom: 20px;
         margin-right: 26px;
       }
-    }
-    .description {
-      clear:both;
-      padding: 20px 40px;
     }
     .favButton {
       margin-left: 40px;
@@ -341,6 +331,9 @@ section {
         .user_beer, .user_brewery{
           float: left;
           margin-right: 20px;
+          div {
+            padding-top: 5px;
+          }
         }
       }
     }

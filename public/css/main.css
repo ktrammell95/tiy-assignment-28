@@ -19,6 +19,7 @@ h2 {
   padding-left: 20px;
   font-size: 25px;
   color: #e9e2d6;
+  margin: 10px 0;
 }
 h3 {
   background: rgba(44, 14, 12, 0.5);
@@ -40,6 +41,7 @@ ul li {
 }
 .bold {
   font-weight: bolder;
+  color: #896718;
 }
 .brewery_image {
   float: left;
@@ -48,36 +50,42 @@ ul li {
   margin: 10px 20px;
   border-radius: 5px;
 }
+.description {
+  clear: both;
+  padding: 20px 40px;
+  line-height: 1.5em;
+}
 .search {
   float: left;
   width: 100%;
   height: 30px;
-  margin-top: 8px;
-  margin-left: 10px;
+  margin: 10px 10px 10px 0;
 }
 .search .search-field {
-  border: 1px solid #d0d0d0;
-  border-radius: 3px;
+  border: 1px solid #d7a628;
+  border-radius: 0 3px 3px 0;
   width: 25%;
-  float: left;
+  float: right;
+  font-size: 10px;
+  padding-left: 5px;
+  line-height: 25px;
   height: 30px;
-  margin-left: 575px;
 }
 .search .search-field input {
   color: #bcbcbc;
 }
 .search .search-button {
-  background-color: #54ACC7;
+  background-color: #d7a628;
   position: relative;
-  left: -10px;
-  border: 1px solid #adc5cf;
+  font-size: 12px;
+  border: 1px solid #d7a628;
   width: 10%;
-  height: 34px;
+  height: 33px;
   line-height: 25px;
   text-align: center;
   color: white;
-  float: left;
-  border-radius: 3px;
+  float: right;
+  border-radius: 3px 0 0 3px;
 }
 header {
   background: rgba(44, 14, 12, 0.8);
@@ -163,7 +171,7 @@ header .header-wrapper .header-nav .primary-nav li a {
 }
 section {
   background-color: rgba(254, 254, 231, 0.6);
-  padding: 0;
+  padding: 20px;
   width: 960px;
   margin: auto;
   overflow: auto;
@@ -201,52 +209,35 @@ section .index .images .image h3 {
 }
 section .list_views .beer_list,
 section .list_views .brewery_list {
-  width: 85%;
   float: left;
-  margin: 10px;
+  width: 100%;
 }
-section .list_views .beer_list thead,
-section .list_views .brewery_list thead {
+section .list_views .beer_list table,
+section .list_views .brewery_list table {
+  width: 100%;
+}
+section .list_views .beer_list table thead,
+section .list_views .brewery_list table thead {
   background: #d7a628;
   padding-right: 10px;
   text-align: center;
 }
-section .list_views .beer_list thead tr,
-section .list_views .brewery_list thead tr {
+section .list_views .beer_list table thead tr,
+section .list_views .brewery_list table thead tr {
   height: 30px;
 }
-section .list_views .beer_list tbody,
-section .list_views .brewery_list tbody {
-  width: 28%;
+section .list_views .beer_list table tbody td,
+section .list_views .brewery_list table tbody td {
+  height: 30px;
+  padding-right: 0 10px;
 }
-section .list_views .beer_list tbody td,
-section .list_views .brewery_list tbody td {
-  height: 100px;
-  overflow: hidden;
-}
-section .list_views .beer_list tbody td a,
-section .list_views .brewery_list tbody td a {
+section .list_views .beer_list table tbody td a,
+section .list_views .brewery_list table tbody td a {
   text-decoration: none;
   color: rgba(44, 14, 12, 0.85);
 }
-section .list_views .beer_list tbody td a:hover,
-section .list_views .brewery_list tbody td a:hover {
-  font-weight: bold;
-  font-size: 18px;
-}
-section .list_views .alphabet {
-  float: left;
-  width: 10%;
-  margin: 10px;
-}
-section .list_views .alphabet ul {
-  list-style: none;
-}
-section .list_views .alphabet ul a {
-  text-decoration: none;
-  color: rgba(44, 14, 12, 0.85);
-}
-section .list_views .alphabet ul a:hover {
+section .list_views .beer_list table tbody td a:hover,
+section .list_views .brewery_list table tbody td a:hover {
   font-weight: bold;
   font-size: 18px;
 }
@@ -256,8 +247,14 @@ section .brewery {
   width: 100%;
   height: auto;
 }
+section .beer img,
+section .brewery img {
+  float: right;
+}
 section .beer .beer_details,
-section .brewery .beer_details {
+section .brewery .beer_details,
+section .beer .brewery_details,
+section .brewery .brewery_details {
   width: 100%;
 }
 section .beer .brewery_details,
@@ -281,11 +278,6 @@ section .brewery .beer_style ul li {
   list-style: none;
   margin-bottom: 20px;
   margin-right: 26px;
-}
-section .beer .description,
-section .brewery .description {
-  clear: both;
-  padding: 20px 40px;
 }
 section .beer .favButton,
 section .brewery .favButton {
@@ -344,6 +336,16 @@ section .users .user_left .brewery_name .user_brewery,
 section .users .user_right .brewery_name .user_brewery {
   float: left;
   margin-right: 20px;
+}
+section .users .user_left .beer_name .user_beer div,
+section .users .user_right .beer_name .user_beer div,
+section .users .user_left .brewery_name .user_beer div,
+section .users .user_right .brewery_name .user_beer div,
+section .users .user_left .beer_name .user_brewery div,
+section .users .user_right .beer_name .user_brewery div,
+section .users .user_left .brewery_name .user_brewery div,
+section .users .user_right .brewery_name .user_brewery div {
+  padding-top: 5px;
 }
 footer {
   background-color: rgba(44, 14, 12, 0.85);
