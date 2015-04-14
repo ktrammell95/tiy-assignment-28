@@ -50,16 +50,15 @@
     }
   });
 
-  views.Header = React.createBackboneClass({
-    render: function(){
-      return (
-        React.createElement("div", null, 
-          React.createElement("div", {className: "logo"}, "Taskify"), 
-          React.createElement(views.TwitterLogin, {model: this.props.model})
-        )
-      );
-    }
-  });
+  // views.Header = React.createBackboneClass({
+  //   render: function(){
+  //     return (
+  //       <div>
+  //         <views.TwitterLogin model={this.props.model}/>
+  //       </div>
+  //     );
+  //   }
+  // });
 
 })(tiy.views);
 
@@ -474,15 +473,26 @@
           ), 
           React.createElement("div", {className: "header-nav"}, 
             React.createElement("ul", {className: "primary-nav"}, 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.beerList}, "Find a Beer")
-            ), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.breweryList}, "Find a Brewery")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.styles}, "Beer Styles")), 
-            React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.favoriteBeers}, "Favorites"))
-          )
+              React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.beerList}, "Find a Beer")
+              ), 
+              React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.breweryList}, "Find a Brewery")), 
+              React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.styles}, "Beer Styles")), 
+              React.createElement(views.FavoriteNavItem, {onclick: this.favoriteBeers})
+            )
           )
         )
       );
+    }
+  });
+
+  views.FavoriteNavItem = React.createClass({displayName: "FavoriteNavItem",
+
+    render: function() {
+      if (tiy.isLoggedIn()) {
+        return React.createElement("li", null, React.createElement("a", {href: "#", onClick: this.props.onclick}, "Favorites"))  
+      } else {
+        return null;
+      };        
     }
   });
 

@@ -50,16 +50,15 @@
     }
   });
 
-  views.Header = React.createBackboneClass({
-    render: function(){
-      return (
-        <div>
-          <div className="logo">Taskify</div>
-          <views.TwitterLogin model={this.props.model}/>
-        </div>
-      );
-    }
-  });
+  // views.Header = React.createBackboneClass({
+  //   render: function(){
+  //     return (
+  //       <div>
+  //         <views.TwitterLogin model={this.props.model}/>
+  //       </div>
+  //     );
+  //   }
+  // });
 
 })(tiy.views);
 

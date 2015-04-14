@@ -156,7 +156,8 @@ header .header-wrapper .header-nav ul {
   display: inline-block;
 }
 header .header-wrapper .header-nav .primary-nav {
-  float: right;
+  float: left;
+  padding-left: 90px;
 }
 header .header-wrapper .header-nav .primary-nav li {
   color: #d7a628;

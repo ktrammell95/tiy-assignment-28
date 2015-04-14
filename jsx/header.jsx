@@ -47,15 +47,26 @@
           </div>
           <div className="header-nav">
             <ul className="primary-nav">
-            <li><a href="#" onClick={this.beerList}>Find a Beer</a>
-            </li>
-            <li><a href="#" onClick={this.breweryList}>Find a Brewery</a></li>
-            <li><a href="#" onClick={this.styles}>Beer Styles</a></li>
-            <li><a href="#" onClick={this.favoriteBeers}>Favorites</a></li>
-          </ul>
+              <li><a href="#" onClick={this.beerList}>Find a Beer</a>
+              </li>
+              <li><a href="#" onClick={this.breweryList}>Find a Brewery</a></li>
+              <li><a href="#" onClick={this.styles}>Beer Styles</a></li>
+              <views.FavoriteNavItem onclick={this.favoriteBeers} />
+            </ul>
           </div>
         </div>
       );
+    }
+  });
+
+  views.FavoriteNavItem = React.createClass({
+
+    render: function() {
+      if (tiy.isLoggedIn()) {
+        return <li><a href="#" onClick={this.props.onclick}>Favorites</a></li>  
+      } else {
+        return null;
+      };        
     }
   });
 
