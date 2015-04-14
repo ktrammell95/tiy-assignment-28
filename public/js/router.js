@@ -3,7 +3,6 @@ tiy.Router = Backbone.Router.extend({
   routes: {
     ""                        : "showHome",  
     "beers"                   : "showBeers",
-    // "search/:query"           : "showBeers",
     "breweries"               : "showBreweries",
     "styles"                  : "showStyles",
     "favoritebeers"           : "showFavoriteBeers", 
@@ -111,7 +110,7 @@ tiy.Router = Backbone.Router.extend({
   showBreweryLoc: function(breweryid){
     var breweries = new tiy.models.Breweries();
     var breweryLocations = new tiy.models.BreweryLocations(null, {});
-
+    breweryLocations.brewery = new tiy.models.Brewery;
     this.section = React.render(
       React.createElement(tiy.views.BreweryLocation, {
         collection: breweryLocations
@@ -123,8 +122,9 @@ tiy.Router = Backbone.Router.extend({
       success: function() {
         var brewery = breweries.get(breweryid);
         breweryLocations.brewery = brewery;
+        this.section.forceUpdate();
         breweryLocations.fetch();    
-      }
+      }.bind(this)
     });
   }, 
 

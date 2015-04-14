@@ -43,6 +43,9 @@ ul li {
   font-weight: bolder;
   color: #896718;
 }
+.locations {
+  border-bottom: 1px solid rgba(44, 14, 12, 0.85);
+}
 .brewery_image {
   float: left;
   width: auto;
@@ -258,9 +261,9 @@ section .beer .brewery_details,
 section .brewery .brewery_details {
   width: 100%;
 }
-section .beer .brewery_details,
-section .brewery .brewery_details {
-  width: 50%;
+section .beer .beer_details,
+section .brewery .beer_details {
+  padding: 0;
 }
 section .beer .beer_details,
 section .brewery .beer_details,

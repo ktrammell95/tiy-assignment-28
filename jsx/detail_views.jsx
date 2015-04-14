@@ -58,9 +58,6 @@
                 <li><span className="bold">Style Description:</span><span> {(b.style|| {}).description}</span></li>
               </ul>
             </div>
-            <div>
-              <img src={(b.labels|| {}).medium}/>
-            </div>
           </div>
         </div>
       )
@@ -71,33 +68,37 @@
   views.BreweryLocation = React.createBackboneClass({
     getBreweryLocation: function(model) {
           return (
-          <div>  
-            <h2>{model.collection.brewery.get("name")}</h2>
-            <div>
-              <img className="brewery_image" src={model.collection.brewery.getImages()}/>
-            </div>
-            <div className="brewery_details">
-              <ul>
-                <li><span className="bold">Website:</span><span> {model.get("website")}</span></li>
-                <li><span className="bold">Established:</span><span> {model.get("established")}</span></li>
-                <li><span className="bold">Location Type:</span><span> {model.get("locationTypeDisplay")}</span></li>
-                <li><span className="bold">Address:</span><span> {model.get("streetAddress")}</span></li>
-                <li><span className="bold">City, State, Zip:</span><span> {model.get("locality")}, {model.get("region")} {model.get("postalCode")}</span></li>
-                <li><span className="bold">Country:</span><span> {model.get("countryIsoCode")}</span></li>
-                <li><span className="bold">Phone:</span><span> {model.get("phone")}</span></li>
-              </ul>
-            </div>
-            <div className="description">
-              <span className="bold">Brewery Description:</span><span> {model.collection.brewery.get("description")}</span>
-            </div>
-          </div>
+            <ul className="locations">
+              <li><span className="bold">Location Type:</span><span> {model.get("locationTypeDisplay")}</span></li>
+              <li><span className="bold">Address:</span><span> {model.get("streetAddress")}</span></li>
+              <li><span className="bold">City, State, Zip:</span><span> {model.get("locality")}, {model.get("region")} {model.get("postalCode")}</span></li>
+              <li><span className="bold">Country:</span><span> {model.get("countryIsoCode")}</span></li>
+              <li><span className="bold">Phone:</span><span> {model.get("phone")}</span></li>
+            </ul>
           );
         },
 
     render: function(){
       return (
         <div className="brewery">
-          {this.props.collection.map(this.getBreweryLocation)}
+          <div>  
+            <h2>{this.props.collection.brewery.get("name")}</h2>
+            <div className="brewery_details">
+            <div>
+              <img className="brewery_image" src={this.props.collection.brewery.getImages()}/>
+            </div>
+              <ul>
+                <li><span className="bold">Website:</span><span> {this.props.collection.brewery.getWebsite()}</span></li>
+                <li><span className="bold">Established:</span><span> {this.props.collection.brewery.getEstablished()}</span></li>
+              </ul>
+            <div className="description">
+              <span className="bold">Brewery Description:</span><span> {this.props.collection.brewery.getDescription()}</span>
+            </div>
+
+              <h3>Location(s)</h3>
+              {this.props.collection.map(this.getBreweryLocation)}
+            </div>
+          </div>
         </div>
       );
     }

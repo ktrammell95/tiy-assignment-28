@@ -57,6 +57,36 @@
     getImages: function() {
       return (this.get('images') || {}).medium;
     },
+    getDescription: function() {
+      return (this.get('description') || {});
+    },
+    getWebsite: function() {
+      return (this.get('website') || {});
+    },
+    getEstablished: function() {
+      return (this.get('established') || {});
+    },
+    getLocationType: function() {
+      return (this.get('locationTypeDisplay') || {});
+    },
+    // getStreetAddress: function() {
+    //   return (this.get('streetAddress') || {});
+    // },
+    // getLocality: function() {
+    //   return (this.get('locality') || {});
+    // },
+    // getRegion: function() {
+    //   return (this.get('region') || {});
+    // },
+    // getPostalCode: function() {
+    //   return (this.get('postalCode') || {});
+    // },
+    // getCountryIsoCode: function() {
+    //   return (this.get('countryIsoCode') || {});
+    // },
+    // getPhone: function() {
+    //   return (this.get('phone') || {});
+    // },
 
   });
 
@@ -73,6 +103,10 @@
     getImages: function() {
       return (this.get('images') || {}).medium;
     },
+    // getLocationType: function() {
+    //   return (this.get('locationTypeDisplay') || {});
+    // },
+
 
   });
 

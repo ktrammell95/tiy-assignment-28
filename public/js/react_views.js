@@ -233,9 +233,6 @@
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style:"), React.createElement("span", null, " ", (b.style|| {}).name)), 
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Style Description:"), React.createElement("span", null, " ", (b.style|| {}).description))
               )
-            ), 
-            React.createElement("div", null, 
-              React.createElement("img", {src: (b.labels|| {}).medium})
             )
           )
         )
@@ -247,33 +244,37 @@
   views.BreweryLocation = React.createBackboneClass({
     getBreweryLocation: function(model) {
           return (
-          React.createElement("div", null, 
-            React.createElement("h2", null, model.collection.brewery.get("name")), 
-            React.createElement("div", null, 
-              React.createElement("img", {className: "brewery_image", src: model.collection.brewery.getImages()})
-            ), 
-            React.createElement("div", {className: "brewery_details"}, 
-              React.createElement("ul", null, 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", model.get("website"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Established:"), React.createElement("span", null, " ", model.get("established"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Location Type:"), React.createElement("span", null, " ", model.get("locationTypeDisplay"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Address:"), React.createElement("span", null, " ", model.get("streetAddress"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "City, State, Zip:"), React.createElement("span", null, " ", model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Country:"), React.createElement("span", null, " ", model.get("countryIsoCode"))), 
-                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone")))
-              )
-            ), 
-            React.createElement("div", {className: "description"}, 
-              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
+            React.createElement("ul", {className: "locations"}, 
+              React.createElement("li", null, React.createElement("span", {className: "bold"}, "Location Type:"), React.createElement("span", null, " ", model.get("locationTypeDisplay"))), 
+              React.createElement("li", null, React.createElement("span", {className: "bold"}, "Address:"), React.createElement("span", null, " ", model.get("streetAddress"))), 
+              React.createElement("li", null, React.createElement("span", {className: "bold"}, "City, State, Zip:"), React.createElement("span", null, " ", model.get("locality"), ", ", model.get("region"), " ", model.get("postalCode"))), 
+              React.createElement("li", null, React.createElement("span", {className: "bold"}, "Country:"), React.createElement("span", null, " ", model.get("countryIsoCode"))), 
+              React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone")))
             )
-          )
           );
         },
 
     render: function(){
       return (
         React.createElement("div", {className: "brewery"}, 
-          this.props.collection.map(this.getBreweryLocation)
+          React.createElement("div", null, 
+            React.createElement("h2", null, this.props.collection.brewery.get("name")), 
+            React.createElement("div", {className: "brewery_details"}, 
+            React.createElement("div", null, 
+              React.createElement("img", {className: "brewery_image", src: this.props.collection.brewery.getImages()})
+            ), 
+              React.createElement("ul", null, 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Website:"), React.createElement("span", null, " ", this.props.collection.brewery.getWebsite())), 
+                React.createElement("li", null, React.createElement("span", {className: "bold"}, "Established:"), React.createElement("span", null, " ", this.props.collection.brewery.getEstablished()))
+              ), 
+            React.createElement("div", {className: "description"}, 
+              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", this.props.collection.brewery.getDescription())
+            ), 
+
+              React.createElement("h3", null, "Location(s)"), 
+              this.props.collection.map(this.getBreweryLocation)
+            )
+          )
         )
       );
     }
