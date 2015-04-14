@@ -73,8 +73,8 @@
           return (
           <div>  
             <h2>{model.collection.brewery.get("name")}</h2>
-            <div className="description">
-              <span className="bold">Brewery Description:</span><span> {model.collection.brewery.get("description")}</span>
+            <div>
+              <img className="brewery_image" src={model.collection.brewery.getImages()}/>
             </div>
             <div className="brewery_details">
               <ul>
@@ -87,8 +87,8 @@
                 <li><span className="bold">Phone:</span><span> {model.get("phone")}</span></li>
               </ul>
             </div>
-            <div>
-              <img className="brewery_image" src={model.collection.brewery.getImages()}/>
+            <div className="description">
+              <span className="bold">Brewery Description:</span><span> {model.collection.brewery.get("description")}</span>
             </div>
           </div>
           );

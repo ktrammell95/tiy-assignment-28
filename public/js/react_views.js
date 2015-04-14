@@ -250,8 +250,8 @@
           return (
           React.createElement("div", null, 
             React.createElement("h2", null, model.collection.brewery.get("name")), 
-            React.createElement("div", {className: "description"}, 
-              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
+            React.createElement("div", null, 
+              React.createElement("img", {className: "brewery_image", src: model.collection.brewery.getImages()})
             ), 
             React.createElement("div", {className: "brewery_details"}, 
               React.createElement("ul", null, 
@@ -264,8 +264,8 @@
                 React.createElement("li", null, React.createElement("span", {className: "bold"}, "Phone:"), React.createElement("span", null, " ", model.get("phone")))
               )
             ), 
-            React.createElement("div", null, 
-              React.createElement("img", {className: "brewery_image", src: model.collection.brewery.getImages()})
+            React.createElement("div", {className: "description"}, 
+              React.createElement("span", {className: "bold"}, "Brewery Description:"), React.createElement("span", null, " ", model.collection.brewery.get("description"))
             )
           )
           );
