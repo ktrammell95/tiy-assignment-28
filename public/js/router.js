@@ -41,13 +41,14 @@ tiy.Router = Backbone.Router.extend({
     this.navigate("", {trigger: true, replace: true});
 
     this.listenTo(tiy, "sign:out", function(){
-      this.beers = null;
+      this.user = null;
+      this.beers = new tiy.models.Beers();
       this.section.setProps({collection: this.models.beers});
     });
 
     this.listenTo(tiy, "sign:in", function(){
-      this.beers = new tiy.models.Beers();
-      this.section.setProps({collection: this.models.beers});
+      this.user = new tiy.models.User();
+      this.section.setProps({collection: this.models.user});
     })
 
   },

@@ -69,25 +69,6 @@
     getLocationType: function() {
       return (this.get('locationTypeDisplay') || {});
     },
-    // getStreetAddress: function() {
-    //   return (this.get('streetAddress') || {});
-    // },
-    // getLocality: function() {
-    //   return (this.get('locality') || {});
-    // },
-    // getRegion: function() {
-    //   return (this.get('region') || {});
-    // },
-    // getPostalCode: function() {
-    //   return (this.get('postalCode') || {});
-    // },
-    // getCountryIsoCode: function() {
-    //   return (this.get('countryIsoCode') || {});
-    // },
-    // getPhone: function() {
-    //   return (this.get('phone') || {});
-    // },
-
   });
 
   models.Breweries = ApiCollection.extend({
@@ -103,10 +84,6 @@
     getImages: function() {
       return (this.get('images') || {}).medium;
     },
-    // getLocationType: function() {
-    //   return (this.get('locationTypeDisplay') || {});
-    // },
-
 
   });
 
@@ -160,6 +137,8 @@
 
   models.User = Backbone.Model.extend({
 
+    //need to put something in here so for when no one is signed in?
+
     hasBeerAsFav: function(beer) {
       return !!this.favorites.beers.get(beer.id);
     },
@@ -171,19 +150,6 @@
     removeBeerAsFav: function(beer) {
       return this.favorites.beers.remove(beer);
     },
-
-    hasBreweryAsFav: function(brewery) {
-      // console.log(beer.toJSON(), this.favorites.beers.toJSON());
-      return !!this.favorites.Brewery.get(brewery.id);
-    },
-
-    addBreweryAsFav: function(brewery) {
-      return this.favorites.Brewery.add(brewery);
-    },
-
-    removeBreweryAsFav: function(brewery) {
-      return this.favorites.Brewery.remove(beer);
-    }
 
   });
 

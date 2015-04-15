@@ -180,12 +180,18 @@
 
     getInitialState: function() {
       var beer = this.props.model; // find the beer...
+      if (!tiy.isLoggedIn()) {
+        return {favorited: false};
+      }
       return {
         favorited: tiy.currentUser.hasBeerAsFav(beer)
       };
     },
 
-    componentDidMount: function() {      
+    componentDidMount: function() { 
+      if (!tiy.isLoggedIn()) {
+        return;
+      } 
       tiy.currentUser.favorites.beers.on("sync", function() {
         var beer = this.props.model; // find the beer...      
         this.setState({favorited: tiy.currentUser.hasBeerAsFav(beer)});
@@ -208,7 +214,10 @@
       var b = this.props.model.toJSON();
       var beer = this.props.model;
       var favButton;
-      if (this.state.favorited) {
+      if (!tiy.isLoggedIn()) {
+        favButton = false;
+      }
+      else if (this.state.favorited) {
         favButton = React.createElement("a", {"data-beer-id": b.id, className: "btn btn-lg btn-success", href: "#", onClick: this.checkFavorite}, 
                   React.createElement("i", {className: "fa fa-beer fa-2x pull-left"}), "Remove Favorite");
       } else {
